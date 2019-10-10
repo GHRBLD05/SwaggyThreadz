@@ -19,7 +19,8 @@
     "express": "^4.17.1",
     "path": "^0.12.7",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react-dom": "^16.10.2",
+    "redux": "^4.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.6.3",
