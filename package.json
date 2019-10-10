@@ -9,11 +9,13 @@
   },
   "scripts": {
     "webpack": "webpack --watch",
-    "start": "nodemon /server/server.js",
+    "start": "nodemon ./server/server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
     "path": "^0.12.7"
   },
   "devDependencies": {
