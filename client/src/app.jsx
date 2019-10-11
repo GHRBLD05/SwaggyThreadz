@@ -1,5 +1,5 @@
 import React from 'react';
-import Search from './Axels_components/search.jsx';
+import QuestionsModule from './Questions_answers/QuestionsModule.jsx';
 
 export default class App extends React.Component {
     render() {
