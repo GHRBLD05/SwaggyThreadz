@@ -1,4 +1,5 @@
 import React from 'react';
+import AnswerList from './AnswerList.jsx';
 
 class Question extends React.Component {
   constructor(props) {
@@ -21,7 +22,12 @@ class Question extends React.Component {
           </p>
           <a>Add Answer</a>
         </div>
+        <div className="row answerList">
+          <p>This will be a list of answers</p>
+        </div>
       </div>
     );
   }
 }
+
+export default Question;
