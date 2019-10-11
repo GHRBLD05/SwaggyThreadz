@@ -24,7 +24,7 @@ class Search extends React.Component {
             value={this.state.term}
             placeholder="Have a question? Search for answers…"
           ></input>
-          <button alt="Search"></button>
+          <div className="searchButton"></div>
         </div>
       </div>
     );
