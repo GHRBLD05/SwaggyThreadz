@@ -23,4 +23,9 @@ coverage
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
 dist/
-
+.eslintrc
+.nvmrc
+.travis.yml
+README.md
+STYLE-GUIDE.md
+webpack.config.js
