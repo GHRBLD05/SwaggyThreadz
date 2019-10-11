@@ -18,11 +18,14 @@ class Search extends React.Component {
       <div>
         <h3>Questions and Answers</h3>
         <br></br>
-        <input
-          type="text"
-          value={this.state.term}
-          placeholder="Have a question? Search for answers…"
-        ></input>
+        <div className="searchBar">
+          <input
+            type="text"
+            value={this.state.term}
+            placeholder="Have a question? Search for answers…"
+          ></input>
+          <button alt="Search" ></button>
+        </div>
       </div>
     );
   }
