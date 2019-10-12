@@ -5,16 +5,16 @@ class QuestionList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions = [];
-    }
+      questions: [],
+    };
   }
 
   render() {
     return (
       <div>
-        <p>Question Placeholder</p>
+        <Question />
       </div>
-    )
+    );
   }
 }
 
