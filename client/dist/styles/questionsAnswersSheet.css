@@ -27,3 +27,17 @@
   align-items: center;
   box-sizing: border-box;
 }
+
+.question {
+  padding-left: 15px;
+}
+
+.helpfulQuestion {
+  padding-left: 415px;
+}
+
+button {
+  background: none;
+  border: none;
+  text-decoration: underline;
+}

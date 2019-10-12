@@ -10,17 +10,16 @@ class Question extends React.Component {
   render() {
     return (
       <div>
-        <div className="row question">
+        <div className="row">
           <div className="col-2">
-            <p>Q: Question will be here</p>
+            <p className="question">Q: Question will be here</p>
           </div>
-        </div>
-        <div className="col-10 helpful">
-          <p>Helpful?</p>
-          <p>
-            <a>Yes</a> |
-          </p>
-          <a>Add Answer</a>
+          <div className="d-flex justify-content-end helpfulQuestion">
+            <p>
+              Helpful?<button type="button">Yes</button>(25) |
+              <button type="button">Add Answer</button>
+            </p>
+          </div>
         </div>
         <div className="row answerList">
           <p>This will be a list of answers</p>

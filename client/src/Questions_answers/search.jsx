@@ -1,4 +1,5 @@
 import React from 'react';
+import QuestionList from './QuestionList.jsx';
 
 class Search extends React.Component {
   constructor(props) {
@@ -17,8 +18,8 @@ class Search extends React.Component {
   render() {
     return (
       <div>
-        <h3 className="col-4">Questions and Answers</h3>
-        <div className="col-6 search-bar">
+        <h4 className="col-4">Questions and Answers</h4>
+        <div className="col-7 search-bar">
           <input
             className="form-control"
             type="text"
@@ -40,6 +41,7 @@ class Search extends React.Component {
             </svg>
           </div>
         </div>
+        <QuestionList />
       </div>
     );
   }
