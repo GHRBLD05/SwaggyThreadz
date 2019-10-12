@@ -1,15 +1,16 @@
-import React from "react";
-import QuestionsModule from "./Questions_answers/QuestionsModule.jsx";
+import React from 'react';
+import QuestionsModule from './Questions_answers/QuestionsModule.jsx';
 import ReviewsAndRatings from './reviewcomponent/reviewsandratings.jsx';
+import Overview from './overview_components/overview.jsx';
 
 export default class App extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1>test</h1>
-                <QuestionsModule />
-                <ReviewsAndRatings />
-            </div>
-        );
-    }
+  render() {
+    return (
+        <div className="container-fluid maincontainer">
+            <Overview />
+            <QuestionsModule />
+            <ReviewsAndRatings />
+      </div>
+    );
+  }
 }
