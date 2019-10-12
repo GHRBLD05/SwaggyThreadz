@@ -19,7 +19,7 @@ class Search extends React.Component {
     return (
       <div>
         <h4 className="col-4">Questions and Answers</h4>
-        <div className="col-7 search-bar">
+        <div className="col-md-12 search-bar">
           <input
             className="form-control"
             type="text"
