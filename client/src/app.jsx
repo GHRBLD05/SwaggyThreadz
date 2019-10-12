@@ -1,5 +1,6 @@
 import React from 'react';
 import QuestionsModule from './Questions_answers/QuestionsModule.jsx';
+import ReviewsAndRatings from './reviewcomponent/reviewsandratings.jsx';
 
 export default class App extends React.Component {
     render() {
@@ -18,7 +19,7 @@ export default class App extends React.Component {
                 </div>
 
                 <QuestionsModule />
-                <Reviews />
+                <ReviewsAndRatings />
             </div>
         )
     }

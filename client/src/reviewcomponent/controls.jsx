@@ -2,8 +2,8 @@ import React from 'react';
 
 export default class Controls extends React.Component {
     render() {
-        (
-            <div>
+      return  (
+            <div id="controls">
                 <h1>Controls</h1>
             </div>
         )
