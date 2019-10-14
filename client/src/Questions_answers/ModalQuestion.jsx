@@ -81,6 +81,7 @@ class ModalQuestion extends React.Component {
           <div className="modal-body">
             <h5>What is your question? (mandatory)</h5>
             <input
+              className="question-form"
               type="text"
               maxLength="1000"
               value={this.state.question}
