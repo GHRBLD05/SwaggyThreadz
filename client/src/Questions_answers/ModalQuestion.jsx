@@ -79,7 +79,9 @@ class ModalQuestion extends React.Component {
             </svg>
           </button>
           <div className="modal-body">
-            <h5>What is your question? (mandatory)</h5>
+            <h5 className="modal-headings">
+              What is your question? (mandatory)
+            </h5>
             <input
               className="question-form"
               type="text"
@@ -89,8 +91,9 @@ class ModalQuestion extends React.Component {
                 this.handleQuestion(e);
               }}
             ></input>
-            <br></br>
-            <h5>What is your nickname? (mandatory)</h5>
+            <h5 className="modal-headings">
+              What is your nickname? (mandatory)
+            </h5>
             <input
               type="text"
               maxLength="60"
@@ -103,7 +106,7 @@ class ModalQuestion extends React.Component {
             <h6>
               For privacy reasons, do not use your full name or email address
             </h6>
-            <h5>What is your email? (mandatory)</h5>
+            <h5 className="modal-headings">What is your email? (mandatory)</h5>
             <input
               type="text"
               value={this.state.email}

@@ -97,6 +97,7 @@
 
 .modal-body {
   padding-top: 0.25em;
+  text-align: center;
 }
 ._hide-visual {
   border: 0 !important;
@@ -120,4 +121,11 @@ h6 {
 
 .question-form {
   height: 60px;
+  display: inline-block;
+  width: 100%;
+}
+
+.modal-headings {
+  text-align: center;
+  margin-bottom: 20px;
 }
