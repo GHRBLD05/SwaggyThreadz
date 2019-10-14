@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ModalQuestion extends React.component {
+class ModalQuestion extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
