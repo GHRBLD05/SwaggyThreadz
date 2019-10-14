@@ -7,7 +7,7 @@ class ModalQuestion extends React.Component {
     this.state = {
       question: '',
       nickName: '',
-      email: '',
+      email: ''
     };
     this.filledOut = false;
     this.handleQuesiton = this.handleQuestion.bind(this);
@@ -34,6 +34,7 @@ class ModalQuestion extends React.Component {
   }
 
   checkData(data) {
+    console.log('Modal props', this.props);
     // POST request to the api when button is clicked
     if (!this.state.question.length) {
       alert('You must ask a question to submit');
@@ -50,7 +51,7 @@ class ModalQuestion extends React.Component {
   submitModal(data) {
     if (this.filledOut === true) {
       // Make the POST request
-      this.props = false;
+      this.props.close();
     }
 
     // Remeber to put this event handler in the button
@@ -61,9 +62,15 @@ class ModalQuestion extends React.Component {
       return null;
     }
     return ReactDOM.createPortal(
-      <aside className="modal-wrapper">
+      <aside className="modal-cover">
         <div className="modal-area">
-          <button type="button" className="_modal-close">
+          <button
+            type="button"
+            className="_modal-close"
+            onClick={e => {
+              this.props.close(e);
+            }}
+          >
             <span id="close-modal" className="_hide-visual">
               Close
             </span>
@@ -81,6 +88,7 @@ class ModalQuestion extends React.Component {
                 this.handleQuestion(e);
               }}
             ></input>
+            <br></br>
             <h5>What is your nickname? (mandatory)</h5>
             <input
               type="text"

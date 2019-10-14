@@ -9,6 +9,7 @@ class QuestionsModule extends React.Component {
       showModal: false,
     };
     this.showQuestionModal = this.showQuestionModal.bind(this);
+    this.closeQuestionModal = this.closeQuestionModal.bind(this);
   }
 
   showQuestionModal(e) {
@@ -18,11 +19,20 @@ class QuestionsModule extends React.Component {
     });
   }
 
+  closeQuestionModal(e) {
+    this.setState({
+      showModal: false,
+    });
+  }
+
   render() {
     return (
       <div>
         <Search />
-        <ModalQuestion show={this.state.showModal} />
+        <ModalQuestion
+          close={this.closeQuestionModal}
+          show={this.state.showModal}
+        />
         <button
           type="button"
           onClick={e => {
