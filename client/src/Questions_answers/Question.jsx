@@ -12,7 +12,7 @@ class Question extends React.Component {
       <div>
         <div className="row">
           <div className="col-md-10">
-            <p className="question">Q: Question will be here</p>
+            <p className="question">Q: {this.props.currQuestion}</p>
           </div>
           <div className="col-md-2 helpfulQuestion">
             <p>
@@ -20,11 +20,12 @@ class Question extends React.Component {
               <button type="button" className="helpful-button">
                 Yes
               </button>
-              (25) |
+              ({this.props.helpfullness}) |
               <button type="button" className="helpful-button">
                 Add Answer
               </button>
             </p>
+            <div className="row"></div>
           </div>
         </div>
         <div className="row answerList">
