@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 class ModalQuestion extends React.Component {
   constructor(props) {
@@ -6,7 +7,7 @@ class ModalQuestion extends React.Component {
     this.state = {
       question: '',
       nickName: '',
-      email: ''
+      email: '',
     };
     this.filledOut = false;
     this.handleQuesiton = this.handleQuestion.bind(this);
@@ -49,7 +50,7 @@ class ModalQuestion extends React.Component {
   submitModal(data) {
     if (this.filledOut === true) {
       // Make the POST request
-      this.props.show = false;
+      this.props = false;
     }
 
     // Remeber to put this event handler in the button
@@ -59,47 +60,62 @@ class ModalQuestion extends React.Component {
     if (!this.props.show) {
       return null;
     }
-    return (
-      <div>
-        <h5>What is your question? (mandatory)</h5>
-        <input
-          type="text"
-          maxLength="1000"
-          value={this.state.question}
-          onChange={e => {
-            this.handleQuestion(e);
-          }}
-        ></input>
-        <h5>What is your nickname? (mandatory)</h5>
-        <input
-          type="text"
-          maxLength="60"
-          placeholder="Example: jackson11!"
-          value={this.state.nickName}
-          onChange={e => {
-            this.handlenickName(e);
-          }}
-        ></input>
-        <h6>For privacy reasons, do not use your full name or email address</h6>
-        <h5>What is your email? (mandatory)</h5>
-        <input
-          type="text"
-          value={this.state.email}
-          maxLength="60"
-          onChange={e => {
-            this.handleEmail(e);
-          }}
-        ></input>
-        <h6>For authentication reasons, you will not be emailed</h6>
-        <button
-          type="button"
-          onClick={() => {
-            this.checkData(this.state);
-          }}
-        >
-          Submit
-        </button>
-      </div>
+    return ReactDOM.createPortal(
+      <aside className="modal-wrapper">
+        <div className="modal-area">
+          <button type="button" className="_modal-close">
+            <span id="close-modal" className="_hide-visual">
+              Close
+            </span>
+            <svg className="_modal-close-icon" viewBox="0 0 40 40">
+              <path d="M 10,10 L 30,30 M 30,10 L 10,30" />
+            </svg>
+          </button>
+          <div className="modal-body">
+            <h5>What is your question? (mandatory)</h5>
+            <input
+              type="text"
+              maxLength="1000"
+              value={this.state.question}
+              onChange={e => {
+                this.handleQuestion(e);
+              }}
+            ></input>
+            <h5>What is your nickname? (mandatory)</h5>
+            <input
+              type="text"
+              maxLength="60"
+              placeholder="Example: jackson11!"
+              value={this.state.nickName}
+              onChange={e => {
+                this.handlenickName(e);
+              }}
+            ></input>
+            <h6>
+              For privacy reasons, do not use your full name or email address
+            </h6>
+            <h5>What is your email? (mandatory)</h5>
+            <input
+              type="text"
+              value={this.state.email}
+              maxLength="60"
+              onChange={e => {
+                this.handleEmail(e);
+              }}
+            ></input>
+            <h6>For authentication reasons, you will not be emailed</h6>
+            <button
+              type="button"
+              onClick={() => {
+                this.checkData(this.state);
+              }}
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </aside>,
+      document.body
     );
   }
 }
