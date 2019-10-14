@@ -9,16 +9,26 @@ class ModalQuestion extends React.Component {
       email: ''
     };
     this.filledOut = false;
-    this.handleChange = this.handleChange.bind(this);
+    this.handleQuesiton = this.handleQuestion.bind(this);
     this.checkData = this.checkData.bind(this);
     this.submitModal = this.submitModal.bind(this);
   }
 
-  handleChange(event) {
-    this.event.preventDefault();
-
+  handleQuestion(event) {
     this.setState({
-      [event.target.name]: event.target.value,
+      question: event.target.value,
+    });
+  }
+
+  handlenickName(event) {
+    this.setState({
+      nickName: event.target.value,
+    });
+  }
+
+  handleEmail(event) {
+    this.setState({
+      email: event.target.value,
     });
   }
 
@@ -57,7 +67,7 @@ class ModalQuestion extends React.Component {
           maxLength="1000"
           value={this.state.question}
           onChange={e => {
-            this.handleChange(e);
+            this.handleQuestion(e);
           }}
         ></input>
         <h5>What is your nickname? (mandatory)</h5>
@@ -67,7 +77,7 @@ class ModalQuestion extends React.Component {
           placeholder="Example: jackson11!"
           value={this.state.nickName}
           onChange={e => {
-            this.handleChange(e);
+            this.handlenickName(e);
           }}
         ></input>
         <h6>For privacy reasons, do not use your full name or email address</h6>
@@ -77,7 +87,7 @@ class ModalQuestion extends React.Component {
           value={this.state.email}
           maxLength="60"
           onChange={e => {
-            this.handleChange(e);
+            this.handleEmail(e);
           }}
         ></input>
         <h6>For authentication reasons, you will not be emailed</h6>

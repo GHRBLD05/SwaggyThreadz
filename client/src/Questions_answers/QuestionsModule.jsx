@@ -12,7 +12,7 @@ class QuestionsModule extends React.Component {
   }
 
   showQuestionModal(e) {
-    this.e.preventDefault();
+    // this.e.preventDefault();
     this.setState({
       showModal: true,
     });
@@ -22,7 +22,7 @@ class QuestionsModule extends React.Component {
     return (
       <div>
         <Search />
-        <ModalQuestion show={this.state} />
+        <ModalQuestion show={this.state.showModal} />
         <button
           type="button"
           onClick={e => {
