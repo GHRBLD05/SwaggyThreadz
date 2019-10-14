@@ -16,8 +16,14 @@ class Question extends React.Component {
           </div>
           <div className="col-md-2 helpfulQuestion">
             <p>
-              Helpful?<button type="button">Yes</button>(25) |
-              <button type="button">Add Answer</button>
+              Helpful?
+              <button type="button" className="helpful-button">
+                Yes
+              </button>
+              (25) |
+              <button type="button" className="helpful-button">
+                Add Answer
+              </button>
             </p>
           </div>
         </div>
