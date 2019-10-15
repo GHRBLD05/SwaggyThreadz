@@ -1,10 +1,24 @@
 import React from 'react';
+import $ from 'jquery';
 import AnswerList from './AnswerList.jsx';
 
 class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.helpfullnessButton = this.helpfullnessButton.bind(this);
+  }
+
+  helpfullnessButton(e) {
+    const idParam = this.props.id;
+
+    $.ajax({
+      url: `http://52.26.193.201:3000/${idParam}/helpful`,
+      type: 'PUT',
+      succes(status) {
+        console.log("Succes: ", status);
+      },
+    });
   }
 
   render() {
@@ -17,7 +31,13 @@ class Question extends React.Component {
           <div className="col-md-2 helpfulQuestion">
             <p>
               Helpful?
-              <button type="button" className="helpful-button">
+              <button
+                type="button"
+                className="helpful-button"
+                onClick={e => {
+                  this.helpfullnessButton(e);
+                }}
+              >
                 Yes
               </button>
               ({this.props.helpfullness}) |
