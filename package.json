@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "classnames": "^2.2.6",
     "express": "^4.17.1",
     "path": "^0.12.7",
     "react": "^16.10.2",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.3",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
     "babel-eslint": "^9.0.0",
