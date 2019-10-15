@@ -15,7 +15,9 @@ class QuestionList extends React.Component {
       console.log(data);
     }).then(results => {
       const prevState = this.state;
-      prevState.questions.push(results);
+      const dataCopy = results.results.slice();
+      const sorted = dataCopy.sort(compare);
+      prevState.questions.push(sorted);
       this.setState(prevState);
       // this.setState({ questions: results });
       console.log(this.state);
@@ -28,13 +30,26 @@ class QuestionList extends React.Component {
         {this.state.questions.map((question, i) => (
           <Question
             key={i}
-            currQuestion={question.results[0].question_body}
-            helpfullness={question.results[0].question_helpfulness}
+            currQuestion={question[0].question_body}
+            helpfullness={question[0].question_helpfulness}
           />
         ))}
       </div>
     );
   }
 }
+
+const compare = function(a, b) {
+  const itemA = a.question_helpfulness;
+  const itemB = b.question_helpfulness;
+
+  let comparison = 0;
+  if (itemB > itemA) {
+    comparison = 1;
+  } else if (itemB < itemA) {
+    comparison = -1;
+  }
+  return comparison;
+};
 
 export default QuestionList;
