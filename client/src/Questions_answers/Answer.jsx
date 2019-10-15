@@ -9,7 +9,12 @@ class Answer extends React.Component {
   render() {
     return (
       <div>
-        <p>Here will be the answer forms</p>
+        <div className="row answer-row">
+          <p></p>
+        </div>
+        <div className="row answer-info">
+          <p>By </p>
+        </div>
       </div>
     );
   }

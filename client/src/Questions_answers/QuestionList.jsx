@@ -11,13 +11,13 @@ class QuestionList extends React.Component {
   }
 
   componentDidMount() {
+    // Remember to change id param
+
     $.get('http://52.26.193.201:3000/qa/1', data => {
       console.log(data);
     }).then(results => {
-      const prevState = this.state;
       const dataCopy = results.results.slice();
       const sorted = dataCopy.sort(compare);
-      // prevState.questions.push(sorted);
       this.setState({
         questions: sorted,
       });

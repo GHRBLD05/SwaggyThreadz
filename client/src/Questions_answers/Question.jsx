@@ -5,8 +5,24 @@ import AnswerList from './AnswerList.jsx';
 class Question extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      answers: [],
+    };
     this.helpfullnessButton = this.helpfullnessButton.bind(this);
+  }
+
+  componentDidMount() {
+    const idParam = this.props.id;
+    $.get(`http://52.26.193.201:3000/qa/${idParam}/answers`, data => {
+      console.log('Answer data: ', data);
+    }).then(results => {
+      const dataCopy = results.results.slice();
+      const sorted = dataCopy.sort(compare);
+      this.setState({
+        answers: sorted,
+      });
+      console.log('This is the list of answers: ', this.state);
+    });
   }
 
   helpfullnessButton(e) {
@@ -15,8 +31,8 @@ class Question extends React.Component {
     $.ajax({
       url: `http://52.26.193.201:3000/${idParam}/helpful`,
       type: 'PUT',
-      succes(status) {
-        console.log("Succes: ", status);
+      succes: status => {
+        console.log('Succes: ', status);
       },
     });
   }
@@ -57,5 +73,18 @@ class Question extends React.Component {
     );
   }
 }
+
+const compare = function(a, b) {
+  const itemA = a.helpfulness;
+  const itemB = b.helpfulness;
+
+  let comparison = 0;
+  if (itemB > itemA) {
+    comparison = 1;
+  } else if (itemB < itemA) {
+    comparison = -1;
+  }
+  return comparison;
+};
 
 export default Question;
