@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-import AnswerList from './AnswerList.jsx';
+import Answer from './Answer.jsx';
 
 class Question extends React.Component {
   constructor(props) {
@@ -13,16 +13,16 @@ class Question extends React.Component {
 
   componentDidMount() {
     const idParam = this.props.id;
-    $.get(`http://52.26.193.201:3000/qa/${idParam}/answers`, data => {
-      console.log('Answer data: ', data);
-    }).then(results => {
-      const dataCopy = results.results.slice();
-      const sorted = dataCopy.sort(compare);
-      this.setState({
-        answers: sorted,
-      });
-      console.log('This is the list of answers: ', this.state);
-    });
+    $.get(`http://52.26.193.201:3000/qa/${idParam}/answers`, data => {}).then(
+      results => {
+        const dataCopy = results.results.slice();
+        const sorted = dataCopy.sort(compare);
+        this.setState({
+          answers: sorted,
+        });
+        console.log('This is the list of answers: ', this.state);
+      }
+    );
   }
 
   helpfullnessButton(e) {
@@ -65,8 +65,20 @@ class Question extends React.Component {
           </div>
         </div>
         <div className="row answerList">
-          <div className="col-md-12">
-            <p>This will be a list of answers</p>
+          <div className="col-md-1">
+            <p className="answerPtag">A: </p>
+          </div>
+          <div className="col-md-11">
+            {this.state.answers.map((answer, i) => (
+              <Answer
+                userName={answer.answerer_name}
+                body={answer.body}
+                date={answer.date}
+                helpfullness={answer.helpfulness}
+                key={i}
+                helpfullnessButton={this.helpfullnessButton}
+              />
+            ))}
           </div>
         </div>
       </div>

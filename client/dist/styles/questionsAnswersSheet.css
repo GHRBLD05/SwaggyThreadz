@@ -129,3 +129,9 @@ h6 {
   text-align: center;
   margin-bottom: 20px;
 }
+
+.answerPtag {
+  font-weight: bold;
+  margin-left: 15px;
+  font-size: 24px;
+}
