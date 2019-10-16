@@ -7,7 +7,7 @@ import ReviewsAndRatings from './reviewcomponent/reviewsandratings.jsx';
 export default class App extends React.Component {
   render() {
     return (
-      <div className="container-fluid maincontainer">
+      <div className="container maincontainer">
         <Overview />
         <RelatedOutfitContainer />
         <QuestionsModule />

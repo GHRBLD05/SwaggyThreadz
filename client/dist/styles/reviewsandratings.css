@@ -1,13 +1,70 @@
 #rnr {
+    color: rgba(0, 0, 0, .65);
+    background-color: white;
+}
+
+#ratings {
     background-color: plum;
 }
 
 #reviews {
-    background-color: blanchedalmond;
+    font-size: 1.25em;
+    background-color: white;
 }
+
+.focus {
+    color: rgba(0, 0, 0, .65);
+    font-weight: bold;
+}
+
+.filter .dropdown {
+    margin-left: .1em;
+    border: none;
+    border-bottom: .01em solid black;
+}
+
 #review {
-    background-color: steelblue;
+    background-color: white;
+    margin-top: .75em;
+    padding-bottom: .75em;
+    border-bottom: .01em solid black;
 }
 #controls {
     background-color: powderblue;
+}
+
+#rnrTitle {
+    font-size: 1.25em;
+    padding: 1em 0em;
+}
+
+.leftjustify {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.leftpadding {
+    padding-left: .75em;
+}
+
+.review_rating {
+    padding: .3em 0em;
+}
+
+.review_title {
+    font-weight: bold;
+    padding: .6em 0em;
+}
+.review_userinfo {
+    font-size: .65em;
+}
+
+.review_feedback {
+    padding: .2em 0em;
+    font-size: .65em;
+}
+
+.reviewlinks {
+    text-decoration: underline;
+    cursor: pointer;
 }

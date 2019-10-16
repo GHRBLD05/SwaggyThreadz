@@ -7,7 +7,6 @@ export default class Reviews extends React.Component {
     render() {
         return (
             <div id="reviews" className="col-md-8 row-">
-                <h1>reviews</h1>
                 {<Filter />}
                 {<Review />}
                 {<Review />}
