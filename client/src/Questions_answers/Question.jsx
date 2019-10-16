@@ -65,10 +65,10 @@ class Question extends React.Component {
           </div>
         </div>
         <div className="row answerList">
-          <div className="col-md-1">
+          <div className="col-sm-1">
             <p className="answerPtag">A: </p>
           </div>
-          <div className="col-md-11">
+          <div>
             {this.state.answers.map((answer, i) => (
               <Answer
                 userName={answer.answerer_name}

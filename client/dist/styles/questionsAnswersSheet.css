@@ -133,5 +133,10 @@ h6 {
 .answerPtag {
   font-weight: bold;
   margin-left: 15px;
-  font-size: 24px;
+  font-size: 20px;
+}
+
+.question {
+  font-size: 20px;
+  font-weight: bold;
 }

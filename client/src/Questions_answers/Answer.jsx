@@ -4,6 +4,7 @@ class Answer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.date = new Date(this.props.date);
   }
 
   render() {
@@ -14,10 +15,10 @@ class Answer extends React.Component {
         </div>
         <div className="row answer-info">
           <p>
-            By {this.props.userName}, {this.props.date} |
+            by {this.props.userName}, {this.date.toDateString()}
           </p>
           <p>
-            Helpful?
+            | Helpful?
             <button
               type="button"
               className="helpful-button"
