@@ -1,17 +1,17 @@
-import React from 'react';
-import QuestionList from './QuestionList.jsx';
+import React from "react";
+import QuestionList from "./QuestionList.jsx";
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      term: '',
+      term: ""
     };
   }
 
   onChange(e) {
     this.setState({
-      term: e.target.value,
+      term: e.target.value
     });
   }
 
@@ -41,7 +41,7 @@ class Search extends React.Component {
             </svg>
           </div>
         </div>
-        <QuestionList />
+        <QuestionList questionsShown={this.props.questionsShown} />
       </div>
     );
   }

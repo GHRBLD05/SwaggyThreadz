@@ -6,8 +6,7 @@ class QuestionList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: [],
-      questionsShown: 2
+      questions: []
     };
   }
 
@@ -31,7 +30,7 @@ class QuestionList extends React.Component {
     return (
       <div>
         {this.state.questions
-          .slice(0, this.state.questionsShown)
+          .slice(0, this.props.questionsShown)
           .map((question, i) => (
             <Question
               key={i}
