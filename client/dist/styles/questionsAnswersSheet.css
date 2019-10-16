@@ -140,3 +140,7 @@ h6 {
   font-size: 20px;
   font-weight: bold;
 }
+
+.user-date-helpful {
+  opacity: 0.5;
+}

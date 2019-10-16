@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 class Answer extends React.Component {
   constructor(props) {
@@ -11,14 +11,15 @@ class Answer extends React.Component {
     return (
       <div>
         <div className="row answer-row">
-          <p>{this.props.body}</p>
+          <div className="col-md-10">
+            <p>{this.props.body}</p>
+          </div>
         </div>
         <div className="row answer-info">
-          <p>
-            by {this.props.userName}, {this.date.toDateString()}
+          <p className="user-date-helpful">
+            by {this.props.userName}, {this.date.toDateString()} | Helpful?
           </p>
-          <p>
-            | Helpful?
+          <p className="user-date-helpful">
             <button
               type="button"
               className="helpful-button"
@@ -30,7 +31,7 @@ class Answer extends React.Component {
             </button>
             ({this.props.helpfullness}) |
             <button type="button" className="helpful-button">
-              Add Answer
+              Report
             </button>
           </p>
         </div>
