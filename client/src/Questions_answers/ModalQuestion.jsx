@@ -7,7 +7,7 @@ class ModalQuestion extends React.Component {
     this.state = {
       question: '',
       nickName: '',
-      email: '',
+      email: ''
     };
     this.filledOut = false;
     this.handleQuesiton = this.handleQuestion.bind(this);

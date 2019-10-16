@@ -1,25 +1,26 @@
-import React from "react";
-import $ from "jquery";
-import Question from "./Question.jsx";
+import React from 'react';
+import $ from 'jquery';
+import Question from './Question.jsx';
 
 class QuestionList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: []
+      questions: [],
+      questionsLimit: this.props.questionsShown,
     };
   }
 
   componentDidMount() {
     // Remember to change id param
 
-    $.get("http://52.26.193.201:3000/qa/2", data => {
+    $.get('http://52.26.193.201:3000/qa/2', data => {
       console.log(data);
     }).then(results => {
       const dataCopy = results.results.slice();
       const sorted = dataCopy.sort(compare);
       this.setState({
-        questions: sorted
+        questions: sorted,
       });
       // this.setState({ questions: results });
       console.log(this.state);
