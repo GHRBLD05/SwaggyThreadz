@@ -1,12 +1,14 @@
 import React from 'react';
 import Search from './search.jsx';
 import ModalQuestion from './ModalQuestion.jsx';
+// import ModalAnswer from './ModalAnswer.jsx';
 
 class QuestionsModule extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       showQuestionModal: false,
+      showAnswerModal: false,
       questionsLimit: 2,
     };
     this.showQuestionModal = this.showQuestionModal.bind(this);
@@ -25,6 +27,18 @@ class QuestionsModule extends React.Component {
   closeQuestionModal(e) {
     this.setState({
       showQuestionModal: false,
+    });
+  }
+
+  showAnswerModal(e) {
+    this.setState({
+      showAnswerModal: true,
+    });
+  }
+
+  closeAnswerModal(e) {
+    this.setState({
+      showAnswerModal: false,
     });
   }
 
