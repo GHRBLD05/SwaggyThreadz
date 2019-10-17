@@ -4,8 +4,8 @@ import ModalQuestion from './ModalQuestion.jsx';
 // import ModalAnswer from './ModalAnswer.jsx';
 
 class QuestionsModule extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor({ currentProduct }) {
+    super({ currentProduct });
     this.state = {
       showQuestionModal: false,
       showAnswerModal: false,
