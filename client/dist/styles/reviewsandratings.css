@@ -10,6 +10,15 @@
 #reviews {
     font-size: 1.25em;
     background-color: white;
+    max-height: 95vh;
+    overflow-y: scroll;
+    overflow: auto;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+}
+
+#reviews::-webkit-scrollbar {
+    width: 0 !important
 }
 
 #controls {
