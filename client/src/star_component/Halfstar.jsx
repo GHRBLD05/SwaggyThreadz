@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 class Halfstar extends React.Component {
   render() {
