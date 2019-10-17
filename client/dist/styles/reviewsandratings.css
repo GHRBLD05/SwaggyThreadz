@@ -58,7 +58,9 @@
 .review_userinfo {
     font-size: .65em;
 }
-
+.review_content {
+    font-size: .75em;
+}
 .review_feedback {
     padding: .2em 0em;
     font-size: .65em;
