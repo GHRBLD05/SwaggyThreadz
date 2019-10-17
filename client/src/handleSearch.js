@@ -1,12 +1,11 @@
 import $ from 'jquery';
 import 'regenerator-runtime/runtime';
 
-const productList = [];
-
 const apiUrl = 'http://52.26.193.201:3000/products/';
 
 const updateProductList = () =>
   new Promise((resolve, reject) => {
+    const productList = [];
     $.get('http://52.26.193.201:3000/products/list?count=10050', list => {
       list.forEach(element => {
         productList.push({
@@ -18,7 +17,7 @@ const updateProductList = () =>
     });
   });
 
-const getIdFromName = productName => {
+const getIdFromName = (productName, productList) => {
   for (const product of productList) {
     if (product.name === productName) {
       return product.id;
@@ -88,7 +87,7 @@ const getCurrentProduct = id =>
 
 const handleSearch = (productName, callback) => {
   updateProductList()
-    .then(() => getIdFromName(productName))
+    .then(productList => getIdFromName(productName, productList))
     .then(productID =>
       Promise.all([
         getStyles(productID),
