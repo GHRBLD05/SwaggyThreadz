@@ -14,6 +14,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css/,
+        use: 'css-loader',
+      },
+      {
         test: /\.jsx?/,
         include: SRC_DIR,
         loader: 'babel-loader',
