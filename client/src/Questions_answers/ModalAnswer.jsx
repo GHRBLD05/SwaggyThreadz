@@ -1,23 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class ModalQuestion extends React.Component {
+class ModalAnswer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      question: '',
+      answer: '',
       nickName: '',
-      email: ''
+      email: '',
+      photos: [],
     };
     this.filledOut = false;
-    this.handleQuesiton = this.handleQuestion.bind(this);
+    this.handleAnswer = this.handleAnswer.bind(this);
     this.checkData = this.checkData.bind(this);
     this.submitModal = this.submitModal.bind(this);
   }
 
-  handleQuestion(event) {
+  handleAnswer(event) {
     this.setState({
-      question: event.target.value,
+      answer: event.target.value,
     });
   }
 
@@ -36,7 +37,7 @@ class ModalQuestion extends React.Component {
   checkData(data) {
     console.log('Modal props', this.props);
     // POST request to the api when button is clicked
-    if (!this.state.question.length) {
+    if (!this.state.answer.length) {
       alert('You must ask a question to submit');
     } else if (!this.state.nickName.length) {
       alert('You must provide a nickname to submit');
@@ -79,14 +80,12 @@ class ModalQuestion extends React.Component {
             </svg>
           </button>
           <div className="modal-body">
-            <h5 className="modal-headings">
-              What is your question? (mandatory)
-            </h5>
+            <h5 className="modal-headings">What is your answer? (mandatory)</h5>
             <input
               className="question-form"
               type="text"
               maxLength="1000"
-              value={this.state.question}
+              value={this.state.answer}
               onChange={e => {
                 this.handleQuestion(e);
               }}
@@ -132,4 +131,4 @@ class ModalQuestion extends React.Component {
   }
 }
 
-export default ModalQuestion;
+export default ModalAnswer;
