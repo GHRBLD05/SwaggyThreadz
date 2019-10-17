@@ -22,9 +22,15 @@ export default class Reviews extends React.Component {
     }
 
     componentDidMount() {
+        document.getElementById('reviews').addEventListener('sortingChanged', e => this.getReviews(e.detail.sortOptions));
+
+        this.getReviews('relevance');
+    }
+
+    getReviews(sortOptions) {
         var obj = this;
         $.ajax({
-            url: obj.url,
+            url: obj.url + `?sort=${sortOptions}`,
             type: "GET",
             dataType: "json",
             success: function (res) {
