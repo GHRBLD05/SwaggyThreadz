@@ -1,46 +1,82 @@
 import React from 'react';
 import Search from './search.jsx';
 import ModalQuestion from './ModalQuestion.jsx';
+// import ModalAnswer from './ModalAnswer.jsx';
 
 class QuestionsModule extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModal: false,
+      showQuestionModal: false,
+      showAnswerModal: false,
+      questionsLimit: 2,
     };
     this.showQuestionModal = this.showQuestionModal.bind(this);
     this.closeQuestionModal = this.closeQuestionModal.bind(this);
+    this.showMoreQuestions = this.showMoreQuestions.bind(this);
+    this.questionsShown = this.state.questionsLimit;
   }
 
   showQuestionModal(e) {
     // this.e.preventDefault();
     this.setState({
-      showModal: true,
+      showQuestionModal: true,
     });
   }
 
   closeQuestionModal(e) {
     this.setState({
-      showModal: false,
+      showQuestionModal: false,
     });
+  }
+
+  showAnswerModal(e) {
+    this.setState({
+      showAnswerModal: true,
+    });
+  }
+
+  closeAnswerModal(e) {
+    this.setState({
+      showAnswerModal: false,
+    });
+  }
+
+  showMoreQuestions(e) {
+    let currentLimit = this.state.questionsLimit;
+    const newLimit = (currentLimit += 2);
+    this.setState({
+      questionsLimit: newLimit,
+    });
+    console.log(this.state.questionsLimit);
   }
 
   render() {
     return (
       <div>
-        <Search />
+        <Search questionsShown={this.state.questionsLimit} />
         <ModalQuestion
           close={this.closeQuestionModal}
-          show={this.state.showModal}
+          show={this.state.showQuestionModal}
         />
-        <button
-          type="button"
-          onClick={e => {
-            this.showQuestionModal();
-          }}
-        >
-          Ask a quesiton
-        </button>
+        <div className="row">
+          <button
+            type="button"
+            onClick={e => {
+              this.showMoreQuestions();
+            }}
+          >
+            More Answered Questions
+          </button>
+          <button
+            type="button"
+            onClick={e => {
+              this.showQuestionModal();
+            }}
+          >
+            Add a quesiton +
+          </button>
+        </div>
       </div>
     );
   }
