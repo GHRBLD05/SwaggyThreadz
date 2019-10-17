@@ -29,7 +29,7 @@ class Question extends React.Component {
     const idParam = this.props.id;
 
     $.ajax({
-      url: `http://52.26.193.201:3000/${idParam}/helpful`,
+      url: `http://52.26.193.201:3000/qa/question/${idParam}/helpful`,
       type: 'PUT',
       succes: status => {
         console.log('Succes: ', status);
