@@ -11,15 +11,17 @@
     font-size: 1.25em;
     background-color: white;
     max-height: 95vh;
+}
+#reviewlist {
+    max-height: 80vh;
     overflow-y: scroll;
     overflow: auto;
     -ms-overflow-style: none;
     overflow: -moz-scrollbars-none;
 }
-
-#reviews::-webkit-scrollbar {
-    width: 0 !important
-}
+    #reviewlist::-webkit-scrollbar {
+        width: 0 !important
+    }
 
 #controls {
     display: flex;

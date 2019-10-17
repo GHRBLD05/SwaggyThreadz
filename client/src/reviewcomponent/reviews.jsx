@@ -70,7 +70,7 @@ export default class Reviews extends React.Component {
             return (
                 <div id="reviews" className="col-md-8 row-">
                     {<Filter />}
-                    <div id="reviewslist">
+                    <div id="reviewlist">
                         {reviews}
                     </div>
                     {<Controls reviewsState={this.state.viewState}/>}
@@ -83,7 +83,7 @@ export default class Reviews extends React.Component {
             return (
                 <div id="reviews" className="col-md-8 row-">
                     {<Filter />}
-                    <div id="reviewslist">
+                    <div id="reviewlist">
                         {this.state.reviews.results.map((review) => <Review key={review.review_id} review={review} />)}
                     </div>
                     {<Controls reveiwsState={this.state.viewState}/>}
