@@ -11,7 +11,5 @@ ReactDOM.render(
     <App />
   </Provider>,
   document.getElementById('app'),
-  () => {
-    handleProductSearch('Camo Onesie')(store.dispatch);
-  }
+  () => handleProductSearch('Tre Tank Top')(store.dispatch)
 );

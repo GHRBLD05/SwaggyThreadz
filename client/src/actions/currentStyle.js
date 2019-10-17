@@ -1,6 +1,6 @@
-const changeStyle = style => ({
+const changeStyle = currentStyle => ({
   type: 'CHANGE_STYLE',
-  currentStyle: style,
+  currentStyle,
 });
 
 export default changeStyle;

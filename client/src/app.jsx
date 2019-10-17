@@ -1,6 +1,6 @@
 import React from 'react';
 import Overview from './overview_components/overview.jsx';
-import RelatedOutfitWrapper from './relatedAndOutfit/relatedAndOutfitWrapper.jsx';
+import RelatedProductsContainer from './containers/relatedProductsContainer.js';
 // import QuestionsModule from './Questions_answers/QuestionsModule.jsx';
 import ReviewsAndRatings from './reviewcomponent/reviewsandratings.jsx';
 
@@ -9,7 +9,7 @@ export default class App extends React.Component {
     return (
       <div className="container-fluid maincontainer">
         <Overview />
-        <RelatedOutfitWrapper />
+        <RelatedProductsContainer />
         {/* <QuestionsModule /> */}
         <ReviewsAndRatings />
       </div>

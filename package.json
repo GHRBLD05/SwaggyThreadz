@@ -16,7 +16,9 @@
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "core-js": "^3.3.2",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "jquery": "^3.4.1",
     "path": "^0.12.7",
     "react": "^16.10.2",
@@ -24,10 +26,12 @@
     "react-redux": "^7.1.1",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
+    "regenerator-runtime": "^0.13.3",
     "thunk": "0.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.3",
+    "@babel/plugin-transform-async-to-generator": "^7.5.0",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
     "babel-eslint": "^9.0.0",

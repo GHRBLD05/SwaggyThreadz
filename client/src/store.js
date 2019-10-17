@@ -6,6 +6,7 @@ const initialState = {
   currentProduct: null,
   currentStyle: null,
   stylesArray: [],
+  relatedProducts: [],
   currentSize: '',
 };
 
