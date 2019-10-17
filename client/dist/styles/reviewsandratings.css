@@ -12,6 +12,12 @@
     background-color: white;
 }
 
+#controls {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1.25em 0em;
+}
+
 .focus {
     color: rgba(0, 0, 0, .65);
     font-weight: bold;
@@ -29,9 +35,6 @@
     padding-bottom: .75em;
     border-bottom: .01em solid black;
 }
-#controls {
-    background-color: powderblue;
-}
 
 #rnrTitle {
     font-size: 1.25em;
@@ -47,6 +50,10 @@
     padding-left: .75em;
 }
 
+.leftmargin {
+    margin-left: 1.25em;
+}
+
 .review_rating {
     padding: .3em 0em;
 }
@@ -55,12 +62,15 @@
     font-weight: bold;
     padding: .6em 0em;
 }
+
 .review_userinfo {
     font-size: .65em;
 }
+
 .review_content {
     font-size: .75em;
 }
+
 .review_feedback {
     padding: .2em 0em;
     font-size: .65em;

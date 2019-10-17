@@ -20,6 +20,8 @@ export default class Reviews extends React.Component {
                 results: undefined
             }
         }
+
+        this.allReviewsLoaded = new CustomEvent('allReviewsLoaded', { detail: { reviewsState: this.views[1] } });
     }
 
     componentDidMount() {
@@ -28,7 +30,10 @@ export default class Reviews extends React.Component {
         document.getElementById('reviews').addEventListener('sortingChanged', e => this.getReviews(e.detail.sortOptions));
         document.getElementById('reviews').addEventListener('loadMoreReviews', e => {
             this.setState({ viewCount: this.state.viewCount += 2 });
-            this.state.viewCount >= this.state.reviews.results.length ? this.setState({ viewState: this.views[1] }) : this.setState();
+            if (this.state.viewCount >= this.state.reviews.results.length) {
+                this.setState({ viewState: this.views[1] });
+                document.getElementById('controls').dispatchEvent(this.allReviewsLoaded, null);
+            }
         });
     }
 
@@ -72,7 +77,7 @@ export default class Reviews extends React.Component {
         }
         else if (this.state.viewState === this.views[1]) /* FULL */ {
             console.log("STATE:", this.state.viewState);
-
+            console.log(this.state.viewState);
             return (
                 <div id="reviews" className="col-md-8 row-">
                     {<Filter />}
