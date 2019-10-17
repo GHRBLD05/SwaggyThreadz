@@ -1,34 +1,58 @@
 import React from 'react';
 import Star from '../star_component/Star.jsx';
+import EmptyStar from '../star_component/Emptystar.jsx';
 
 export default class Review extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            review_id: props.review.review_id,
+            rating: props.review.rating,
+            summary: props.review.summary,
+            recommend: props.review.recommend,
+            response: props.review.response,
+            body: props.review.body,
+            date: props.review.date,
+            reviewer_name: props.review.reviewer_name,
+            helpfulnes: props.review.helpfulnes,
+            photos: props.review.photos
+        }
+        this.maxrating = 5;
+    }
+
     render() {
-      return  (
-          <div id="review">
-              <header className="topbar">
-                  <div className="review_rating">
-                      <Star />
-                      <Star />
-                      <Star />
-                      <Star />
-                      <Star />
-                  </div>
-                  <div className="review_userinfo">
-                      <div>ExampleUser123, January, 1, 2020</div>
-                  </div>
-              </header>
-              <content>
-                  <div className="focus review_title">
-                      <div className="overflowhidden ellipsis">Testing title aaaaaaaaaaaaaaaad dddddddddddddddddddd vvvvvvvvvvvvvvvvvvv Testing title aaaaaaaaaaaaaaaad dddddddddddddddddddd vvvvvvvvvvvvvvvvvvv</div>
-                  </div>
-                  <p className="review_content">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in metus id nulla accumsan viverra. Mauris viverra velit ac enim aliquam vehicula. Nulla tincidunt sem quis est fermentum mattis vitae viverra massa. Proin quis metus aliquet, pretium magna ac, commodo felis. Donec elementum lobortis ex eu egestas. Vivamus et nisi condimentum, dictum nisi sed, efficitur neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pulvinar, nulla ac pulvinar varius, diam metus pulvinar nibh, at luctus ipsum ex vel mi. Vestibulum eget mi erat. Fusce consectetur faucibus tellus sit amet sodales. Suspendisse potenti. Donec sollicitudin laoreet turpis, sed lacinia tellus bibendum ullamcorper. Mauris lacinia sed tortor eu condimentum. Aliquam a nisl eget felis fringilla ultrices a vel turpis.
-                  </p>
-              </content>
-              <footer className="leftjustify review_feedback">
-                  <div>Was this review helpful?</div>
-                  <div onClick={() => console.log('test')} className="leftpadding reviewlinks">Yes</div><div className="leftpadding">|</div><div onClick={() => console.log('test')} className="leftpadding reviewlinks">Report</div>
-              </footer>
+        let lastIndex = 0;
+        var stars = [];
+        for (let i = 0; i < this.state.rating; i++) {
+            stars.push(<Star key={`star_${i}`} />);
+        }
+        lastIndex = this.state.rating;
+        for (; lastIndex < this.maxrating; lastIndex++) {
+            stars.push(<EmptyStar key={`star_${lastIndex}`} />);
+        }
+        
+        return (
+            <div id="review">
+                <header className="topbar">
+                    <div className="review_rating">
+                        {stars}
+                    </div>
+                    <div className="review_userinfo">
+                        <div>{this.state.reviewer_name}, January, 1, 2020</div>
+                    </div>
+                </header>
+                <content>
+                    <div className="focus review_title">
+                        <div className="overflowhidden ellipsis">{this.state.summary}</div>
+                    </div>
+                    <p className="review_content">
+                        {this.state.body}
+                    </p>
+                </content>
+                <footer className="leftjustify review_feedback">
+                    <div>Was this review helpful?</div>
+                    <div onClick={() => console.log('Helpful!')} className="leftpadding reviewlinks">Yes</div><div className="leftpadding">|</div><div onClick={() => console.log('Reported!')} className="leftpadding reviewlinks">Report</div>
+                </footer>
             </div>
         )
     }
