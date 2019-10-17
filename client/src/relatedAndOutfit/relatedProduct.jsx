@@ -1,14 +1,6 @@
 import React from 'react';
+import $ from 'jquery';
 
-export default class RelatedProduct extends React.Component {
-  render() {
-    return (
-      <div>
-        <img
-          src="https://scene7.zumiez.com/is/image/zumiez/pdp_hero/Champion-Men-s-Rally-Pro-Black-%26-White-Shoes-_298256.jpg"
-          alt="shoe"
-        ></img>
-      </div>
-    );
-  }
-}
+const RelatedProduct = props => <div>product</div>;
+
+export default RelatedProduct;
