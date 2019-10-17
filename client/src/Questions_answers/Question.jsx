@@ -41,10 +41,10 @@ class Question extends React.Component {
     return (
       <div>
         <div className="row">
-          <div className="col-md-10">
+          <div className="col-md-9">
             <p className="question">Q: {this.props.currQuestion}</p>
           </div>
-          <div className="col-md-2 helpfulQuestion">
+          <div className="col-md-3 helpfulQuestion">
             <p>
               Helpful?
               <button
@@ -61,14 +61,14 @@ class Question extends React.Component {
                 Add Answer
               </button>
             </p>
-            <div className="row"></div>
+            <div className="container"></div>
           </div>
         </div>
-        <div className="row answerList">
-          <div className="col-sm-1">
+        <div className="row justify-content-start answerList">
+          <div className="col-">
             <p className="answerPtag">A: </p>
           </div>
-          <div>
+          <div className="answer-box">
             {this.state.answers.map((answer, i) => (
               <Answer
                 userName={answer.answerer_name}
