@@ -5,13 +5,21 @@ import QuestionsContainer from "./containers/QuestionsContainer.jsx";
 import ReviewsAndRatings from "./reviewcomponent/reviewsandratings.jsx";
 
 export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentProduct: 4
+        }
+
+
+    }
   render() {
     return (
-      <div className="container maincontainer">
+      <div className="container">
         <Overview />
         <RelatedProductsContainer />
         <QuestionsContainer />
-        <ReviewsAndRatings />
+        <ReviewsAndRatings productid={this.state.currentProduct}/>
       </div>
     );
   }

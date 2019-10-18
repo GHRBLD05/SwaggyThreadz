@@ -8,7 +8,7 @@ export default class ReviewsAndRatings extends React.Component {
             <div id="rnr" className="row">
                 <div id="rnrTitle" className="col-md-12">Ratings and Reviews</div>
                 <Ratings />
-                <Reviews />
+                <Reviews productinfo={this.props}/>
             </div>
         )
     }

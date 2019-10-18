@@ -46,10 +46,25 @@
     padding-bottom: .75em;
     border-bottom: .01em solid black;
 }
+#reviewphotos {
+    display: flex;
+    justify-content: flex-start;
+}
+.reviewphoto {
+    max-height:3em;
+    max-width: 3em;
+
+}
 
 #rnrTitle {
     font-size: 1.25em;
     padding: 1em 0em;
+}
+
+#reviewmodal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .leftjustify {

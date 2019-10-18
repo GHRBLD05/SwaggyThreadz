@@ -5,10 +5,10 @@ import Controls from "./controls.jsx";
 import $ from 'jquery';
 
 export default class Reviews extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
-        this.url = "http://52.26.193.201:3000/reviews/2/list"; //TODO: Add params to load different items
+        this.url = `http://52.26.193.201:3000/reviews/${props.productinfo.productid}/list`; //TODO: Add params to load different items
         this.views = ["REDUCED", "FULL"];
         this.state = {
             viewCount: 2,
@@ -38,7 +38,7 @@ export default class Reviews extends React.Component {
     }
 
     getReviews(sortOptions) {
-        var obj = this;
+        let obj = this;
         $.ajax({
             url: obj.url + `?sort=${sortOptions}`,
             type: "GET",
@@ -47,10 +47,11 @@ export default class Reviews extends React.Component {
                 obj.setState({ reviews: res });
             }
         });
+        
     }
 
     render() {
-        if (this.state.reviews.product === undefined) /* INIT */ {
+        if (this.state.reviews.product === undefined || this.state.reviews.results.length === 0) /* INIT */ {
             return (
                 <div id="reviews" className="col-md-8 row-">
                     {<Filter />}
@@ -59,7 +60,6 @@ export default class Reviews extends React.Component {
             )
         }
         else if (this.state.viewState === this.views[0]) /* REDUCED */ {
-            console.log("STATE:", this.state.viewState);
 
             var reviews = [];
             let i = 0
@@ -78,7 +78,6 @@ export default class Reviews extends React.Component {
             )
         }
         else if (this.state.viewState === this.views[1]) /* FULL */ {
-            console.log("STATE:", this.state.viewState);
 
             return (
                 <div id="reviews" className="col-md-8 row-">

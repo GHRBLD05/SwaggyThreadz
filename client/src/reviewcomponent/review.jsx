@@ -1,10 +1,12 @@
 import React from 'react';
 import Star from '../star_component/Star.jsx';
 import EmptyStar from '../star_component/Emptystar.jsx';
+import $ from 'jquery';
 
 export default class Review extends React.Component {
     constructor(props) {
         super(props);
+        console.log(props);
         this.state = {
             review_id: props.review.review_id,
             rating: props.review.rating,
@@ -14,10 +16,28 @@ export default class Review extends React.Component {
             body: props.review.body,
             date: props.review.date,
             reviewer_name: props.review.reviewer_name,
-            helpfulnes: props.review.helpfulnes,
+            helpfulness: props.review.helpfulness,
             photos: props.review.photos
         }
         this.maxrating = 5;
+    }
+
+    incrementHelpful() {
+        $.ajax({
+            url: "http://52.26.193.201:3000/reviews/helpful/" + `${this.state.review_id}`,
+            type: "PUT",
+            success: function (res) {
+            }
+        });
+    }
+
+    reportReview() {
+        $.ajax({
+            url: "http://52.26.193.201:3000/reviews/report/" + `${this.state.review_id}`,
+            type: "PUT",
+            success: function (res) {
+            }
+        });
     }
 
     render() {
@@ -30,7 +50,17 @@ export default class Review extends React.Component {
         for (; lastIndex < this.maxrating; lastIndex++) {
             stars.push(<EmptyStar key={`star_${lastIndex}`} />);
         }
-        
+        var photos = [];
+        if (this.state.photos.length > 0) {
+            for (var i = 0; i < this.state.photos.length; i++) {
+                photos.push(<img class="reviewphoto" src={this.state.photos[i].url} />);
+            }
+        }
+        var recommended = null;
+        if (this.state.recommend) {
+            recommended = (<div>recommended</div>)
+        }
+
         return (
             <div id="review">
                 <header className="topbar">
@@ -45,13 +75,17 @@ export default class Review extends React.Component {
                     <div className="focus review_title">
                         <div className="overflowhidden ellipsis">{this.state.summary}</div>
                     </div>
+                    {recommended}
                     <p className="review_content">
                         {this.state.body}
                     </p>
+                    <div id="reviewphotos">
+                        {photos}
+                    </div>
                 </content>
                 <footer className="leftjustify review_feedback">
-                    <div>Was this review helpful?</div>
-                    <div onClick={() => console.log('Helpful!')} className="leftpadding reviewlinks">Yes</div><div className="leftpadding">|</div><div onClick={() => console.log('Reported!')} className="leftpadding reviewlinks">Report</div>
+                    <div>Was this review helpful?: {this.state.helpfulness}</div>
+                    <div onClick={() =>this.incrementHelpful()} className="leftpadding reviewlinks">Yes</div><div className="leftpadding">|</div><div onClick={() => this.reportReview()} className="leftpadding reviewlinks">Report</div>
                 </footer>
             </div>
         )
