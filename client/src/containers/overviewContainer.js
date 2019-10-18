@@ -5,7 +5,7 @@ import handleProductSearch from '../actions/productSearch.js';
 const mapStateToProps = state => ({
   currentProduct: state.currentProduct,
   currentStyle: state.currentStyle,
-  stylesArray: state.StylesArray,
+  stylesArray: state.stylesArray,
   currentSize: state.currentSize,
 });
 
