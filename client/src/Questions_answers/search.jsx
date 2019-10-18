@@ -5,14 +5,21 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      term: '',
+      term: ''
     };
   }
 
-  onChange(e) {
+  handleChange(e) {
     this.setState({
       term: e.target.value,
     });
+    if (this.state.term.length >= 3) {
+      this.props.handleSearch(this.state.term);
+      console.log(this.props.questionsShown);
+    } else {
+      this.props.handleSearch(this.state.term);
+      console.log(this.props.questionsShown);
+    }
   }
 
   render() {
@@ -26,7 +33,7 @@ class Search extends React.Component {
             value={this.state.term}
             placeholder="Have a question? Search for answers…"
             onChange={e => {
-              this.onChange(e);
+              this.handleChange(e);
             }}
           ></input>
           <div className="searchButton icon">
