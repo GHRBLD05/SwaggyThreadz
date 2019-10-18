@@ -7,7 +7,6 @@ import Controls from "./controls.jsx";
 export default class Reviews extends React.Component {
   constructor() {
     super();
-
     this.url = 'http://52.26.193.201:3000/reviews/2/list';
     this.views = ['REDUCED', 'FULL'];
     this.state = {
@@ -42,7 +41,7 @@ export default class Reviews extends React.Component {
       },
     });
   }
-
+        
   render() {
     if (this.state.reviews.product === undefined) {
       return (
