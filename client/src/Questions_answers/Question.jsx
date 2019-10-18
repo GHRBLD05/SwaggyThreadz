@@ -7,11 +7,15 @@ class Question extends React.Component {
     super(props);
     this.state = {
       answers: [],
+      answersLimit: 2,
+      showButton: false,
     };
     this.helpfullnessButton = this.helpfullnessButton.bind(this);
+    // this.helpfullnessCount = this.props.helpfullness;
   }
 
   componentDidMount() {
+    this.helpfullnessCount = this.props.helpfullness;
     const idParam = this.props.id;
     $.get(`http://52.26.193.201:3000/qa/${idParam}/answers`, data => {}).then(
       results => {
@@ -20,13 +24,33 @@ class Question extends React.Component {
         this.setState({
           answers: sorted,
         });
-        console.log('This is the list of answers: ', this.state);
+        if (this.state.answers.length > 2) {
+          this.setState({
+            showButton: true,
+          });
+        }
+        console.log(
+          'This is the list of answers: ',
+          this.state,
+          this.state.showButton
+        );
       }
     );
   }
 
+  // componentDidUpdate(prevProps) {
+  //   let helpfullnessCount = this.props.helpfullness;
+  //   if (helpfullnessCount === prevProps.helpfullness) {
+  //     helpfullnessCount += 1;
+  //     helpfullnessCount = this.props.helpfullness;
+  //   }
+  // }
+
   helpfullnessButton(e) {
     const idParam = this.props.id;
+    let oldCount = this.helpfullnessCount;
+    const newCount = (oldCount += 1);
+    this.helpfullnessCount = newCount;
 
     $.ajax({
       url: `http://52.26.193.201:3000/qa/question/${idParam}/helpful`,
@@ -56,7 +80,7 @@ class Question extends React.Component {
               >
                 Yes
               </button>
-              ({this.props.helpfullness}) |
+              ({this.helpfullnessCount}) |
               <button type="button" className="helpful-button">
                 Add Answer
               </button>
