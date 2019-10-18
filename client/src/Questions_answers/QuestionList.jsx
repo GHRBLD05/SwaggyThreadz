@@ -11,12 +11,14 @@ class QuestionList extends React.Component {
       filteredQuestions: [],
     };
     this.filterQuestions = this.filterQuestions.bind(this);
+    console.log('questionslist props: ', props);
   }
 
   componentDidMount() {
     // Remember to change id param
+    const param = this.props.currentProduct.id;
 
-    $.get('http://52.26.193.201:3000/qa/2', data => {
+    $.get(`http://52.26.193.201:3000/qa/${param}`, data => {
       console.log(data);
     }).then(results => {
       const dataCopy = results.results.slice();
@@ -43,6 +45,42 @@ class QuestionList extends React.Component {
     });
   }
 
+  helpfullnessButton(helpfullnessCount, questionId) {
+    console.log('Shit: ', this.props);
+    const idParam = this.props.currentProduct.id;
+    // let oldCount = helpfullnessCount;
+    // const newCount = (oldCount += 1);
+    // helpfullnessCount = newCount;
+    const newQuestions = this.state.questions.slice();
+    for (let question = 0; question < newQuestions.length; question++) {
+      if (question.id === questionId) {
+        question.helpfulness += 1;
+        break;
+      }
+    }
+    this.setState(
+      {
+        questions: newQuestions,
+      },
+      () => {
+        console.log(
+          'newQuestions: ',
+          newQuestions,
+          'current state: ',
+          this.state.questions
+        );
+      }
+    );
+
+    $.ajax({
+      url: `http://52.26.193.201:3000/qa/question/${idParam}/helpful`,
+      type: 'PUT',
+      succes: status => {
+        console.log('Succes: ', status);
+      },
+    });
+  }
+
   render() {
     if (this.props.searchTerm.length >= 3) {
       return (
@@ -53,6 +91,7 @@ class QuestionList extends React.Component {
               currQuestion={question.question_body}
               helpfullness={question.question_helpfulness}
               id={question.question_id}
+              helpfullnessButton={this.helpfullnessButton.bind(this)}
             />
           ))}
         </div>
@@ -68,6 +107,7 @@ class QuestionList extends React.Component {
               currQuestion={question.question_body}
               helpfullness={question.question_helpfulness}
               id={question.question_id}
+              helpfullnessButton={this.helpfullnessButton.bind(this)}
             />
           ))}
       </div>

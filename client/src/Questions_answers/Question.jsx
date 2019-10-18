@@ -11,7 +11,8 @@ class Question extends React.Component {
       showButton: false,
     };
     this.helpfullnessButton = this.helpfullnessButton.bind(this);
-    // this.helpfullnessCount = this.props.helpfullness;
+    this.helpfullnessCount = this.props.helpfullness;
+    console.log('this be props', props);
   }
 
   componentDidMount() {
@@ -47,18 +48,7 @@ class Question extends React.Component {
   // }
 
   helpfullnessButton(e) {
-    const idParam = this.props.id;
-    let oldCount = this.helpfullnessCount;
-    const newCount = (oldCount += 1);
-    this.helpfullnessCount = newCount;
-
-    $.ajax({
-      url: `http://52.26.193.201:3000/qa/question/${idParam}/helpful`,
-      type: 'PUT',
-      succes: status => {
-        console.log('Succes: ', status);
-      },
-    });
+    this.props.helpfullnessButton(this.helpfullnessCount, this.props.id);
   }
 
   render() {
