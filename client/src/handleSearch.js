@@ -30,7 +30,13 @@ const getRelatedIDs = id =>
     $.get(
       `http://52.26.193.201:3000/products/${id}/related`,
       relatedIDsFromRequest => {
-        resolve(relatedIDsFromRequest);
+        const relatedIDs = [];
+        for (const relatedID of relatedIDsFromRequest) {
+          if (!relatedIDs.includes(relatedID)) {
+            relatedIDs.push(relatedID);
+          }
+        }
+        resolve(relatedIDs);
       }
     );
   });
