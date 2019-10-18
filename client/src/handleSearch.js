@@ -61,8 +61,17 @@ const getRelatedStyles = id =>
 const addImageToRelated = async relatedProducts => {
   for (const product of relatedProducts) {
     const currStyles = await getRelatedStyles(product.id);
-    product.thumbnail_url = currStyles.results[0].photos[0].thumbnail_url;
-    product.url = currStyles.results[0].photos[0].url;
+    for (const elem of currStyles.results) {
+      if (elem['default?'] === 1) {
+        product.thumbnail_url = elem.photos[0].thumbnail_url;
+        product.url = elem.photos[0].url;
+        break;
+      }
+    }
+    if (!product.url) {
+      product.thumbnail_url = currStyles.results[0].photos[0].thumbnail_url;
+      product.url = currStyles.results[0].photos[0].url;
+    }
   }
   return relatedProducts;
 };
@@ -74,7 +83,16 @@ const getStyles = id =>
       products.results.forEach(product => {
         styles.push(product);
       });
-      resolve(styles);
+      let style = styles[0];
+      for (const elem of styles) {
+        if (elem['default?'] === 1) {
+          style = elem;
+          break;
+        }
+      }
+      console.log('style: ', style);
+      console.log('stylesArray: ', styles);
+      resolve([styles, style]);
     });
   });
 
@@ -112,7 +130,7 @@ const handleSearch = (productName, callback) => {
       ])
     )
     .then(results =>
-      callback(results[2], results[0], results[0][0], results[3])
+      callback(results[2], results[0][0], results[0][1], results[3])
     );
 };
 export default handleSearch;

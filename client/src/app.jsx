@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 import OverviewContainer from './containers/overviewContainer.js';
-import RelatedProductsContainer from './containers/relatedProductsContainer.js';
-// import QuestionsModule from './Questions_answers/QuestionsModule.jsx';
-// import ReviewsAndRatings from './reviewcomponent/reviewsandratings.jsx';
+import RelatedProductsContainer from "./containers/relatedProductsContainer.js";
+import QuestionsContainer from "./containers/QuestionsContainer.jsx";
+import ReviewsAndRatings from "./reviewcomponent/reviewsandratings.jsx";
 
 export default class App extends React.Component {
   render() {
@@ -10,8 +10,8 @@ export default class App extends React.Component {
       <div className="container maincontainer">
         <OverviewContainer />
         <RelatedProductsContainer />
-        {/* <QuestionsModule /> */}
-        {/* <ReviewsAndRatings /> */}
+        <QuestionsContainer />
+        <ReviewsAndRatings />
       </div>
     );
   }
