@@ -5,19 +5,19 @@ import handleProductSearch from '../actions/productSearch.js';
 const mapStateToProps = state => ({
   currentProduct: state.currentProduct,
   currentStyle: state.currentStyle,
-  StylesArray: state.StylesArray,
+  stylesArray: state.StylesArray,
   currentSize: state.currentSize,
 });
 
-const mapDispatchToProps = dispatch => ({
-  handleSearch: q => {
-    dispatch(handleProductSearch(q));
-  },
-});
+// const mapDispatchToProps = dispatch => ({
+//   handleSearch: q => {
+//     dispatch(handleProductSearch(q));
+//   },
+// });
 
 const OverviewContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(Overview);
 
 export default OverviewContainer;
