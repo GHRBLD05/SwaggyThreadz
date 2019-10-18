@@ -12,7 +12,16 @@ const Overview = ({
   stylesArray,
 }) => (
   <div>
-    {/* {console.log(currentProduct)} */}
+    {console.log(
+      'CP',
+      currentProduct,
+      'CS',
+      currentStyle,
+      'Size',
+      currentSize,
+      'SA',
+      stylesArray
+    )}
     <div className="row">
       <div className="col-md-12">
         <NavBar
