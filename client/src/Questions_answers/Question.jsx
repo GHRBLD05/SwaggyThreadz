@@ -29,7 +29,7 @@ class Question extends React.Component {
     const idParam = this.props.id;
 
     $.ajax({
-      url: `http://52.26.193.201:3000/${idParam}/helpful`,
+      url: `http://52.26.193.201:3000/qa/question/${idParam}/helpful`,
       type: 'PUT',
       succes: status => {
         console.log('Succes: ', status);
@@ -41,10 +41,10 @@ class Question extends React.Component {
     return (
       <div>
         <div className="row">
-          <div className="col-md-10">
+          <div className="col-md-9">
             <p className="question">Q: {this.props.currQuestion}</p>
           </div>
-          <div className="col-md-2 helpfulQuestion">
+          <div className="col-md-3 helpfulQuestion">
             <p>
               Helpful?
               <button
@@ -61,14 +61,14 @@ class Question extends React.Component {
                 Add Answer
               </button>
             </p>
-            <div className="row"></div>
+            <div className="container"></div>
           </div>
         </div>
-        <div className="row answerList">
-          <div className="col-sm-1">
+        <div className="row justify-content-start answerList">
+          <div className="col-">
             <p className="answerPtag">A: </p>
           </div>
-          <div>
+          <div className="answer-box">
             {this.state.answers.map((answer, i) => (
               <Answer
                 userName={answer.answerer_name}

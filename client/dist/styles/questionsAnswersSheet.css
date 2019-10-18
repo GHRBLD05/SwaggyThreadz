@@ -28,10 +28,6 @@
   box-sizing: border-box;
 }
 
-.question {
-  padding-left: 15px;
-}
-
 .helpful-button {
   background: none;
   border: none;
@@ -139,8 +135,23 @@ h6 {
 .question {
   font-size: 20px;
   font-weight: bold;
+  padding-top: 10px;
 }
 
 .user-date-helpful {
   opacity: 0.5;
+}
+
+.user-date-helpful {
+  padding-left: 15px;
+}
+
+.overflow-auto {
+  height: 600px;
+  width: 1125px;
+}
+
+.answer-box {
+  margin-left: 10px;
+  margin-bottom: 10px;
 }

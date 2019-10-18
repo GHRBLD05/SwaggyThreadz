@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 class Answer extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Answer extends React.Component {
             <p>{this.props.body}</p>
           </div>
         </div>
-        <div className="row answer-info">
+        <div className="row justify-content-start answer-info">
           <p className="user-date-helpful">
             by {this.props.userName}, {this.date.toDateString()} | Helpful?
           </p>

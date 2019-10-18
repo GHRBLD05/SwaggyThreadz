@@ -6,10 +6,6 @@ import changeStylesArray from '../actions/stylesArray.js';
 import changeRelatedProducts from '../actions/relatedProducts.js';
 
 const mapStateToProps = state => ({
-  currentProduct: state.currentProduct,
-  currentStyle: state.currentStyle,
-  stylesArray: state.stylesArray,
-  currentSize: state.currentSize,
   relatedProducts: state.relatedProducts,
 });
 
