@@ -49,7 +49,7 @@ const Related = ({ relatedProducts }) => (
                   : 'carousel-item col-md-3'
               }
             >
-              <RelatedProduct product={product} key={i} />
+              <RelatedProduct product={product} key={product.id} />
             </div>
           ))}
         </div>
