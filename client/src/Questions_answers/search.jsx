@@ -9,7 +9,7 @@ class Search extends React.Component {
     };
   }
 
-  onChange(e) {
+  handleChange(e) {
     this.setState({
       term: e.target.value,
     });
@@ -26,7 +26,7 @@ class Search extends React.Component {
             value={this.state.term}
             placeholder="Have a question? Search for answers…"
             onChange={e => {
-              this.onChange(e);
+              this.handleChange(e);
             }}
           ></input>
           <div className="searchButton icon">
@@ -41,7 +41,10 @@ class Search extends React.Component {
             </svg>
           </div>
         </div>
-        <QuestionList questionsShown={this.props.questionsShown} />
+        <QuestionList
+          questionsShown={this.props.questionsShown}
+          searchTerm={this.state.term}
+        />
       </div>
     );
   }

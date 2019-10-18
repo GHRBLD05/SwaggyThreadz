@@ -8,7 +8,9 @@ class QuestionList extends React.Component {
     this.state = {
       questions: [],
       questionsLimit: this.props.questionsShown,
+      filteredQuestions: [],
     };
+    this.filterQuestions = this.filterQuestions.bind(this);
   }
 
   componentDidMount() {
@@ -22,12 +24,40 @@ class QuestionList extends React.Component {
       this.setState({
         questions: sorted,
       });
-      // this.setState({ questions: results });
-      console.log(this.state);
+    });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.searchTerm !== prevProps.searchTerm) {
+      this.filterQuestions();
+    }
+  }
+
+  filterQuestions() {
+    const notFiltered = this.state.questions;
+    const filtered = notFiltered.filter(question =>
+      question.question_body.toLowerCase().includes(this.props.searchTerm)
+    );
+    this.setState({
+      filteredQuestions: filtered,
     });
   }
 
   render() {
+    if (this.props.searchTerm.length >= 3) {
+      return (
+        <div className="overflow-auto">
+          {this.state.filteredQuestions.map((question, i) => (
+            <Question
+              key={i}
+              currQuestion={question.question_body}
+              helpfullness={question.question_helpfulness}
+              id={question.question_id}
+            />
+          ))}
+        </div>
+      );
+    }
     return (
       <div className="overflow-auto">
         {this.state.questions
