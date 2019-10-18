@@ -36,13 +36,11 @@ class QuestionList extends React.Component {
   filterQuestions() {
     const notFiltered = this.state.questions;
     const filtered = notFiltered.filter(question =>
-      question.question_body.includes(this.props.searchTerm)
+      question.question_body.toLowerCase().includes(this.props.searchTerm)
     );
-    // const filteredLowerCase = filtered.toString().toLowerCase();
     this.setState({
       filteredQuestions: filtered,
     });
-    console.log('Filtered: ', this.state.filteredQuestions);
   }
 
   render() {
