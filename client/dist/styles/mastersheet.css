@@ -19,3 +19,10 @@
 .ellipsis {
     text-overflow: ellipsis;
 }
+
+.button {
+    font-size: .75em;
+    padding: .75em .65em;
+    background-color: white;
+    border: .01em solid black;
+}
