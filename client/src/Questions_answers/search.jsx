@@ -5,7 +5,7 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      term: ''
+      term: '',
     };
   }
 
@@ -13,13 +13,6 @@ class Search extends React.Component {
     this.setState({
       term: e.target.value,
     });
-    if (this.state.term.length >= 3) {
-      this.props.handleSearch(this.state.term);
-      console.log(this.props.questionsShown);
-    } else {
-      this.props.handleSearch(this.state.term);
-      console.log(this.props.questionsShown);
-    }
   }
 
   render() {
@@ -48,7 +41,10 @@ class Search extends React.Component {
             </svg>
           </div>
         </div>
-        <QuestionList questionsShown={this.props.questionsShown} />
+        <QuestionList
+          questionsShown={this.props.questionsShown}
+          searchTerm={this.state.term}
+        />
       </div>
     );
   }
