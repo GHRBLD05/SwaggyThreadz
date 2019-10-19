@@ -12,7 +12,6 @@ class Question extends React.Component {
     };
     this.helpfullnessButton = this.helpfullnessButton.bind(this);
     this.helpfullnessCount = this.props.helpfullness;
-    console.log('this be props', props);
   }
 
   componentDidMount() {
@@ -52,6 +51,7 @@ class Question extends React.Component {
   }
 
   render() {
+    const style = this.state.showButton ? { display: 'none' } : {};
     return (
       <div>
         <div className="row">
@@ -83,17 +83,22 @@ class Question extends React.Component {
             <p className="answerPtag">A: </p>
           </div>
           <div className="answer-box">
-            {this.state.answers.map((answer, i) => (
-              <Answer
-                userName={answer.answerer_name}
-                body={answer.body}
-                date={answer.date}
-                helpfullness={answer.helpfulness}
-                key={i}
-                helpfullnessButton={this.helpfullnessButton}
-              />
-            ))}
+            {this.state.answers
+              .slice(0, this.state.answersLimit)
+              .map((answer, i) => (
+                <Answer
+                  userName={answer.answerer_name}
+                  body={answer.body}
+                  date={answer.date}
+                  helpfullness={answer.helpfulness}
+                  key={i}
+                  helpfullnessButton={this.helpfullnessButton}
+                />
+              ))}
           </div>
+        </div>
+        <div className="row justify-content-start more-answers-button">
+          <button type="button">Load more answers</button>
         </div>
       </div>
     );
