@@ -14,6 +14,8 @@ class QuestionsModule extends React.Component {
     this.showQuestionModal = this.showQuestionModal.bind(this);
     this.closeQuestionModal = this.closeQuestionModal.bind(this);
     this.showMoreQuestions = this.showMoreQuestions.bind(this);
+    this.showAnswerModal = this.showAnswerModal.bind(this);
+    this.closeAnswerModal = this.closeAnswerModal.bind(this);
     this.questionsShown = this.state.questionsLimit;
     console.log('this should be the current product', props);
   }
@@ -58,6 +60,7 @@ class QuestionsModule extends React.Component {
           questionsShown={this.state.questionsLimit}
           handleSearch={this.handleSearch}
           currentProduct={this.props.currentProduct}
+          showAnswerModal={this.showAnswerModal}
         />
         <ModalQuestion
           close={this.closeQuestionModal}
@@ -65,7 +68,7 @@ class QuestionsModule extends React.Component {
           productId={this.props.currentProduct}
         />
         <ModalAnswer
-          close={this.closeAnswerModal.bind(this)}
+          close={this.closeAnswerModal}
           show={this.state.showAnswerModal}
           productId={this.props.currentProduct}
         />
