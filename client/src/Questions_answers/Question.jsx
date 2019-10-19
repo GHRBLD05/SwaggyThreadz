@@ -12,6 +12,7 @@ class Question extends React.Component {
     };
     this.helpfullnessButton = this.helpfullnessButton.bind(this);
     this.helpfullnessCount = this.props.helpfullness;
+    this.showMoreAnswers = this.showMoreAnswers.bind(this);
   }
 
   componentDidMount() {
@@ -48,6 +49,14 @@ class Question extends React.Component {
 
   helpfullnessButton(e) {
     this.props.helpfullnessButton(this.helpfullnessCount, this.props.id);
+  }
+
+  showMoreAnswers(e) {
+    let currentLimit = this.state.answersLimit;
+    const newLimit = (currentLimit += 2);
+    this.setState({
+      answersLimit: newLimit,
+    });
   }
 
   render() {
@@ -102,7 +111,13 @@ class Question extends React.Component {
           className="row justify-content-start more-answers-button"
           style={buttonStyle}
         >
-          <button type="button" className="more-answers-button">
+          <button
+            type="button"
+            className="more-answers-button"
+            onClick={e => {
+              this.showMoreAnswers(e);
+            }}
+          >
             Load more answers
           </button>
         </div>
