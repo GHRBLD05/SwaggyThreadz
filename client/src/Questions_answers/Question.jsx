@@ -51,7 +51,8 @@ class Question extends React.Component {
   }
 
   render() {
-    const style = this.state.showButton ? { display: 'none' } : {};
+    const buttonStyle = this.state.showButton ? {} : { display: 'none' };
+    const noAnswers = !this.state.answers.length ? { display: 'none' } : {};
     return (
       <div>
         <div className="row">
@@ -79,8 +80,8 @@ class Question extends React.Component {
           </div>
         </div>
         <div className="row justify-content-start answerList">
-          <div className="col-">
-            <p className="answerPtag">A: </p>
+          <div className="answerPtag">
+            <p style={noAnswers}>A: </p>
           </div>
           <div className="answer-box">
             {this.state.answers
@@ -97,8 +98,13 @@ class Question extends React.Component {
               ))}
           </div>
         </div>
-        <div className="row justify-content-start more-answers-button">
-          <button type="button">Load more answers</button>
+        <div
+          className="row justify-content-start more-answers-button"
+          style={buttonStyle}
+        >
+          <button type="button" className="more-answers-button">
+            Load more answers
+          </button>
         </div>
       </div>
     );
