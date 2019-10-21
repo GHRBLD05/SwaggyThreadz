@@ -51,7 +51,7 @@ import RelatedProduct from './relatedProduct.jsx';
 
 const Related = ({ relatedProducts }) => (
   <div>
-    <div className="col-md-12 text-center">
+    <div className="col-md-12 text-left">
       <h3>Related Products</h3>
     </div>
     <div className="container-fluid">
