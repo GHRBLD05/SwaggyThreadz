@@ -180,12 +180,13 @@
 
 .relatedModalButton {
   position: absolute;
-  top: 2px;
-  right: 2px;
+  top: 4px;
+  right: 4px;
   /* opacity: 0; */
   /* transition: .3s ease; */
 }
 
 .relatedModalButton:hover {
   color: yellow;
+  text-shadow: 0 0 2px black;
 }

@@ -15,7 +15,7 @@ const RelatedProduct = props => (
       alt={props.product.name}
       style={{ width: '100%', height: '200px', objectFit: 'cover' }}
     />
-    <i className="relatedModalButton fa fa-star"></i>
+    <i className="relatedModalButton fa fa-star fa-lg"></i>
     {console.log('related product: ', props.product)}
     <div className="relatedCardProductInfo">
       <p className="relatedProductCategory">{props.product.category}</p>
