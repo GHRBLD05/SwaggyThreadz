@@ -139,6 +139,14 @@ const addRatingToCurrent = product =>
     });
   });
 
+const addMetadataToCurrent = product =>
+  new Promise((resolve, reject) => {
+    $.get(`http://52.26.193.201:3000/reviews/${product.id}/meta`, metaData => {
+      product.metaData = metaData;
+      resolve(product);
+    });
+  });
+
 const handleSearch = (productName, callback) => {
   updateProductList()
     .then(productList => getIdFromName(productName, productList))
@@ -161,7 +169,7 @@ const handleSearch = (productName, callback) => {
       Promise.all([
         styles,
         style,
-        currentProduct,
+        addMetadataToCurrent(currentProduct),
         addImageToRelated(relatedProducts),
       ])
     )
@@ -174,6 +182,7 @@ const handleSearch = (productName, callback) => {
       ])
     )
     .then(([styles, style, currentProduct, relatedProducts]) => {
+      console.log('CURRENT PRODUCT::  ', currentProduct);
       callback(currentProduct, styles, style, relatedProducts);
     });
 };
