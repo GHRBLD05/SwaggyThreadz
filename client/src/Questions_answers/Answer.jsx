@@ -41,3 +41,11 @@ class Answer extends React.Component {
 }
 
 export default Answer;
+
+{/* <div className="row photos">
+            {this.props.photos.map((photo, i) => {
+              return (
+                <img src={photo.url}></img>
+              )
+            })}
+          </div> */}

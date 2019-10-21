@@ -87,7 +87,7 @@ class ModalAnswer extends React.Component {
               maxLength="1000"
               value={this.state.answer}
               onChange={e => {
-                this.handleQuestion(e);
+                this.handleAnswer(e);
               }}
             ></input>
             <h5 className="modal-headings">
@@ -115,6 +115,8 @@ class ModalAnswer extends React.Component {
               }}
             ></input>
             <h6>For authentication reasons, you will not be emailed</h6>
+            <h5>If you would like to share photos, upload them here</h5>
+            <input type="file" accept="image/png, image/jpeg"></input>
             <button
               type="button"
               onClick={() => {

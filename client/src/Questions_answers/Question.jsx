@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import Answer from './Answer.jsx';
+import ModalAnswer from './ModalAnswer.jsx';
 
 class Question extends React.Component {
   constructor(props) {
@@ -9,10 +10,13 @@ class Question extends React.Component {
       answers: [],
       answersLimit: 2,
       showButton: false,
+      showAnswerModal: false,
     };
     this.helpfullnessButton = this.helpfullnessButton.bind(this);
     this.helpfullnessCount = this.props.helpfullness;
     this.showMoreAnswers = this.showMoreAnswers.bind(this);
+    this.showAnswerModal = this.showAnswerModal.bind(this);
+    this.closeAnswerModal = this.closeAnswerModal.bind(this);
   }
 
   componentDidMount() {
@@ -39,14 +43,6 @@ class Question extends React.Component {
     );
   }
 
-  // componentDidUpdate(prevProps) {
-  //   let helpfullnessCount = this.props.helpfullness;
-  //   if (helpfullnessCount === prevProps.helpfullness) {
-  //     helpfullnessCount += 1;
-  //     helpfullnessCount = this.props.helpfullness;
-  //   }
-  // }
-
   helpfullnessButton(e) {
     this.props.helpfullnessButton(this.helpfullnessCount, this.props.id);
   }
@@ -56,6 +52,18 @@ class Question extends React.Component {
     const newLimit = (currentLimit += 2);
     this.setState({
       answersLimit: newLimit,
+    });
+  }
+
+  showAnswerModal(e) {
+    this.setState({
+      showAnswerModal: true,
+    });
+  }
+
+  closeAnswerModal(e) {
+    this.setState({
+      showAnswerModal: false,
     });
   }
 
@@ -85,7 +93,7 @@ class Question extends React.Component {
                 type="button"
                 className="helpful-button"
                 onClick={e => {
-                  this.props.showAnswerModal(e);
+                  this.showAnswerModal(e);
                 }}
               >
                 Add Answer
@@ -107,6 +115,7 @@ class Question extends React.Component {
                   body={answer.body}
                   date={answer.date}
                   helpfullness={answer.helpfulness}
+                  photos={answer.photos}
                   key={i}
                   helpfullnessButton={this.helpfullnessButton}
                 />
@@ -127,6 +136,11 @@ class Question extends React.Component {
             Load more answers
           </button>
         </div>
+        <ModalAnswer
+          close={this.closeAnswerModal}
+          show={this.state.showAnswerModal}
+          questionId={this.props.id}
+        />
       </div>
     );
   }
