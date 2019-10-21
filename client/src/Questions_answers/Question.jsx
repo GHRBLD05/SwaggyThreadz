@@ -81,7 +81,13 @@ class Question extends React.Component {
                 Yes
               </button>
               ({this.helpfullnessCount}) |
-              <button type="button" className="helpful-button">
+              <button
+                type="button"
+                className="helpful-button"
+                onClick={e => {
+                  this.props.showAnswerModal(e);
+                }}
+              >
                 Add Answer
               </button>
             </p>

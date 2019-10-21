@@ -38,7 +38,7 @@ class ModalAnswer extends React.Component {
     console.log('Modal props', this.props);
     // POST request to the api when button is clicked
     if (!this.state.answer.length) {
-      alert('You must ask a question to submit');
+      alert('You provide an answer to submit');
     } else if (!this.state.nickName.length) {
       alert('You must provide a nickname to submit');
     } else if (!this.state.email.length) {

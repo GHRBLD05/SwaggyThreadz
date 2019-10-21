@@ -92,6 +92,7 @@ class QuestionList extends React.Component {
               helpfullness={question.question_helpfulness}
               id={question.question_id}
               helpfullnessButton={this.helpfullnessButton.bind(this)}
+              showAnswerModal={this.props.showAnswerModal}
             />
           ))}
         </div>
@@ -108,6 +109,7 @@ class QuestionList extends React.Component {
               helpfullness={question.question_helpfulness}
               id={question.question_id}
               helpfullnessButton={this.helpfullnessButton.bind(this)}
+              showAnswerModal={this.props.showAnswerModal}
             />
           ))}
       </div>
