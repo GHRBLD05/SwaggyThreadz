@@ -1,8 +1,8 @@
 import React from 'react';
 import StarRating from '../star_component/StarRating.jsx';
 
-import Emptystar from '../star_component/Emptystar.jsx';
-import Halfstar from '../star_component/Halfstar.jsx';
+// import Emptystar from '../star_component/Emptystar.jsx';
+// import Halfstar from '../star_component/Halfstar.jsx';
 
 export default class Ratings extends React.Component {
   render() {
@@ -12,8 +12,8 @@ export default class Ratings extends React.Component {
 
         <StarRating />
 
-        <Emptystar />
-        <Halfstar />
+        {/* <Emptystar />
+        <Halfstar /> */}
       </div>
     );
   }
