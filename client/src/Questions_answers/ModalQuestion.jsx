@@ -56,35 +56,17 @@ class ModalQuestion extends React.Component {
       const param = this.props.productId.id;
       // eslint-disable-next-line prefer-const
       let options = {
-        "body": "hello",
-        "name": "hello",
-        "email": "hello@hello.com",
+        "body": this.state.question,
+        "name": this.state.nickName,
+        "email": this.state.email,
       };
-      // options = JSON.stringify(options);
-      // $.post(`http://52.26.193.201:3000/qa/1`, {"body": "Does this test work?", "name": "Axel", "email": "poopman@pooper.com"}, status => {
-      //   console.log('Question was saved to the API: ', status);
-      // });
 
-      // $.ajax({
-      //   type: "POST",
-      //   url: `http://52.26.193.201:3000/qa/5`,
-      //   data: JSON.stringify({body: "Does this test work?", name: "Axel", email: "poopman@pooper.com"}),
-      //   dataType: "json",
-      //   contentType: "application/json",
-      // })
-      // .then((status) => {
-      //   console.log('It worked', status)
-      // })
-      // .fail((hello, hellö, err) => {
-      //   console.log('this is the error: ', err);
-      // });
-
-      fetch('http://52.26.193.201:3000/qa/5', {
+      fetch(`http://52.26.193.201:3000/qa/${param}`, {
         method: 'post',
         headers: {
           "Content-type": "application/json"
         },
-        body: JSON.stringify({"body": "What is the meaning?", "name": "Axel", "email": "poopman@pooper.com"})
+        body: JSON.stringify(options)
       })
       .then(response => response.text())
       .then(function (data) {

@@ -15,6 +15,13 @@ class Answer extends React.Component {
             <p>{this.props.body}</p>
           </div>
         </div>
+        <div className="row">
+            {this.props.photos.map((photo, i) => {
+              return (
+                <img src={photo.url} key={i} className="photos"></img>
+              )
+            })}
+          </div>
         <div className="row justify-content-start answer-info">
           <p className="user-date-helpful">
             by {this.props.userName}, {this.date.toDateString()} | Helpful?
@@ -41,3 +48,5 @@ class Answer extends React.Component {
 }
 
 export default Answer;
+
+

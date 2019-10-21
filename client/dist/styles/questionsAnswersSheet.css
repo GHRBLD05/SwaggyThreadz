@@ -181,3 +181,9 @@ h6 {
 .root-qa {
   max-height: 70%;
 }
+
+.photos {
+  max-height: 6em;
+  max-width: 6em;
+  margin: 3%;
+}
