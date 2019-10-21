@@ -23,11 +23,12 @@ export default class ModalReview extends React.Component {
         $.ajax({
             url: `http://52.26.193.201:3000/qa/2`,
             type: "POST",
-            body: JSON.stringify({
+            data: JSON.stringify({
                 body: 'test',
                 name: 'testsumm',
                 email: 'bodynasty'
             }),
+            contentType: false,
             success: function (res) {
                 console.log(res);
             }
