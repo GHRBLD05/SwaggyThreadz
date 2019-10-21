@@ -55,7 +55,7 @@ class QuestionsModule extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="root-qa">
         <Search
           questionsShown={this.state.questionsLimit}
           handleSearch={this.handleSearch}

@@ -104,15 +104,14 @@ class ModalQuestion extends React.Component {
             <h5 className="modal-headings">
               What is your question? (mandatory)
             </h5>
-            <input
+            <textarea
               className="question-form"
-              type="text"
               maxLength="1000"
               value={this.state.question}
               onChange={e => {
                 this.handleQuestion(e);
               }}
-            ></input>
+            ></textarea>
             <h5 className="modal-headings">
               What is your nickname? (mandatory)
             </h5>

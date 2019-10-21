@@ -99,7 +99,7 @@ class QuestionList extends React.Component {
       );
     }
     return (
-      <div className="overflow-auto">
+      <div className="qa-overflow">
         {this.state.questions
           .slice(0, this.props.questionsShown)
           .map((question, i) => (
