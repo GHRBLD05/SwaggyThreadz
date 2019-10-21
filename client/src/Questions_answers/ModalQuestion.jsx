@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import $ from 'jquery';
 
 class ModalQuestion extends React.Component {
   constructor(props) {
@@ -7,12 +8,13 @@ class ModalQuestion extends React.Component {
     this.state = {
       question: '',
       nickName: '',
-      email: ''
+      email: '',
     };
     this.filledOut = false;
     this.handleQuesiton = this.handleQuestion.bind(this);
     this.checkData = this.checkData.bind(this);
     this.submitModal = this.submitModal.bind(this);
+    console.log('yalla talla', props.productId);
   }
 
   handleQuestion(event) {
@@ -50,7 +52,27 @@ class ModalQuestion extends React.Component {
 
   submitModal(data) {
     if (this.filledOut === true) {
-      // Make the POST request
+      const param = this.props.productId.id;
+      // eslint-disable-next-line prefer-const
+      let options = {
+        body: this.state.question,
+        name: this.state.nickName,
+        email: this.state.email,
+      };
+      // options = JSON.stringify(options);
+      // $.post(`http://52.26.193.201:3000/qa/${param}`, options, status => {
+      //   console.log('Question was saved to the API: ', status);
+      // });
+      $.ajax({
+        type: 'POST',
+        url: `http://52.26.193.201:3000/qa/${param}`,
+        data: JSON.stringify(options),
+        contentType: false,
+        success: status => {
+          console.log('It worked', status);
+        },
+      });
+
       this.props.close();
     }
 

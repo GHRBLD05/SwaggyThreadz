@@ -30,7 +30,13 @@ const getRelatedIDs = id =>
     $.get(
       `http://52.26.193.201:3000/products/${id}/related`,
       relatedIDsFromRequest => {
-        resolve(relatedIDsFromRequest);
+        const relatedIDs = [];
+        for (const relatedID of relatedIDsFromRequest) {
+          if (!relatedIDs.includes(relatedID)) {
+            relatedIDs.push(relatedID);
+          }
+        }
+        resolve(relatedIDs);
       }
     );
   });
@@ -51,6 +57,30 @@ const getRelatedProducts = async relatedIDs => {
   return relatedProducts;
 };
 
+const getAvgRating = id =>
+  new Promise((resolve, reject) => {
+    $.get(`http://52.26.193.201:3000/reviews/${id}/list`, data => {
+      if (data.results.length === 0) {
+        resolve(null);
+      } else {
+        let avg = 0;
+        for (const review of data.results) {
+          avg += review.rating;
+        }
+        avg /= data.results.length;
+        resolve(avg);
+      }
+    });
+  });
+
+const addRatingToRelated = async relatedProducts => {
+  for (const product of relatedProducts) {
+    const avgRating = await getAvgRating(product.id);
+    product.averageRating = avgRating;
+  }
+  return relatedProducts;
+};
+
 const getRelatedStyles = id =>
   new Promise((resolve, reject) => {
     $.get(`http://52.26.193.201:3000/products/${id}/styles`, data => {
@@ -61,8 +91,17 @@ const getRelatedStyles = id =>
 const addImageToRelated = async relatedProducts => {
   for (const product of relatedProducts) {
     const currStyles = await getRelatedStyles(product.id);
-    product.thumbnail_url = currStyles.results[0].photos[0].thumbnail_url;
-    product.url = currStyles.results[0].photos[0].url;
+    for (const elem of currStyles.results) {
+      if (elem['default?'] === 1) {
+        product.thumbnail_url = elem.photos[0].thumbnail_url;
+        product.url = elem.photos[0].url;
+        break;
+      }
+    }
+    if (!product.url) {
+      product.thumbnail_url = currStyles.results[0].photos[0].thumbnail_url;
+      product.url = currStyles.results[0].photos[0].url;
+    }
   }
   return relatedProducts;
 };
@@ -74,13 +113,28 @@ const getStyles = id =>
       products.results.forEach(product => {
         styles.push(product);
       });
-      resolve(styles);
+      let style = styles[0];
+      for (const elem of styles) {
+        if (elem['default?'] === 1) {
+          style = elem;
+          break;
+        }
+      }
+      resolve([styles, style]);
     });
   });
 
 const getCurrentProduct = id =>
   new Promise((resolve, reject) => {
     $.get(`${apiUrl}${id}`, product => {
+      resolve(product);
+    });
+  });
+
+const addRatingToCurrent = product =>
+  new Promise((resolve, reject) => {
+    getAvgRating(product.id).then(averageRating => {
+      product.averageRating = averageRating;
       resolve(product);
     });
   });
@@ -95,24 +149,32 @@ const handleSearch = (productName, callback) => {
         getCurrentProduct(productID),
       ])
     )
-    .then(results =>
+    .then(([[styles, style], relatedIDs, currentProduct]) =>
       Promise.all([
-        results[0],
-        results[1],
-        results[2],
-        getRelatedProducts(results[1]),
+        styles,
+        style,
+        addRatingToCurrent(currentProduct),
+        getRelatedProducts(relatedIDs),
       ])
     )
-    .then(results =>
+    .then(([styles, style, currentProduct, relatedProducts]) =>
       Promise.all([
-        results[0],
-        results[1],
-        results[2],
-        addImageToRelated(results[3]),
+        styles,
+        style,
+        currentProduct,
+        addImageToRelated(relatedProducts),
       ])
     )
-    .then(results =>
-      callback(results[2], results[0], results[0][0], results[3])
-    );
+    .then(([styles, style, currentProduct, relatedProducts]) =>
+      Promise.all([
+        styles,
+        style,
+        currentProduct,
+        addRatingToRelated(relatedProducts),
+      ])
+    )
+    .then(([styles, style, currentProduct, relatedProducts]) => {
+      callback(currentProduct, styles, style, relatedProducts);
+    });
 };
 export default handleSearch;

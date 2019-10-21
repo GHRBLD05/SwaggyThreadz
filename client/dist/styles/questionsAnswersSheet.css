@@ -147,11 +147,20 @@ h6 {
 }
 
 .overflow-auto {
-  height: 600px;
+  height: 500px;
   width: 1125px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .answer-box {
   margin-left: 10px;
   margin-bottom: 10px;
+}
+
+.more-answers-button {
+  background: none;
+  border: none;
+  margin-left: 15px;
+  font-weight: bold;
 }

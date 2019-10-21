@@ -1,11 +1,11 @@
 import React from 'react';
 import Search from './search.jsx';
 import ModalQuestion from './ModalQuestion.jsx';
-// import ModalAnswer from './ModalAnswer.jsx';
+import ModalAnswer from './ModalAnswer.jsx';
 
 class QuestionsModule extends React.Component {
-  constructor({ currentProduct }) {
-    super({ currentProduct });
+  constructor(props) {
+    super(props);
     this.state = {
       showQuestionModal: false,
       showAnswerModal: false,
@@ -14,11 +14,13 @@ class QuestionsModule extends React.Component {
     this.showQuestionModal = this.showQuestionModal.bind(this);
     this.closeQuestionModal = this.closeQuestionModal.bind(this);
     this.showMoreQuestions = this.showMoreQuestions.bind(this);
+    this.showAnswerModal = this.showAnswerModal.bind(this);
+    this.closeAnswerModal = this.closeAnswerModal.bind(this);
     this.questionsShown = this.state.questionsLimit;
+    console.log('this should be the current product', props);
   }
 
   showQuestionModal(e) {
-    // this.e.preventDefault();
     this.setState({
       showQuestionModal: true,
     });
@@ -54,10 +56,21 @@ class QuestionsModule extends React.Component {
   render() {
     return (
       <div>
-        <Search questionsShown={this.state.questionsLimit} />
+        <Search
+          questionsShown={this.state.questionsLimit}
+          handleSearch={this.handleSearch}
+          currentProduct={this.props.currentProduct}
+          showAnswerModal={this.showAnswerModal}
+        />
         <ModalQuestion
           close={this.closeQuestionModal}
           show={this.state.showQuestionModal}
+          productId={this.props.currentProduct}
+        />
+        <ModalAnswer
+          close={this.closeAnswerModal}
+          show={this.state.showAnswerModal}
+          productId={this.props.currentProduct}
         />
         <div className="row">
           <button
@@ -74,7 +87,7 @@ class QuestionsModule extends React.Component {
               this.showQuestionModal();
             }}
           >
-            Add a quesiton +
+            Add a question +
           </button>
         </div>
       </div>
