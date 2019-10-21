@@ -34,6 +34,11 @@ class ModalAnswer extends React.Component {
     });
   }
 
+  handlePhotos() {
+
+
+  }
+
   checkData(data) {
     console.log('Modal props', this.props);
     // POST request to the api when button is clicked
@@ -52,6 +57,14 @@ class ModalAnswer extends React.Component {
   submitModal(data) {
     if (this.filledOut === true) {
       // Make the POST request
+      let param = this.props.questionId;
+
+      const options = {
+        "body": this.state.answer,
+        "name": this.state.nickName,
+        "email": this.state.email,
+        "photos": "hello"
+      }
       this.props.close();
     }
 
