@@ -9,8 +9,8 @@ const mapStateToProps = state => ({
   ...state,
 });
 
-export const ProductBreakdown = ({ getMetaData }) => {
-  const { characteristics } = getMetaData;
+export const ProductBreakdown = props => {
+  const {characteristics} = props.currentProduct.metaData;
   const productLabels = Object.keys(characteristics || []).map(label => {
     const { leftSublabel, centerSublabel, rightSublabel } = setProductSublables(
       label
