@@ -34,8 +34,11 @@ class ModalAnswer extends React.Component {
     });
   }
 
-  handlePhotos() {
-
+  handlePhotos(event) {
+    let newPhotos = Array.from(event.target.files);
+    this.setState({
+      photos: newPhotos
+    })
 
   }
 
@@ -63,7 +66,7 @@ class ModalAnswer extends React.Component {
         "body": this.state.answer,
         "name": this.state.nickName,
         "email": this.state.email,
-        "photos": "hello"
+        "photos": this.state.photos
       }
       this.props.close();
     }
@@ -129,7 +132,13 @@ class ModalAnswer extends React.Component {
             ></input>
             <h6>For authentication reasons, you will not be emailed</h6>
             <h5>If you would like to share photos, upload them here</h5>
-            <input type="file" accept="image/png, image/jpeg"></input>
+            <input
+            type="file"
+            multiple
+            accept="image/png, image/jpeg"
+            onChange={(e) => {
+              this.handlePhotos(e);
+            }}></input>
             <button
               type="button"
               onClick={() => {
