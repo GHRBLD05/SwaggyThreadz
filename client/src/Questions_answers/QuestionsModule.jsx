@@ -74,6 +74,7 @@ class QuestionsModule extends React.Component {
         />
         <div className="row">
           <button
+            className="button more-questions focus"
             type="button"
             onClick={e => {
               this.showMoreQuestions();
@@ -83,6 +84,7 @@ class QuestionsModule extends React.Component {
           </button>
           <button
             type="button"
+            className="button add-question focus"
             onClick={e => {
               this.showQuestionModal();
             }}
