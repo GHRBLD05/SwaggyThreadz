@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './app.jsx';
 import store from './store.js';
-import handleProductSearch from './actions/productSearch';
+import handleProductChange from './actions/productChange';
 // import $ from 'jquery';
 
 ReactDOM.render(
@@ -11,5 +11,5 @@ ReactDOM.render(
     <App />
   </Provider>,
   document.getElementById('app'),
-  () => handleProductSearch('Heir Force Ones')(store.dispatch)
+  () => handleProductChange('Heir Force Ones')(store.dispatch)
 );

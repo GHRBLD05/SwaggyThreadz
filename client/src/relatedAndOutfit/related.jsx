@@ -49,7 +49,7 @@ import RelatedProduct from './relatedProduct.jsx';
 //   }
 // });
 
-const Related = ({ relatedProducts }) => (
+const Related = ({ relatedProducts, handleProductClick }) => (
   <div>
     <div className="col-md-12 text-left">
       <h3>Related Products</h3>
@@ -79,7 +79,11 @@ const Related = ({ relatedProducts }) => (
                     : 'carousel-item col-md-3'
                 }
               >
-                <RelatedProduct key={product.id} product={product} />
+                <RelatedProduct
+                  key={product.id}
+                  product={product}
+                  handleProductClick={handleProductClick}
+                />
               </div>
             );
           })}

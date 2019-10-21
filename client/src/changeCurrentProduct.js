@@ -147,7 +147,7 @@ const addMetadataToCurrent = product =>
     });
   });
 
-const handleSearch = (productName, callback) => {
+const changeCurrentProduct = (productName, callback) => {
   updateProductList()
     .then(productList => getIdFromName(productName, productList))
     .then(productID =>
@@ -186,4 +186,4 @@ const handleSearch = (productName, callback) => {
       callback(currentProduct, styles, style, relatedProducts);
     });
 };
-export default handleSearch;
+export default changeCurrentProduct;

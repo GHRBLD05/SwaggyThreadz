@@ -2,12 +2,20 @@ import React from 'react';
 
 const RelatedProduct = props => (
   <div
+    onClick={e => {
+      props.handleProductClick(props.product.name);
+    }}
+    onKeyPress={e => {
+      props.handleProductClick(props.product.name);
+    }}
+    tabIndex={0}
+    role="button"
     className="img-fluid mx-auto d-block"
     style={{
       position: 'relative',
       width: '100%',
       height: '300px',
-      border: 'red solid 2px',
+      border: 'red solid 2px'
     }}
   >
     <img
