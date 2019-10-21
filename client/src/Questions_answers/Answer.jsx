@@ -16,9 +16,9 @@ class Answer extends React.Component {
           </div>
         </div>
         <div className="row">
-            {this.props.photos.map((photo) => {
+            {this.props.photos.map((photo, i) => {
               return (
-                <img src={photo.url} className="photos"></img>
+                <img src={photo.url} key={i} className="photos"></img>
               )
             })}
           </div>

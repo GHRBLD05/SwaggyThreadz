@@ -11,6 +11,7 @@ class Question extends React.Component {
       answersLimit: 2,
       showButton: false,
       showAnswerModal: false,
+      helpCount: this.props.helpfullness
     };
     this.helpfullnessButton = this.helpfullnessButton.bind(this);
     this.helpfullnessCount = this.props.helpfullness;
@@ -44,7 +45,21 @@ class Question extends React.Component {
   }
 
   helpfullnessButton(e) {
-    this.props.helpfullnessButton(this.helpfullnessCount, this.props.id);
+    let idParam = this.props.id;
+
+
+    $.ajax({
+      url: `http://52.26.193.201:3000/qa/question/${idParam}/helpful`,
+      type: 'PUT',
+      succes: status => {
+        console.log('Succes: ', status);
+      },
+    });
+    let oldCount = this.state.helpCount;
+    let newCount = oldCount += 1;
+    this.setState({
+      helpCount: newCount
+    })
   }
 
   showMoreAnswers(e) {
@@ -88,7 +103,7 @@ class Question extends React.Component {
               >
                 Yes
               </button>
-              ({this.helpfullnessCount}) |
+              ({this.state.helpCount}) |
               <button
                 type="button"
                 className="helpful-button"

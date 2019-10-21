@@ -68,6 +68,22 @@ class ModalAnswer extends React.Component {
         "email": this.state.email,
         "photos": this.state.photos
       }
+
+      fetch(`http://52.26.193.201:3000/qa/${param}/answers`, {
+        method: 'post',
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(options)
+      })
+      .then(response => response.text())
+      .then(function (data) {
+        console.log('post data from promise:', data);
+      })
+      .catch(function (error) {
+        console.log('Failed', error);
+     });
+
       this.props.close();
     }
 
@@ -97,7 +113,7 @@ class ModalAnswer extends React.Component {
           </button>
           <div className="modal-body">
             <h5 className="modal-headings">What is your answer? (mandatory)</h5>
-            <input
+            <textarea
               className="question-form"
               type="text"
               maxLength="1000"
@@ -105,7 +121,7 @@ class ModalAnswer extends React.Component {
               onChange={e => {
                 this.handleAnswer(e);
               }}
-            ></input>
+            ></textarea>
             <h5 className="modal-headings">
               What is your nickname? (mandatory)
             </h5>
@@ -143,6 +159,7 @@ class ModalAnswer extends React.Component {
               type="button"
               onClick={() => {
                 this.checkData(this.state);
+                console.log(this.state.photos);
               }}
             >
               Submit

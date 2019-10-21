@@ -46,7 +46,6 @@ class QuestionList extends React.Component {
   }
 
   helpfullnessButton(helpfullnessCount, questionId) {
-    console.log('Shit: ', this.props);
     const idParam = this.props.currentProduct.id;
     // let oldCount = helpfullnessCount;
     // const newCount = (oldCount += 1);
