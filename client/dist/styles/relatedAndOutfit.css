@@ -169,3 +169,23 @@
     visibility: visible;
   }
 }
+
+.relatedCardProductInfo p {
+  margin: 0px 5px;
+}
+
+.relatedProductName {
+  font-family: Impact, Haettenschweiler, "Arial Bold", sans-serif;
+}
+
+.relatedModalButton {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  /* opacity: 0; */
+  /* transition: .3s ease; */
+}
+
+.relatedModalButton:hover {
+  color: yellow;
+}
