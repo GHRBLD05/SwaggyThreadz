@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
-import QuestionsModule from '../Questions_answers/QuestionsModule.jsx';
+import { connect } from "react-redux";
+import QuestionsModule from "../Questions_answers/QuestionsModule.jsx";
 
 const mapStateToProps = state => ({
-  currentProduct: state.currentProduct,
+  currentProduct: state.currentProduct
 });
 
 const QuestionsContainer = connect(
