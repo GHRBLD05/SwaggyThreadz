@@ -41,13 +41,11 @@ export default class Review extends React.Component {
     }
 
     render() {
-        let lastIndex = 0;
         var stars = [];
         for (let i = 0; i < this.state.rating; i++) {
             stars.push(<Star key={`star_${i}`} />);
         }
-        lastIndex = this.state.rating;
-        for (; lastIndex < this.maxrating; lastIndex++) {
+        for (lastIndex = this.state.rating; lastIndex < this.maxrating; lastIndex++) {
             stars.push(<EmptyStar key={`star_${lastIndex}`} />);
         }
         var photos = [];

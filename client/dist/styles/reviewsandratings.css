@@ -29,11 +29,6 @@
     padding: 1.25em 0em;
 }
 
-.focus {
-    color: rgba(0, 0, 0, .65);
-    font-weight: bold;
-}
-
 .filter .dropdown {
     margin-left: .1em;
     border: none;
