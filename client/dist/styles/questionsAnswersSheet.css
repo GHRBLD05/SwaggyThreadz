@@ -1,6 +1,6 @@
 .search-bar {
   position: relative;
-
+  font-size: 0.97em;
   width: 100rem;
   height: 3.2rem;
   box-sizing: border-box;
@@ -146,9 +146,8 @@ h6 {
   padding-left: 15px;
 }
 
-.overflow-auto {
-  height: 500px;
-  width: 1125px;
+.qa-overflow {
+  overflow: auto;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -163,4 +162,22 @@ h6 {
   border: none;
   margin-left: 15px;
   font-weight: bold;
+}
+
+.add-question {
+  margin: 9px;
+  font-size: 0.97em;
+}
+
+.more-questions {
+  margin: 9px;
+  font-size: 0.97em;
+}
+
+.question-list {
+  max-height: 10vh;
+}
+
+.root-qa {
+  max-height: 70%;
 }

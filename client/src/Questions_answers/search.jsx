@@ -46,6 +46,7 @@ class Search extends React.Component {
           searchTerm={this.state.term}
           currentProduct={this.props.currentProduct}
           showAnswerModal={this.props.showAnswerModal}
+          className="question-list"
         />
       </div>
     );

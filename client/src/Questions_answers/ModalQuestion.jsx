@@ -8,7 +8,7 @@ class ModalQuestion extends React.Component {
     this.state = {
       question: '',
       nickName: '',
-      email: '',
+      email: ''
     };
     this.filledOut = false;
     this.handleQuesiton = this.handleQuestion.bind(this);
@@ -21,6 +21,7 @@ class ModalQuestion extends React.Component {
     this.setState({
       question: event.target.value,
     });
+
   }
 
   handlenickName(event) {
@@ -55,23 +56,43 @@ class ModalQuestion extends React.Component {
       const param = this.props.productId.id;
       // eslint-disable-next-line prefer-const
       let options = {
-        body: this.state.question,
-        name: this.state.nickName,
-        email: this.state.email,
+        "body": "hello",
+        "name": "hello",
+        "email": "hello@hello.com",
       };
       // options = JSON.stringify(options);
-      // $.post(`http://52.26.193.201:3000/qa/${param}`, options, status => {
+      // $.post(`http://52.26.193.201:3000/qa/1`, {"body": "Does this test work?", "name": "Axel", "email": "poopman@pooper.com"}, status => {
       //   console.log('Question was saved to the API: ', status);
       // });
-      $.ajax({
-        type: 'POST',
-        url: `http://52.26.193.201:3000/qa/${param}`,
-        data: JSON.stringify(options),
-        contentType: false,
-        success: status => {
-          console.log('It worked', status);
+
+      // $.ajax({
+      //   type: "POST",
+      //   url: `http://52.26.193.201:3000/qa/5`,
+      //   data: JSON.stringify({body: "Does this test work?", name: "Axel", email: "poopman@pooper.com"}),
+      //   dataType: "json",
+      //   contentType: "application/json",
+      // })
+      // .then((status) => {
+      //   console.log('It worked', status)
+      // })
+      // .fail((hello, hellö, err) => {
+      //   console.log('this is the error: ', err);
+      // });
+
+      fetch('http://52.26.193.201:3000/qa/5', {
+        method: 'post',
+        headers: {
+          "Content-type": "application/json"
         },
-      });
+        body: JSON.stringify({"body": "What is the meaning?", "name": "Axel", "email": "poopman@pooper.com"})
+      })
+      .then(response => response.text())
+      .then(function (data) {
+        console.log('post data from promise:',data);
+      })
+      .catch(function (error) {
+        console.log('Failed', error);
+     });
 
       this.props.close();
     }
@@ -104,15 +125,14 @@ class ModalQuestion extends React.Component {
             <h5 className="modal-headings">
               What is your question? (mandatory)
             </h5>
-            <input
+            <textarea
               className="question-form"
-              type="text"
               maxLength="1000"
               value={this.state.question}
               onChange={e => {
                 this.handleQuestion(e);
               }}
-            ></input>
+            ></textarea>
             <h5 className="modal-headings">
               What is your nickname? (mandatory)
             </h5>
