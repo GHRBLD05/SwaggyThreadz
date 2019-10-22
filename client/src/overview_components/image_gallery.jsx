@@ -10,36 +10,24 @@ const ImageGallery = props => (
       role="listbox"
     >
       <ol className="carousel-indicators">
-        <li
-          data-target="#my-carousel"
-          data-slide-to="0"
-          className="active"
-        ></li>
-        <li data-target="#my-carousel" data-slide-to="1"></li>
-        <li data-target="#my-carousel" data-slide-to="2"></li>
+        {props.currentStyle.photos.map((photo, i) => (
+          <li
+            data-target="#my-carousel"
+            data-slide-to={i}
+            className={i === 0 ? 'active' : null}
+          ></li>
+        ))}
       </ol>
       <div className="carousel-inner">
-        <div className="img-fluid active">
-          <img
-            className="img-fluis mx-auto d-block"
-            src={props.currentStyle.photos[0].url}
-            alt={props.currentProduct.name}
-          />
-        </div>
-        <div className="item">
-          <img
-            // className="img-responsive"
-            src={props.currentStyle.photos[1].url}
-            alt="Second slide"
-          />
-        </div>
-        <div className="item">
-          <img
-            // className="img-responsive"
-            src="..."
-            alt="Third slide"
-          />
-        </div>
+        {props.currentStyle.photos.map((photo, i) => (
+          <div className={i === 0 ? 'carousel-item active' : 'carousel-item'}>
+            <img
+              className="img-fluid mx-auto d-block"
+              src={photo.url}
+              alt={props.currentStyle.name}
+            />
+          </div>
+        ))}
       </div>
       <a
         className="carousel-control-prev"
