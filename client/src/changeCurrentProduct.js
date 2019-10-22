@@ -147,6 +147,24 @@ const addMetadataToCurrent = product =>
     });
   });
 
+const addQuestionsToCurrent = product =>
+  new Promise((resolve, reject) => {
+    $.get(`http://52.26.193.201:3000/qa/${product.id}`, questionData => {
+      product.questions = questionData.results.sort(function(a, b) {
+        const itemA = a.question_helpfulness;
+        const itemB = b.question_helpfulness;
+        let comparison = 0;
+        if (itemB > itemA) {
+          comparison = 1;
+        } else if (itemB < itemA) {
+          comparison = -1;
+        }
+        return comparison;
+      });
+      resolve(product);
+    });
+  });
+
 const changeCurrentProduct = (productName, callback) => {
   updateProductList()
     .then(productList => getIdFromName(productName, productList))
@@ -177,12 +195,11 @@ const changeCurrentProduct = (productName, callback) => {
       Promise.all([
         styles,
         style,
-        currentProduct,
+        addQuestionsToCurrent(currentProduct),
         addRatingToRelated(relatedProducts),
       ])
     )
     .then(([styles, style, currentProduct, relatedProducts]) => {
-      console.log('CURRENT PRODUCT::  ', currentProduct);
       callback(currentProduct, styles, style, relatedProducts);
     });
 };

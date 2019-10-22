@@ -16,6 +16,26 @@ const initialState = {
         value: '',
       },
     ],
+    questions: [
+      {
+        question_id: 0,
+        question_body: '',
+        question_date: '',
+        asker_name: '',
+        question_helpfulness: 0,
+        reported: 0,
+        answers: {
+          '0': {
+            id: 0,
+            body: '',
+            date: '',
+            answerer_name: '',
+            helpfulness: 0,
+            photos: [],
+          },
+        },
+      },
+    ],
   },
   currentStyle: {
     style_id: 0,
