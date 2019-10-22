@@ -211,6 +211,10 @@
   height: 300px;
 }
 
-#relatedModal .modal-title {
-  justify-self: center;
+.relatedCard {
+  transition: 0.3s;
+}
+
+.relatedCard:hover {
+  opacity: 0.5;
 }
