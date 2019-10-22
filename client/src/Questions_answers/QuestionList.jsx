@@ -46,6 +46,8 @@ class QuestionList extends React.Component {
   }
 
   render() {
+    const lessThanTwo = this.state.questions.length <= 2 ? {} : {display: 'none'};
+
     if (this.props.searchTerm.length >= 3) {
       return (
         <div className="qa-overflow">
