@@ -10,6 +10,7 @@ class Question extends React.Component {
       answers: [],
       answersLimit: 2,
       showButton: false,
+      collapseButton: false,
       showAnswerModal: false,
       helpCount: this.props.helpfullness,
       clickedYes: false
@@ -72,6 +73,14 @@ class Question extends React.Component {
     this.setState({
       answersLimit: newLimit,
     });
+    console.log('showbutton: ', this.state.showButton, 'answersLimit: ', this.state.answersLimit, 'answersLenght: ', this.state.answers.length);
+
+    if (this.state.answers.length - this.state.answersLimit <= 1) {
+      this.setState({
+        showButton: false,
+        collapseButton: true
+      })
+    }
   }
 
   showAnswerModal(e) {
@@ -86,9 +95,19 @@ class Question extends React.Component {
     });
   }
 
+  collapseAnswers(e) {
+    this.setState({
+      answersLimit: 2,
+      showButton: true,
+      collapseButton: false,
+    })
+  }
+
   render() {
     const buttonStyle = this.state.showButton ? {} : { display: 'none' };
     const noAnswers = !this.state.answers.length ? { display: 'none' } : {};
+    const lastAnswer = (this.state.collapseButton) ? {} : { display: 'none'};
+
     return (
       <div>
         <div className="row">
@@ -129,6 +148,7 @@ class Question extends React.Component {
             {this.state.answers
               .slice(0, this.state.answersLimit)
               .map((answer, i) => (
+
                 <Answer
                   userName={answer.answerer_name}
                   body={answer.body}
@@ -150,12 +170,13 @@ class Question extends React.Component {
             type="button"
             className="more-answers-button"
             onClick={e => {
-              this.showMoreAnswers(e);
+            this.showMoreAnswers(e);
             }}
           >
-            Load more answers
+          Load more answers
           </button>
         </div>
+        <button type="button" className="more-answers-button" style={lastAnswer} onClick={(e) => {this.collapseAnswers(e)}}>Collapse Answers</button>
         <ModalAnswer
           close={this.closeAnswerModal}
           show={this.state.showAnswerModal}
