@@ -1,4 +1,5 @@
 import React from 'react';
+import RelatedModal from './relatedModal.jsx';
 
 const RelatedProduct = props => (
   <div
@@ -15,7 +16,7 @@ const RelatedProduct = props => (
       position: 'relative',
       width: '100%',
       height: '300px',
-      border: 'red solid 2px'
+      border: 'red solid 2px',
     }}
   >
     <img
@@ -23,8 +24,19 @@ const RelatedProduct = props => (
       alt={props.product.name}
       style={{ width: '100%', height: '200px', objectFit: 'cover' }}
     />
-    <i className="relatedModalButton fa fa-star fa-lg"></i>
-    {console.log('related product: ', props.product)}
+    <button
+      type="button"
+      className="relatedModalButton fa fa-star fa-lg"
+      data-toggle="modal"
+      data-target={`#relatedModal${props.product.id}`}
+      onClick={e => {
+        e.stopPropagation();
+      }}
+    ></button>
+    <RelatedModal
+      relatedProduct={props.product}
+      currentProduct={props.currentProduct}
+    />
     <div className="relatedCardProductInfo">
       <p className="relatedProductCategory">{props.product.category}</p>
       <p className="relatedProductName">{props.product.name}</p>
