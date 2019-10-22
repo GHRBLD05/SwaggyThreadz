@@ -213,6 +213,10 @@
 
 .relatedCard {
   transition: 0.3s;
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border: red solid 2px;
 }
 
 .relatedCard:hover {
