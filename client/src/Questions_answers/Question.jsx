@@ -74,7 +74,7 @@ class Question extends React.Component {
     });
     console.log('showbutton: ', this.state.showButton, 'answersLimit: ', this.state.answersLimit, 'answersLenght: ', this.state.answers.length);
 
-    if (this.state.answers.length - this.state.answersLimit === 1) {
+    if (this.state.answers.length - this.state.answersLimit <= 1) {
       this.setState({
         showButton: false,
       })
