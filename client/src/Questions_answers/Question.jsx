@@ -135,6 +135,7 @@ class Question extends React.Component {
                   date={answer.date}
                   helpfullness={answer.helpfulness}
                   photos={answer.photos}
+                  answerId={answer.answer_id}
                   key={i}
                   helpfullnessButton={this.helpfullnessButton}
                 />
