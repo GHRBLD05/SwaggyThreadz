@@ -1,11 +1,11 @@
-import React from "react";
-import StarRating from "../star_component/StarRating.jsx";
+import React from 'react';
+import StarRating from '../star_component/StarRating.jsx';
 // import Emptystar from '../star_component/Emptystar.jsx';
 // import Halfstar from '../star_component/Halfstar.jsx';
 
 const ProductInfo = props => (
   <div className="productInfo">
-    <StarRating />
+    {/* <StarRating /> */}
     {/* <Halfstar />
     <Emptystar /> */}
     <p>

@@ -10,7 +10,7 @@ export default class Ratings extends React.Component {
       <div id="ratings" className="col-md-4">
         <h1>Ratings</h1>
 
-        <StarRating />
+        {<StarRating />}
 
         {/* <Emptystar />
         <Halfstar /> */}
