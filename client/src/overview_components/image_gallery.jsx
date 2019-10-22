@@ -19,9 +19,9 @@ const ImageGallery = props => (
         <li data-target="#my-carousel" data-slide-to="2"></li>
       </ol>
       <div className="carousel-inner">
-        <div className="item active">
+        <div className="img-fluid active">
           <img
-            // key={props.currentProduct.id}
+            className="img-fluis mx-auto d-block"
             src={props.currentStyle.photos[0].url}
             alt={props.currentProduct.name}
           />
@@ -29,7 +29,7 @@ const ImageGallery = props => (
         <div className="item">
           <img
             // className="img-responsive"
-            src=""
+            src={props.currentStyle.photos[1].url}
             alt="Second slide"
           />
         </div>

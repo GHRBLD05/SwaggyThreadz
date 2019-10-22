@@ -9,11 +9,11 @@ const mapStateToProps = state => ({
   currentSize: state.currentSize,
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   handleSearch: q => {
-//     dispatch(handleProductSearch(q));
-//   },
-// });
+const mapDispatchToProps = dispatch => ({
+  handleSearch: q => {
+    dispatch(handleProductSearch(q));
+  },
+});
 
 const OverviewContainer = connect(
   mapStateToProps,
