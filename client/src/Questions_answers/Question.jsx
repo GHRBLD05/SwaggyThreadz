@@ -100,8 +100,7 @@ class Question extends React.Component {
   render() {
     const buttonStyle = this.state.showButton ? {} : { display: 'none' };
     const noAnswers = !this.state.answers.length ? { display: 'none' } : {};
-    let counter = 0;
-    const lastAnswer = this.state.answers.length <= this.state.answersLimit ? { display: 'none' } : {};
+
     return (
       <div>
         <div className="row">
