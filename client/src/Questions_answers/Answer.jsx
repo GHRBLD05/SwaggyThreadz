@@ -72,7 +72,7 @@ class Answer extends React.Component {
           <p className="user-date-helpful">
             by <span style={isSeller}>{this.props.userName}</span>, {this.date.toDateString()} | Helpful?
           </p>
-          <p className="user-date-helpful">
+          <p className="yes-report">
             <button
               type="button"
               className="helpful-button"

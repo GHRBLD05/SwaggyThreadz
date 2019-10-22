@@ -176,8 +176,8 @@ h6 {
   font-size: 0.97em;
 }
 
-.question-list {
-
+.yes-report {
+  opacity: 0.5;
 }
 
 .root-qa {
