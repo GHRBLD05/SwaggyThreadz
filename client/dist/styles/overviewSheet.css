@@ -1,2 +1,26 @@
-.carousel-slide {
+.rounded-circle {
+  /* border: 1px solid #ddd;  */
+  /* Gray border */
+  border-radius: 50%; /* Rounded border */
+  padding: 5px; /* Some padding */
+  height: 70px;
+  width: 70px; /* Set a small width */
+}
+#my-carousel {
+  max-width: 100%;
+  height: 480;
+  margin: 60px 0px 0px 0px;
+  /* position: absolute; */
+}
+.carousel-inner {
+  max-width: 100%;
+  height: 480px;
+}
+.productInfo {
+  margin: 60px 0px 0px 0px;
+}
+.carousel-inner {
+  max-width: 100%;
+  height: 480px;
+  margin: auto;
 }

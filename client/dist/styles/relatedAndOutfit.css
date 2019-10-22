@@ -169,3 +169,52 @@
     visibility: visible;
   }
 }
+
+.relatedCardProductInfo p {
+  margin: 0px 5px;
+}
+
+.relatedProductName {
+  font-family: Impact, Haettenschweiler, "Arial Bold", sans-serif;
+}
+
+.relatedModalButton {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: none;
+  border: none;
+  /* opacity: 0; */
+  /* transition: .3s ease; */
+}
+
+.relatedModalButton:hover {
+  color: yellow;
+  text-shadow: 0 0 2px black;
+}
+
+.productCardWrapper {
+  height: 400px;
+}
+
+#relatedCarousel .carousel-control-next {
+  margin-right: -30px;
+  width: 50px;
+}
+
+#relatedCarousel .carousel-control-prev {
+  margin-left: -30px;
+  width: 50px;
+}
+
+#relatedCarousel {
+  height: 300px;
+}
+
+.relatedCard {
+  transition: 0.3s;
+}
+
+.relatedCard:hover {
+  opacity: 0.5;
+}

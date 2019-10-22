@@ -1,5 +1,5 @@
 import React from 'react';
-import Star from '../star_component/Star.jsx';
+import StarRating from '../star_component/StarRating.jsx';
 import EmptyStar from '../star_component/Emptystar.jsx';
 import $ from 'jquery';
 
@@ -43,9 +43,9 @@ export default class Review extends React.Component {
     render() {
         var stars = [];
         for (let i = 0; i < this.state.rating; i++) {
-            stars.push(<Star key={`star_${i}`} />);
+            stars.push(<EmptyStar key={`star_${i}`} />);
         }
-        for (lastIndex = this.state.rating; lastIndex < this.maxrating; lastIndex++) {
+        for (let lastIndex = this.state.rating; lastIndex < this.maxrating; lastIndex++) {
             stars.push(<EmptyStar key={`star_${lastIndex}`} />);
         }
         var photos = [];
@@ -83,7 +83,7 @@ export default class Review extends React.Component {
                 </content>
                 <footer className="leftjustify review_feedback">
                     <div>Was this review helpful?: {this.state.helpfulness}</div>
-                    <div onClick={() =>this.incrementHelpful()} className="leftpadding reviewlinks">Yes</div><div className="leftpadding">|</div><div onClick={() => this.reportReview()} className="leftpadding reviewlinks">Report</div>
+                    <div onClick={() => this.incrementHelpful()} className="leftpadding reviewlinks">Yes</div><div className="leftpadding">|</div><div onClick={() => this.reportReview()} className="leftpadding reviewlinks">Report</div>
                 </footer>
             </div>
         )

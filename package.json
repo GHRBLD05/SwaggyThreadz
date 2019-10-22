@@ -17,10 +17,12 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "core-js": "^3.3.2",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "jquery": "^3.4.1",
     "path": "^0.12.7",
+    "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-redux": "^7.1.1",

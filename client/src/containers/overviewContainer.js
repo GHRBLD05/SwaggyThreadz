@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import Overview from '../overview_components/overview.jsx';
-import handleProductSearch from '../actions/productSearch.js';
+import handleProductChange from '../actions/productChange.js';
 
 const mapStateToProps = state => ({
   currentProduct: state.currentProduct,
   currentStyle: state.currentStyle,
-  StylesArray: state.StylesArray,
+  stylesArray: state.stylesArray,
   currentSize: state.currentSize,
 });
 
@@ -17,7 +17,7 @@ const mapDispatchToProps = dispatch => ({
 
 const OverviewContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(Overview);
 
 export default OverviewContainer;
