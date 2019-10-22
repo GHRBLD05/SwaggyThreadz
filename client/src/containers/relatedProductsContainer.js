@@ -1,12 +1,9 @@
 import { connect } from 'react-redux';
 import Related from '../relatedAndOutfit/related.jsx';
-// import changeProduct from '../actions/currentProduct.js';
-// import changeStyle from '../actions/currentStyle.js';
-// import changeStylesArray from '../actions/stylesArray.js';
-// import changeRelatedProducts from '../actions/relatedProducts.js';
 import handleProductChange from '../actions/productChange.js';
 
 const mapStateToProps = state => ({
+  currentProduct: state.currentProduct,
   relatedProducts: state.relatedProducts,
 });
 

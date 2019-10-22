@@ -49,8 +49,8 @@ import RelatedProduct from './relatedProduct.jsx';
 //   }
 // });
 
-const Related = ({ relatedProducts, handleProductClick }) => (
-  <div>
+const Related = ({ currentProduct, relatedProducts, handleProductClick }) => (
+  <div className="productCardWrapper">
     <div className="col-md-12 text-left">
       <h3>Related Products</h3>
     </div>
@@ -81,6 +81,7 @@ const Related = ({ relatedProducts, handleProductClick }) => (
               >
                 <RelatedProduct
                   key={product.id}
+                  currentProduct={currentProduct}
                   product={product}
                   handleProductClick={handleProductClick}
                 />
