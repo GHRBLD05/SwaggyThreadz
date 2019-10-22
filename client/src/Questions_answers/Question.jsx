@@ -72,6 +72,13 @@ class Question extends React.Component {
     this.setState({
       answersLimit: newLimit,
     });
+    console.log('showbutton: ', this.state.showButton, 'answersLimit: ', this.state.answersLimit, 'answersLenght: ', this.state.answers.length);
+
+    if (this.state.answers.length - this.state.answersLimit === 1) {
+      this.setState({
+        showButton: false,
+      })
+    }
   }
 
   showAnswerModal(e) {
@@ -86,9 +93,15 @@ class Question extends React.Component {
     });
   }
 
+  incrementer(counter) {
+
+  }
+
   render() {
     const buttonStyle = this.state.showButton ? {} : { display: 'none' };
     const noAnswers = !this.state.answers.length ? { display: 'none' } : {};
+    let counter = 0;
+    const lastAnswer = this.state.answers.length <= this.state.answersLimit ? { display: 'none' } : {};
     return (
       <div>
         <div className="row">
@@ -129,6 +142,7 @@ class Question extends React.Component {
             {this.state.answers
               .slice(0, this.state.answersLimit)
               .map((answer, i) => (
+
                 <Answer
                   userName={answer.answerer_name}
                   body={answer.body}

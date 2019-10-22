@@ -17,7 +17,7 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="search-component">
         <h4 className="col-4">Questions and Answers</h4>
         <div className="col-md-12 search-bar">
           <input

@@ -112,6 +112,7 @@ h5 {
 }
 
 h6 {
+  margin: 5%;
   font-size: 10px;
 }
 
@@ -148,7 +149,7 @@ h6 {
 
 .qa-overflow {
   overflow: auto;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
@@ -175,11 +176,11 @@ h6 {
 }
 
 .question-list {
-  max-height: 10vh;
+
 }
 
 .root-qa {
-  max-height: 70%;
+  max-height: relative;
 }
 
 .photos {
@@ -187,3 +188,17 @@ h6 {
   max-width: 6em;
   margin: 3%;
 }
+
+.search-component {
+  max-height: 100%;
+}
+
+.submit-modal {
+  margin-top: 5%;
+}
+
+.file-upload {
+  background: none;
+}
+
+

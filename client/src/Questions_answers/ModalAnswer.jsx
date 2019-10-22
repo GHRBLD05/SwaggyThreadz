@@ -150,12 +150,14 @@ class ModalAnswer extends React.Component {
             <h5>If you would like to share photos, upload them here</h5>
             <input
             type="file"
+            className="file-upload"
             multiple
             accept="image/png, image/jpeg"
             onChange={(e) => {
               this.handlePhotos(e);
             }}></input>
             <button
+            className="submit-modal"
               type="button"
               onClick={() => {
                 this.checkData(this.state);
