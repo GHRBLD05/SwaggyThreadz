@@ -3,25 +3,33 @@ import OverviewContainer from './containers/overviewContainer.js';
 import RelatedProductsContainer from "./containers/relatedProductsContainer.js";
 import QuestionsContainer from "./containers/QuestionsContainer.jsx";
 import ReviewsAndRatings from "./reviewcomponent/reviewsandratings.jsx";
-import fs from "fs";
+import $ from 'jquery';
 
 export default class App extends React.Component {
   constructor(props) {
       super(props);
   
-      document.getElementById('app').addEventListener('click', e => console.log(e));
+      document.getElementById('app').addEventListener('click', e => this.logClickEvent(e));
   }
 
-    logEvent(e) {
-
+    logClickEvent(e) {
+        var obj = {};
+        for (var i = 0; i < e.path.length; i++) {
+            if (e.path[i].id !== undefined && e.path[i].id.startsWith("module")) {
+                obj[e.path[i].id] = e.target.className;
+            }
+        }
         $.ajax({
-            url: "http://52.26.193.201:3000/reviews/report/" + `${this.state.review_id}`,
+            url: "http://127.0.0.1:3000/telemetry",
             type: "PUT",
-            success: function (res) {
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(obj),
+            success: function (res) { 
+                console.log(`Click Info Logged: ${obj}`);
             }
         });
     }
-
 
   render() {
     return (
