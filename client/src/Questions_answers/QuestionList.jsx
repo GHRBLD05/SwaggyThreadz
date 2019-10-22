@@ -32,6 +32,7 @@ class QuestionList extends React.Component {
 
   render() {
     const lessThanTwo = this.props.currentProduct.questions.length <= 2 ? {} : {display: 'none'};
+    console.log('QUESTIONS: ', this.props.currentProduct.questions)
 
     if (this.props.searchTerm.length >= 3) {
       return (
@@ -50,8 +51,11 @@ class QuestionList extends React.Component {
     return (
       <div className="qa-overflow">
         {this.props.currentProduct.questions
-          .slice(0, this.props.questionsShown)
-          .map((question, i) => (
+          .slice(1, this.props.questionsShown)
+          .map((question, i) => {
+            console.log(question.question_id, 'helpfullness: ', question.question_helpfulness)
+          return (
+
             <Question
               key={i}
               currQuestion={question.question_body}
@@ -59,7 +63,7 @@ class QuestionList extends React.Component {
               id={question.question_id}
               showAnswerModal={this.props.showAnswerModal}
             />
-          ))}
+          )})}
       </div>
     );
   }

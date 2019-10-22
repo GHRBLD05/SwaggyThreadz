@@ -50,6 +50,19 @@ class QuestionsModule extends React.Component {
   }
 
   render() {
+    const buttonStyling = {
+      margin: '9px',
+      fontsize: '0.97em',
+      fontsize: '0.75em',
+      padding: '0.75em 0.65em',
+      backgroundcolor: 'white',
+      border: '0.01em solid black',
+      color: 'rgba(0, 0, 0, 0.65)',
+      fontweight: 'bold',
+      color: 'rgba(0, 0, 0, .65)',
+      fontweight: 'bold'
+    }
+    const anyQuestions = !this.props.currentProduct.questions.length ? {display: 'none'} : buttonStyling;
     return (
       <div className="root-qa">
         <Search
@@ -66,6 +79,7 @@ class QuestionsModule extends React.Component {
           <button
             className="button more-questions focus"
             type="button"
+            style={anyQuestions}
             onClick={e => {
               this.showMoreQuestions();
             }}
