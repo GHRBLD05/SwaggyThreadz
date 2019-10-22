@@ -1,10 +1,35 @@
 import React from 'react';
+import $ from 'jquery';
 
 class Answer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      clickedYes: false,
+      helpCount: this.props.helpfullness
+    };
     this.date = new Date(this.props.date);
+  }
+
+  helpfullnessButton(e) {
+    if (this.state.clickedYes === false) {
+
+      let idParam = this.props.answerId;
+      $.ajax({
+        url: `http://52.26.193.201:3000/qa/answer/${idParam}/helpful`,
+        type: 'PUT',
+        succes: status => {
+          console.log('Succes: ', status);
+        },
+      });
+      let oldCount = this.state.helpCount;
+      let newCount = oldCount += 1;
+      this.setState({
+        clickedYes: true,
+        helpCount: newCount,
+      })
+    }
+
   }
 
   render() {
@@ -31,12 +56,12 @@ class Answer extends React.Component {
               type="button"
               className="helpful-button"
               onClick={e => {
-                this.props.helpfullnessButton(e);
+                this.helpfullnessButton(e);
               }}
             >
               Yes
             </button>
-            ({this.props.helpfullness}) |
+            ({this.state.helpCount}) |
             <button type="button" className="helpful-button">
               Report
             </button>

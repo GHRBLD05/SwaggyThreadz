@@ -48,7 +48,7 @@ class QuestionList extends React.Component {
   render() {
     if (this.props.searchTerm.length >= 3) {
       return (
-        <div className="overflow-auto">
+        <div className="qa-overflow">
           {this.state.filteredQuestions.map((question, i) => (
             <Question
               key={i}
