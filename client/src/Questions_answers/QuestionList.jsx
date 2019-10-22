@@ -12,20 +12,7 @@ class QuestionList extends React.Component {
     this.filterQuestions = this.filterQuestions.bind(this);
   }
 
-  componentDidMount() {
-    // Remember to change id param
-    const param = this.props.currentProduct.id;
 
-    //   $.get(`http://52.26.193.201:3000/qa/${param}`, data => {
-    //     console.log(data);
-    //   }).then(results => {
-    //     const dataCopy = results.results.slice();
-    //     const sorted = dataCopy.sort(compare);
-    //     this.setState({
-    //       questions: sorted,
-    //     });
-    //   });
-  }
 
   componentDidUpdate(prevProps) {
     if (this.props.searchTerm !== prevProps.searchTerm) {
@@ -44,7 +31,7 @@ class QuestionList extends React.Component {
   }
 
   render() {
-    const lessThanTwo = this.state.questions.length <= 2 ? {} : {display: 'none'};
+    const lessThanTwo = this.props.currentProduct.questions.length <= 2 ? {} : {display: 'none'};
 
     if (this.props.searchTerm.length >= 3) {
       return (
