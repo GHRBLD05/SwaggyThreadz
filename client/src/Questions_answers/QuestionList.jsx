@@ -6,27 +6,25 @@ class QuestionList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: [],
       questionsLimit: this.props.questionsShown,
       filteredQuestions: [],
     };
     this.filterQuestions = this.filterQuestions.bind(this);
-    console.log('questionslist props: ', props);
   }
 
   componentDidMount() {
     // Remember to change id param
     const param = this.props.currentProduct.id;
 
-    $.get(`http://52.26.193.201:3000/qa/${param}`, data => {
-      console.log(data);
-    }).then(results => {
-      const dataCopy = results.results.slice();
-      const sorted = dataCopy.sort(compare);
-      this.setState({
-        questions: sorted,
-      });
-    });
+    //   $.get(`http://52.26.193.201:3000/qa/${param}`, data => {
+    //     console.log(data);
+    //   }).then(results => {
+    //     const dataCopy = results.results.slice();
+    //     const sorted = dataCopy.sort(compare);
+    //     this.setState({
+    //       questions: sorted,
+    //     });
+    //   });
   }
 
   componentDidUpdate(prevProps) {
@@ -36,7 +34,7 @@ class QuestionList extends React.Component {
   }
 
   filterQuestions() {
-    const notFiltered = this.state.questions;
+    const notFiltered = this.props.currentProduct.questions;
     const filtered = notFiltered.filter(question =>
       question.question_body.toLowerCase().includes(this.props.searchTerm)
     );
@@ -64,7 +62,7 @@ class QuestionList extends React.Component {
     }
     return (
       <div className="qa-overflow">
-        {this.state.questions
+        {this.props.currentProduct.questions
           .slice(0, this.props.questionsShown)
           .map((question, i) => (
             <Question
