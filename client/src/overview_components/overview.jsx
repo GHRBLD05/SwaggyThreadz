@@ -3,7 +3,7 @@ import NavBar from './nav_bar.jsx';
 import AddToCart from './add_to_cart.jsx';
 import ImageGallery from './image_gallery.jsx';
 import ProductInfo from './product_info.jsx';
-import StyleSelector from './style_selector.jsx';
+// import StyleSelector from './style_selector.jsx';
 
 const Overview = ({
   currentProduct,
@@ -49,12 +49,12 @@ const Overview = ({
             stylesArray={stylesArray}
             currentSize={currentSize}
           />
-          <StyleSelector
+          {/* <StyleSelector
             currentProduct={currentProduct}
             currentStyle={currentStyle}
             stylesArray={stylesArray}
             currentSize={currentSize}
-          />
+          /> */}
           <div>
             <AddToCart
               currentProduct={currentProduct}

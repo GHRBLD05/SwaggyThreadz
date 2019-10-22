@@ -1,25 +1,22 @@
 import React from 'react';
 import Search from './search.jsx';
 import ModalQuestion from './ModalQuestion.jsx';
-// import ModalAnswer from './ModalAnswer.jsx';
 
 class QuestionsModule extends React.Component {
-  constructor({ currentProduct }) {
-    super({ currentProduct });
+  constructor(props) {
+    super(props);
     this.state = {
       showQuestionModal: false,
-      showAnswerModal: false,
       questionsLimit: 2,
     };
     this.showQuestionModal = this.showQuestionModal.bind(this);
     this.closeQuestionModal = this.closeQuestionModal.bind(this);
     this.showMoreQuestions = this.showMoreQuestions.bind(this);
-    // this.handleSearch = this.handleSearch.bind(this);
     this.questionsShown = this.state.questionsLimit;
+    console.log('this should be the current product', props);
   }
 
   showQuestionModal(e) {
-    // this.e.preventDefault();
     this.setState({
       showQuestionModal: true,
     });
@@ -52,30 +49,22 @@ class QuestionsModule extends React.Component {
     console.log(this.state.questionsLimit);
   }
 
-  // handleSearch(term) {
-  //   const originalState = this.state;
-  //   if (term.length >= 3) {
-  //     this.setState({
-  //       questionsLimit: 10,
-  //     });
-  //   } else if (term.lenght < 3) {
-  //     this.setState(originalState);
-  //   }
-  // }
-
   render() {
     return (
-      <div id="module-questions">
+      <div id="module-questions" className="root-qa">
         <Search
           questionsShown={this.state.questionsLimit}
           handleSearch={this.handleSearch}
+          currentProduct={this.props.currentProduct}
         />
         <ModalQuestion
           close={this.closeQuestionModal}
           show={this.state.showQuestionModal}
+          productId={this.props.currentProduct}
         />
         <div className="row">
           <button
+            className="button more-questions focus"
             type="button"
             onClick={e => {
               this.showMoreQuestions();
@@ -85,11 +74,12 @@ class QuestionsModule extends React.Component {
           </button>
           <button
             type="button"
+            className="button add-question focus"
             onClick={e => {
               this.showQuestionModal();
             }}
           >
-            Add a quesiton +
+            Add a question +
           </button>
         </div>
       </div>

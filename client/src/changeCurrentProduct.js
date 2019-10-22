@@ -57,6 +57,30 @@ const getRelatedProducts = async relatedIDs => {
   return relatedProducts;
 };
 
+const getAvgRating = id =>
+  new Promise((resolve, reject) => {
+    $.get(`http://52.26.193.201:3000/reviews/${id}/list`, data => {
+      if (data.results.length === 0) {
+        resolve(null);
+      } else {
+        let avg = 0;
+        for (const review of data.results) {
+          avg += review.rating;
+        }
+        avg /= data.results.length;
+        resolve(avg);
+      }
+    });
+  });
+
+const addRatingToRelated = async relatedProducts => {
+  for (const product of relatedProducts) {
+    const avgRating = await getAvgRating(product.id);
+    product.averageRating = avgRating;
+  }
+  return relatedProducts;
+};
+
 const getRelatedStyles = id =>
   new Promise((resolve, reject) => {
     $.get(`http://52.26.193.201:3000/products/${id}/styles`, data => {
@@ -96,8 +120,6 @@ const getStyles = id =>
           break;
         }
       }
-      console.log('style: ', style);
-      console.log('stylesArray: ', styles);
       resolve([styles, style]);
     });
   });
@@ -109,7 +131,41 @@ const getCurrentProduct = id =>
     });
   });
 
-const handleSearch = (productName, callback) => {
+const addRatingToCurrent = product =>
+  new Promise((resolve, reject) => {
+    getAvgRating(product.id).then(averageRating => {
+      product.averageRating = averageRating;
+      resolve(product);
+    });
+  });
+
+const addMetadataToCurrent = product =>
+  new Promise((resolve, reject) => {
+    $.get(`http://52.26.193.201:3000/reviews/${product.id}/meta`, metaData => {
+      product.metaData = metaData;
+      resolve(product);
+    });
+  });
+
+const addQuestionsToCurrent = product =>
+  new Promise((resolve, reject) => {
+    $.get(`http://52.26.193.201:3000/qa/${product.id}`, questionData => {
+      product.questions = questionData.results.sort(function(a, b) {
+        const itemA = a.question_helpfulness;
+        const itemB = b.question_helpfulness;
+        let comparison = 0;
+        if (itemB > itemA) {
+          comparison = 1;
+        } else if (itemB < itemA) {
+          comparison = -1;
+        }
+        return comparison;
+      });
+      resolve(product);
+    });
+  });
+
+const changeCurrentProduct = (productName, callback) => {
   updateProductList()
     .then(productList => getIdFromName(productName, productList))
     .then(productID =>
@@ -119,24 +175,32 @@ const handleSearch = (productName, callback) => {
         getCurrentProduct(productID),
       ])
     )
-    .then(results =>
+    .then(([[styles, style], relatedIDs, currentProduct]) =>
       Promise.all([
-        results[0],
-        results[1],
-        results[2],
-        getRelatedProducts(results[1]),
+        styles,
+        style,
+        addRatingToCurrent(currentProduct),
+        getRelatedProducts(relatedIDs),
       ])
     )
-    .then(results =>
+    .then(([styles, style, currentProduct, relatedProducts]) =>
       Promise.all([
-        results[0],
-        results[1],
-        results[2],
-        addImageToRelated(results[3]),
+        styles,
+        style,
+        addMetadataToCurrent(currentProduct),
+        addImageToRelated(relatedProducts),
       ])
     )
-    .then(results =>
-      callback(results[2], results[0][0], results[0][1], results[3])
-    );
+    .then(([styles, style, currentProduct, relatedProducts]) =>
+      Promise.all([
+        styles,
+        style,
+        addQuestionsToCurrent(currentProduct),
+        addRatingToRelated(relatedProducts),
+      ])
+    )
+    .then(([styles, style, currentProduct, relatedProducts]) => {
+      callback(currentProduct, styles, style, relatedProducts);
+    });
 };
-export default handleSearch;
+export default changeCurrentProduct;

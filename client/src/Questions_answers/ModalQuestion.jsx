@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import $ from 'jquery';
 
 class ModalQuestion extends React.Component {
   constructor(props) {
@@ -13,12 +14,14 @@ class ModalQuestion extends React.Component {
     this.handleQuesiton = this.handleQuestion.bind(this);
     this.checkData = this.checkData.bind(this);
     this.submitModal = this.submitModal.bind(this);
+    console.log('yalla talla', props.productId);
   }
 
   handleQuestion(event) {
     this.setState({
       question: event.target.value,
     });
+
   }
 
   handlenickName(event) {
@@ -50,7 +53,29 @@ class ModalQuestion extends React.Component {
 
   submitModal(data) {
     if (this.filledOut === true) {
-      // Make the POST request
+      const param = this.props.productId.id;
+      // eslint-disable-next-line prefer-const
+      let options = {
+        "body": this.state.question,
+        "name": this.state.nickName,
+        "email": this.state.email,
+      };
+
+      fetch(`http://52.26.193.201:3000/qa/${param}`, {
+        method: 'post',
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(options)
+      })
+      .then(response => response.text())
+      .then(function (data) {
+        console.log('post data from promise:',data);
+      })
+      .catch(function (error) {
+        console.log('Failed', error);
+     });
+
       this.props.close();
     }
 
@@ -82,15 +107,14 @@ class ModalQuestion extends React.Component {
             <h5 className="modal-headings">
               What is your question? (mandatory)
             </h5>
-            <input
+            <textarea
               className="question-form"
-              type="text"
               maxLength="1000"
               value={this.state.question}
               onChange={e => {
                 this.handleQuestion(e);
               }}
-            ></input>
+            ></textarea>
             <h5 className="modal-headings">
               What is your nickname? (mandatory)
             </h5>

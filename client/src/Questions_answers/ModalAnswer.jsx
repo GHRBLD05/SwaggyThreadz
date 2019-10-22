@@ -34,11 +34,19 @@ class ModalAnswer extends React.Component {
     });
   }
 
+  handlePhotos(event) {
+    let newPhotos = Array.from(event.target.files);
+    this.setState({
+      photos: newPhotos
+    })
+
+  }
+
   checkData(data) {
     console.log('Modal props', this.props);
     // POST request to the api when button is clicked
     if (!this.state.answer.length) {
-      alert('You must ask a question to submit');
+      alert('You provide an answer to submit');
     } else if (!this.state.nickName.length) {
       alert('You must provide a nickname to submit');
     } else if (!this.state.email.length) {
@@ -52,6 +60,30 @@ class ModalAnswer extends React.Component {
   submitModal(data) {
     if (this.filledOut === true) {
       // Make the POST request
+      let param = this.props.questionId;
+
+      const options = {
+        "body": this.state.answer,
+        "name": this.state.nickName,
+        "email": this.state.email,
+        "photos": this.state.photos
+      }
+
+      fetch(`http://52.26.193.201:3000/qa/${param}/answers`, {
+        method: 'post',
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(options)
+      })
+      .then(response => response.text())
+      .then(function (data) {
+        console.log('post data from promise:', data);
+      })
+      .catch(function (error) {
+        console.log('Failed', error);
+     });
+
       this.props.close();
     }
 
@@ -81,15 +113,15 @@ class ModalAnswer extends React.Component {
           </button>
           <div className="modal-body">
             <h5 className="modal-headings">What is your answer? (mandatory)</h5>
-            <input
+            <textarea
               className="question-form"
               type="text"
               maxLength="1000"
               value={this.state.answer}
               onChange={e => {
-                this.handleQuestion(e);
+                this.handleAnswer(e);
               }}
-            ></input>
+            ></textarea>
             <h5 className="modal-headings">
               What is your nickname? (mandatory)
             </h5>
@@ -115,10 +147,21 @@ class ModalAnswer extends React.Component {
               }}
             ></input>
             <h6>For authentication reasons, you will not be emailed</h6>
+            <h5>If you would like to share photos, upload them here</h5>
+            <input
+            type="file"
+            className="file-upload"
+            multiple
+            accept="image/png, image/jpeg"
+            onChange={(e) => {
+              this.handlePhotos(e);
+            }}></input>
             <button
+            className="submit-modal"
               type="button"
               onClick={() => {
                 this.checkData(this.state);
+                console.log(this.state.photos);
               }}
             >
               Submit

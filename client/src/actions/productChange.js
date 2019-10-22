@@ -1,11 +1,11 @@
-import handleSearch from '../handleSearch';
+import changeCurrentProduct from '../changeCurrentProduct.js';
 import changeProduct from './currentProduct.js';
 import changeStyle from './currentStyle.js';
 import changeStylesArray from './stylesArray.js';
 import changeRelatedProducts from './relatedProducts.js';
 
-const handleProductSearch = productName => dispatch => {
-  handleSearch(
+const handleProductChange = productName => dispatch => {
+  changeCurrentProduct(
     productName,
     (product, styles, currentStyle, relatedProducts) => {
       dispatch(changeProduct(product));
@@ -16,4 +16,4 @@ const handleProductSearch = productName => dispatch => {
   );
 };
 
-export default handleProductSearch;
+export default handleProductChange;
