@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 const RelatedModal = props => {
   const featureObjects = props.currentProduct.features.map(featureObj => ({
     feature: featureObj.feature,
     currentProductValue: featureObj.value,
-    relatedProductValue: null
+    relatedProductValue: null,
   }));
   const features = featureObjects.map(featureObj => featureObj.feature);
   for (const relatedFeatureObj of props.relatedProduct.features) {
@@ -12,7 +12,7 @@ const RelatedModal = props => {
       featureObjects.push({
         feature: relatedFeatureObj.feature,
         currentProductValue: null,
-        relatedProductValue: relatedFeatureObj.value
+        relatedProductValue: relatedFeatureObj.value,
       });
     } else {
       for (const featureObj of featureObjects) {
@@ -22,9 +22,6 @@ const RelatedModal = props => {
       }
     }
   }
-  console.log("currentItem: ", props.currentProduct);
-  console.log("relatedItem: ", props.relatedProduct);
-  console.log("totalFeatures: ", featureObjects);
   return (
     <div
       className="modal fade container"
@@ -60,8 +57,8 @@ const RelatedModal = props => {
           </div>
           <div className="modal-body">
             <div className="container">
-              {featureObjects.map(featureObj => (
-                <div className="row">
+              {featureObjects.map((featureObj, i) => (
+                <div className="row" key={i}>
                   <div className="col-4">
                     <p>{featureObj.currentProductValue}</p>
                   </div>
@@ -82,9 +79,6 @@ const RelatedModal = props => {
               type="button"
               className="btn btn-secondary"
               data-dismiss="modal"
-              onClick={function(e) {
-                e.stopPropagation();
-              }}
             >
               Close
             </button>
