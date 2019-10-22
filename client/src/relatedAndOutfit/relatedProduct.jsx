@@ -11,7 +11,7 @@ const RelatedProduct = props => (
     }}
     tabIndex={0}
     role="button"
-    className="img-fluid mx-auto d-block"
+    className="img-fluid mx-auto d-block relatedCard"
     style={{
       position: 'relative',
       width: '100%',
@@ -27,11 +27,12 @@ const RelatedProduct = props => (
     <button
       type="button"
       className="relatedModalButton fa fa-star fa-lg"
-      data-toggle="modal"
-      data-target={`#relatedModal${props.product.id}`}
-      onClick={e => {
+      onClick={function(e) {
+        e.preventDefault();
         e.stopPropagation();
       }}
+      data-toggle="modal"
+      data-target={`#relatedModal${props.product.id}`}
     ></button>
     <RelatedModal
       relatedProduct={props.product}
