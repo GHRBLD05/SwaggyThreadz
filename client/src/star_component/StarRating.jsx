@@ -27,7 +27,7 @@ const StarRating = ({ starCount = 0 }) => {
       {iconType}
     </i>
   ));
-  // return <span className="star-rating">{starIcons}</span>;
+  return <span className="star-rating">{starIcons}</span>;
 };
 
 StarRating.propTypes = {
