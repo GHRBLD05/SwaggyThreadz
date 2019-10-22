@@ -1,11 +1,20 @@
+<<<<<<< HEAD
 import React from 'react';
 import StarRating from '../star_component/StarRating.jsx';
+=======
+import React from "react";
+import StarRating from "../star_component/StarRating.jsx";
+>>>>>>> 75364cac6dae3806e788a115a1e1b2d5ea89be1e
 // import Emptystar from '../star_component/Emptystar.jsx';
 // import Halfstar from '../star_component/Halfstar.jsx';
 
 const ProductInfo = props => (
   <div className="productInfo">
+<<<<<<< HEAD
     {/* <StarRating /> */}
+=======
+    <StarRating />
+>>>>>>> 75364cac6dae3806e788a115a1e1b2d5ea89be1e
     {/* <Halfstar />
     <Emptystar /> */}
     <p>

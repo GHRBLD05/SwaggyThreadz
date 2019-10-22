@@ -1,16 +1,17 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import setProductRatingValue from './ReviewMeta.js';
-import setProductSublables from './ReviewMeta.js';
+import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import setProductRatingValue from "./ReviewMeta.js";
+import setProductSublables from "./ReviewMeta.js";
 
 // TODO: refactor to not map entire state to props
 const mapStateToProps = state => ({
-  ...state,
+  ...state
 });
 
 export const ProductBreakdown = props => {
-  const {characteristics} = props.currentProduct.metaData;
+  const { characteristics } = props.currentProduct.metaData;
+
   const productLabels = Object.keys(characteristics || []).map(label => {
     const { leftSublabel, centerSublabel, rightSublabel } = setProductSublables(
       label
@@ -26,7 +27,7 @@ export const ProductBreakdown = props => {
           <div className="pb-detail">
             <input
               className={`pb-range range ${
-                leftValue ? 'range-show' : 'range-hide'
+                leftValue ? "range-show" : "range-hide"
               }`}
               type="range"
               value={leftValue}
@@ -40,7 +41,7 @@ export const ProductBreakdown = props => {
           <div className="pb-detail">
             <input
               className={`pb-range range ${
-                centerValue ? 'range-show' : 'range-hide'
+                centerValue ? "range-show" : "range-hide"
               }`}
               type="range"
               value={centerValue}
@@ -54,7 +55,7 @@ export const ProductBreakdown = props => {
           <div className="pb-detail">
             <input
               className={`pb-range range ${
-                rightValue ? 'range-show' : 'range-hide'
+                rightValue ? "range-show" : "range-hide"
               }`}
               type="range"
               value={rightValue}
@@ -82,14 +83,14 @@ ProductBreakdown.propTypes = {
     product_id: PropTypes.string,
     ratings: PropTypes.object,
     recommended: PropTypes.object,
-    characteristics: PropTypes.object,
-  }),
+    characteristics: PropTypes.object
+  })
 };
 
 ProductBreakdown.defaultProps = {
   getMetaData: {
-    characteristics: {},
-  },
+    characteristics: {}
+  }
 };
 
 const ConnectedProductBreakdown = connect(
