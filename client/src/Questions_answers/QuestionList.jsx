@@ -32,9 +32,7 @@ class QuestionList extends React.Component {
 
   render() {
     const lessThanTwo = this.props.currentProduct.questions.length <= 2 ? {} : {display: 'none'};
-    console.log('this should be the current product', this.props.currentProduct.questions)
     if (this.props.searchTerm.length >= 3) {
-      console.log('hitting if for search term')
       return (
         <div className="qa-overflow">
           {this.state.filteredQuestions.map((question, i) => (
