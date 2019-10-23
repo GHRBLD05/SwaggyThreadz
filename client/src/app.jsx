@@ -5,6 +5,7 @@ import RelatedProductsContainer from './containers/relatedProductsContainer.js';
 import OutfitContainer from './containers/OutfitContainer.js';
 import QuestionsContainer from './containers/QuestionsContainer.jsx';
 import ReviewsAndRatings from './reviewcomponent/reviewsandratings.jsx';
+import Outfit from './relatedAndOutfit/outfit.jsx';
 
 export default class App extends React.Component {
   constructor(props) {
