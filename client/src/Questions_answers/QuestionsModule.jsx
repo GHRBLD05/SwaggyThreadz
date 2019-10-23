@@ -14,6 +14,7 @@ class QuestionsModule extends React.Component {
     this.showMoreQuestions = this.showMoreQuestions.bind(this);
     this.questionsShown = this.state.questionsLimit;
     console.log('this should be the current product', props);
+    //this.props.currentProduct.questions.unshift(null);
   }
 
   showQuestionModal(e) {
