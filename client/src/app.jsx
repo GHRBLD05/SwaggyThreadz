@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import OverviewContainer from './containers/overviewContainer.js';
 import RelatedProductsContainer from './containers/relatedProductsContainer.js';
-import OutfitContainer from './containers/OutfitContainer.js';
+import OutfitContainer from './containers/outfitContainer.js';
 import QuestionsContainer from './containers/QuestionsContainer.jsx';
 import ReviewsAndRatings from './reviewcomponent/reviewsandratings.jsx';
 import Outfit from './relatedAndOutfit/outfit.jsx';
