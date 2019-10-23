@@ -3,6 +3,7 @@ import Outfit from '../relatedAndOutfit/outfit.jsx';
 
 const mapStateToProps = state => ({
   currentProduct: state.currentProduct,
+  currentStyle: state.currentStyle,
 });
 
 const OutfitContainer = connect(
