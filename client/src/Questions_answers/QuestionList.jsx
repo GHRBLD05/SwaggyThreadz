@@ -32,7 +32,6 @@ class QuestionList extends React.Component {
 
   render() {
     const lessThanTwo = this.props.currentProduct.questions.length <= 2 ? {} : {display: 'none'};
-    console.log('PooBalls:  ', this.props.currentProduct)
 
     if (this.props.searchTerm.length >= 3) {
       return (
@@ -43,6 +42,8 @@ class QuestionList extends React.Component {
               currQuestion={question.question_body}
               helpfullness={question.question_helpfulness}
               id={question.question_id}
+              answers={Object.values(question.answers)}
+              showAnswerModal={this.props.showAnswerModal}
             />
           ))}
         </div>

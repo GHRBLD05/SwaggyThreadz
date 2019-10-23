@@ -20,26 +20,27 @@ class Question extends React.Component {
     this.showMoreAnswers = this.showMoreAnswers.bind(this);
     this.showAnswerModal = this.showAnswerModal.bind(this);
     this.closeAnswerModal = this.closeAnswerModal.bind(this);
+    console.log('Question State Answers: ', this.props.answers)
   }
 
-  componentDidMount() {
-    this.helpfullnessCount = this.props.helpfullness;
-    const idParam = this.props.id;
-    $.get(`http://52.26.193.201:3000/qa/${idParam}/answers`, data => {}).then(
-      results => {
-        const dataCopy = results.results.slice();
-        const sorted = dataCopy.sort(compare);
-        this.setState({
-          answers: sorted,
-        });
-        if (this.state.answers.length > 2) {
-          this.setState({
-            showButton: true,
-          });
-        }
-      }
-    );
-  }
+  // componentDidMount() {
+  //   this.helpfullnessCount = this.props.helpfullness;
+  //   const idParam = this.props.id;
+  //   $.get(`http://52.26.193.201:3000/qa/${idParam}/answers`, data => {}).then(
+  //     results => {
+  //       const dataCopy = results.results.slice();
+  //       const sorted = dataCopy.sort(compare);
+  //       this.setState({
+  //         answers: sorted,
+  //       });
+  //       if (this.state.answers.length > 2) {
+  //         this.setState({
+  //           showButton: true,
+  //         });
+  //       }
+  //     }
+  //   );
+  // }
 
   helpfullnessButton(e) {
     if (this.state.clickedYes === false) {
