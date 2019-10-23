@@ -77,7 +77,7 @@ const RelatedModal = props => {
           <div className="modal-footer">
             <button
               type="button"
-              className="btn btn-secondary"
+              className="btn btn-primary"
               data-dismiss="modal"
             >
               Close

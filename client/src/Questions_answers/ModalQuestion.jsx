@@ -14,14 +14,12 @@ class ModalQuestion extends React.Component {
     this.handleQuesiton = this.handleQuestion.bind(this);
     this.checkData = this.checkData.bind(this);
     this.submitModal = this.submitModal.bind(this);
-    console.log('yalla talla', props.productId);
   }
 
   handleQuestion(event) {
     this.setState({
       question: event.target.value,
     });
-
   }
 
   handlenickName(event) {
@@ -37,7 +35,6 @@ class ModalQuestion extends React.Component {
   }
 
   checkData(data) {
-    console.log('Modal props', this.props);
     // POST request to the api when button is clicked
     if (!this.state.question.length) {
       alert('You must ask a question to submit');
@@ -56,25 +53,25 @@ class ModalQuestion extends React.Component {
       const param = this.props.productId.id;
       // eslint-disable-next-line prefer-const
       let options = {
-        "body": this.state.question,
-        "name": this.state.nickName,
-        "email": this.state.email,
+        body: this.state.question,
+        name: this.state.nickName,
+        email: this.state.email,
       };
 
       fetch(`http://52.26.193.201:3000/qa/${param}`, {
         method: 'post',
         headers: {
-          "Content-type": "application/json"
+          'Content-type': 'application/json'
         },
-        body: JSON.stringify(options)
+        body: JSON.stringify(options),
       })
-      .then(response => response.text())
-      .then(function (data) {
-        console.log('post data from promise:',data);
-      })
-      .catch(function (error) {
-        console.log('Failed', error);
-     });
+        .then(response => response.text())
+        .then(function(data) {
+          console.log('post data from promise:', data);
+        })
+        .catch(function(error) {
+          console.log('Failed', error);
+        });
 
       this.props.close();
     }
@@ -105,7 +102,8 @@ class ModalQuestion extends React.Component {
           </button>
           <div className="modal-body">
             <label htmlFor="question-form" className="modal-headings">
-              What is your question? <span className="mandatory">(mandatory)</span>
+              What is your question?{' '}
+              <span className="mandatory">(mandatory)</span>
             </label>
             <textarea
               className="question-form border border-primary"
@@ -122,36 +120,35 @@ class ModalQuestion extends React.Component {
               </h6>
             </div>
             <div className="row name-email-labels">
-            <label htmlFor="question-name" className="pl-0 modal-headings">
-              Nickname: <span className="mandatory">(mandatory)</span>
-            </label>
-            <label
-            htmlFor="question-email"
-            className="pl-3 modal-headings">
-              Email: <span className="mandatory">(mandatory)</span></label>
+              <label htmlFor="question-name" className="pl-0 modal-headings">
+                Nickname: <span className="mandatory">(mandatory)</span>
+              </label>
+              <label htmlFor="question-email" className="pl-3 modal-headings">
+                Email: <span className="mandatory">(mandatory)</span>
+              </label>
             </div>
             <div className="row name-email-area">
-            <input
-              type="text"
-              className="col-md-5"
-              name="question-name"
-              maxLength="60"
-              placeholder="Example: jackson11!"
-              value={this.state.nickName}
-              onChange={e => {
-                this.handlenickName(e);
-              }}
-            ></input>
-            <input
-              type="text"
-              className="col-md-7"
-              name="question-email"
-              value={this.state.email}
-              maxLength="60"
-              onChange={e => {
-                this.handleEmail(e);
-              }}
-            ></input>
+              <input
+                type="text"
+                className="col-md-5"
+                name="question-name"
+                maxLength="60"
+                placeholder="Example: jackson11!"
+                value={this.state.nickName}
+                onChange={e => {
+                  this.handlenickName(e);
+                }}
+              ></input>
+              <input
+                type="text"
+                className="col-md-7"
+                name="question-email"
+                value={this.state.email}
+                maxLength="60"
+                onChange={e => {
+                  this.handleEmail(e);
+                }}
+              ></input>
             </div>
             <h6>For authentication reasons, you will not be emailed</h6>
             <button
