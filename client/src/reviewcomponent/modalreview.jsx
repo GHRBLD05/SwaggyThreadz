@@ -10,47 +10,37 @@ export default class ModalReview extends React.Component {
             this.submitReview(form.elements);
         })
     }
+    handlePhotos(e) {
+        console.log(e.target.files);
+    }
 
     submitReview(vals) {
-        console.log('vals');
-        console.log(vals.rating);
+        let options = {
+            rating: vals.rating.value,
+            summary: vals.summary.value,
+            body: vals.body.value,
+            recommend: true,
+            name: vals.name.value,
+            email: vals.email.value,
+            photos: [],
+            characteristics: {}
+        }
 
-        //$.post('http://52.26.193.201:3000/reviews/2', JSON.stringify({ rating: 2, summary: 'testsumm', body: 'bodynasty', recommend: true, name: 'asdfs', email: 'asdf@gmail.com', photos: [], characteristics: {} }),
-        //    function (returnedData) {
-        //        console.log(returnedData);
-        //    });
-
-        $.ajax({
-            url: `http://52.26.193.201:3000/qa/2`,
-            type: "POST",
-            data: JSON.stringify({
-                body: 'test',
-                name: 'testsumm',
-                email: 'bodynasty'
-            }),
-            contentType: false,
-            success: function (res) {
-                console.log(res);
-            }
+        console.log(options);
+        fetch(`http://52.26.193.201:3000/reviews/2`, {
+            method: 'post',
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(options)
+        })
+        .then(response => response.text())
+        .then(function (data) {
+            console.log('post data from promise:', data);
+        })
+        .catch(function (error) {
+            console.log('Failed', error);
         });
-
-        //$.ajax({
-        //    url: `http://52.26.193.201:3000/reviews/2`,
-        //    type: "POST",
-        //    body: JSON.stringify({
-        //        rating: 2,
-        //        summary: 'testsumm',
-        //        body: 'bodynasty',
-        //        recommend: true,
-        //        name: 'asdfs',
-        //        email: 'asdf@gmail.com',
-        //        photos: [],
-        //        characteristics: {}
-        //    }),
-        //    success: function (res) {
-        //        console.log(res);
-        //    }
-        //});
     }
 
     render() {
@@ -71,7 +61,7 @@ export default class ModalReview extends React.Component {
                         Email Address:
                         <input type="text" name="email" defaultValue="Write more.." />
                         Upload Photos:
-                        <input type="file" name="photos" multiple/>
+                        <input type="file" multiple name="photos" onChange={(e) => { this.handlePhotos(e); }}></input>
                         Characteristics:
                         <input type="text" name="characteristics" defaultValue="Write more.." />
 						<input type="submit" value="Submit" />
