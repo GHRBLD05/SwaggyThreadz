@@ -14,6 +14,7 @@ const ImageGallery = props => (
             data-target="#my-carousel"
             data-slide-to={i}
             className={i === 0 ? 'active' : null}
+            key={i}
           ></li>
         ))}
       </ol>
