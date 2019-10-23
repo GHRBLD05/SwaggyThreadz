@@ -13,6 +13,7 @@ class QuestionsModule extends React.Component {
     this.closeQuestionModal = this.closeQuestionModal.bind(this);
     this.showMoreQuestions = this.showMoreQuestions.bind(this);
     this.questionsShown = this.state.questionsLimit;
+    //this.props.currentProduct.questions.unshift(null);
   }
 
   showQuestionModal(e) {
