@@ -1,6 +1,7 @@
-import React from 'react';
-import StarRating from '../star_component/StarRating.jsx';
-import EmptyStar from '../star_component/Emptystar.jsx';
+import React from "react";
+// import StarRating from "../star_component/StarRating.jsx";
+// import EmptyStar from '../star_component/Emptystar.jsx';
+import { Fullstar, Emptystar, Halfstar } from "../star_component/StarName.jsx";
 
 export default class Review extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class Review extends React.Component {
       date: props.review.date,
       reviewer_name: props.review.reviewer_name,
       helpfulnes: props.review.helpfulnes,
-      photos: props.review.photos,
+      photos: props.review.photos
     };
     this.maxrating = 5;
   }
@@ -24,11 +25,11 @@ export default class Review extends React.Component {
     let lastIndex = 0;
     let stars = [];
     for (let i = 0; i < this.state.rating; i++) {
-      stars.push(<StarRating key={`star_${i}`} />);
+      stars.push(<Fullstar key={`star_${i}`} />);
     }
     lastIndex = this.state.rating;
     for (; lastIndex < this.maxrating; lastIndex++) {
-      stars.push(<EmptyStar key={`star_${lastIndex}`} />);
+      stars.push(<Emptystar key={`star_${lastIndex}`} />);
     }
 
     return (
@@ -48,14 +49,14 @@ export default class Review extends React.Component {
         <footer className="leftjustify review_feedback">
           <div>Was this review helpful?</div>
           <div
-            onClick={() => console.log('Helpful!')}
+            onClick={() => console.log("Helpful!")}
             className="leftpadding reviewlinks"
           >
             Yes
           </div>
           <div className="leftpadding">|</div>
           <div
-            onClick={() => console.log('Reported!')}
+            onClick={() => console.log("Reported!")}
             className="leftpadding reviewlinks"
           >
             Report
