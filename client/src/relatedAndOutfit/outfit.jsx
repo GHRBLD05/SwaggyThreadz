@@ -1,8 +1,38 @@
 import React from 'react';
 import OutfitCard from './outfitCard.jsx';
+import AddToOutfitCard from './addToOutfitCard.jsx';
 
 export default class Outfit extends React.Component {
+  constructor(props) {
+    super(props);
+    // localStorage.setItem('outfits', JSON.stringify([]));
+    this.state = {
+      outfits: JSON.parse(localStorage.getItem('outfits'))
+    };
+    if (this.state.outfits === null) {
+      this.setState({
+        outfits: [],
+      });
+      localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
+    }
+  }
+
+  addToOutfit(e, product) {
+    e.preventDefault();
+    const outfits = this.state.outfits.slice();
+    outfits.push(product);
+    console.log('outfits AFTER PUSH: ', outfits);
+    localStorage.setItem('outfits', JSON.stringify(outfits));
+    this.setState({
+      outfits,
+    });
+  }
+
   render() {
+    this.props.currentProduct.imageUrl = this.props.currentStyle.photos[0].url;
+    this.props.currentProduct.thumbnail_url = this.props.currentStyle.photos[0].thumbnail_url;
+    console.log('OUTFIT PROPS: ', this.props);
+    console.log('THIS.OUTFITS:', this.state.outfits);
     return (
       <div className="productCardWrapper">
         <div className="col-md-12 text-left">
@@ -18,8 +48,28 @@ export default class Outfit extends React.Component {
             data-wrap="false"
           >
             <div className="carousel-inner row w-100 mx-auto ro" role="listbox">
-              <div className="carousel-item col-md-3 active">
-                <OutfitCard />
+              {this.state.outfits.map((outfit, i) => (
+                <div
+                  className={
+                    i === 0
+                      ? 'carousel-item col-md-3 active'
+                      : 'carousel-item col-md-3'
+                  }
+                >
+                  <OutfitCard product={outfit} key={i} />
+                </div>
+              ))}
+              <div
+                className={
+                  this.state.outfits.length === 0
+                    ? 'carousel-item col-md-3 active'
+                    : 'carousel-item col-md-3'
+                }
+              >
+                <AddToOutfitCard
+                  product={this.props.currentProduct}
+                  addToOutfit={this.addToOutfit.bind(this)}
+                />
               </div>
             </div>
             <a
