@@ -205,4 +205,8 @@ label {
   font-size: 15px;
 }
 
+.mandatory {
+  font-weight: normal;
+  opacity: 0.6;
+}
 

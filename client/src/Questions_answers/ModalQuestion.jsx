@@ -105,7 +105,7 @@ class ModalQuestion extends React.Component {
           </button>
           <div className="modal-body">
             <label htmlFor="question-form" className="modal-headings">
-              What is your question? (mandatory)
+              What is your question? <span className="mandatory">(mandatory)</span>
             </label>
             <textarea
               className="question-form border border-primary"
@@ -123,9 +123,12 @@ class ModalQuestion extends React.Component {
             </div>
             <div className="row name-email-labels">
             <label htmlFor="question-name" className="pl-0 modal-headings">
-              Nickname: (mandatory)
+              Nickname: <span className="mandatory">(mandatory)</span>
             </label>
-            <label htmlFor="question-email" className="pl-3 modal-headings">Email: (mandatory)</label>
+            <label
+            htmlFor="question-email"
+            className="pl-3 modal-headings">
+              Email: <span className="mandatory">(mandatory)</span></label>
             </div>
             <div className="row name-email-area">
             <input
