@@ -5,16 +5,12 @@ import AddToOutfitCard from './addToOutfitCard.jsx';
 export default class Outfit extends React.Component {
   constructor(props) {
     super(props);
-    // localStorage.setItem('outfits', JSON.stringify([]));
+    // localStorage.removeItem('outfits');
     this.state = {
       outfits: JSON.parse(localStorage.getItem('outfits'))
     };
-    if (this.state.outfits === null) {
-      this.setState({
-        outfits: [],
-      });
-      localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
-    }
+    this.state.outfits = [];
+    localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
   }
 
   addToOutfit(e, product) {
