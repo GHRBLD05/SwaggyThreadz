@@ -2,7 +2,6 @@ import React from 'react';
 
 export default class OutfitCard extends React.Component {
   render() {
-    console.log('OUTFIT CARD PROPS', this.props);
     return (
       <div>
         <div className="img-fluid mx-auto d-block relatedCard">

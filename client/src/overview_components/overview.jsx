@@ -12,16 +12,6 @@ const Overview = ({
   stylesArray,
 }) => (
   <div id="module-overview">
-    {console.log(
-      'CP',
-      currentProduct,
-      'CS',
-      currentStyle,
-      'Size',
-      currentSize,
-      'SA',
-      stylesArray
-    )}
     <div className="row">
       <div className="col-md-12">
         <NavBar

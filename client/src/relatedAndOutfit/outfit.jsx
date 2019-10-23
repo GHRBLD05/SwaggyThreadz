@@ -21,7 +21,6 @@ export default class Outfit extends React.Component {
     e.preventDefault();
     const outfits = this.state.outfits.slice();
     outfits.push(product);
-    console.log('outfits AFTER PUSH: ', outfits);
     localStorage.setItem('outfits', JSON.stringify(outfits));
     this.setState({
       outfits,
@@ -31,8 +30,6 @@ export default class Outfit extends React.Component {
   render() {
     this.props.currentProduct.imageUrl = this.props.currentStyle.photos[0].url;
     this.props.currentProduct.thumbnail_url = this.props.currentStyle.photos[0].thumbnail_url;
-    console.log('OUTFIT PROPS: ', this.props);
-    console.log('THIS.OUTFITS:', this.state.outfits);
     return (
       <div className="productCardWrapper">
         <div className="col-md-12 text-left">
@@ -50,6 +47,7 @@ export default class Outfit extends React.Component {
             <div className="carousel-inner row w-100 mx-auto ro" role="listbox">
               {this.state.outfits.map((outfit, i) => (
                 <div
+                  key={i}
                   className={
                     i === 0
                       ? 'carousel-item col-md-3 active'
