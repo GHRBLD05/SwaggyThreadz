@@ -104,22 +104,37 @@ class ModalQuestion extends React.Component {
             </svg>
           </button>
           <div className="modal-body">
-            <h5 className="modal-headings">
-              What is your question? (mandatory)
-            </h5>
+            <label htmlFor="question-form" className="modal-headings">
+              What is your question? <span className="mandatory">(mandatory)</span>
+            </label>
             <textarea
-              className="question-form"
+              className="question-form border border-primary"
+              name="question-form"
               maxLength="1000"
               value={this.state.question}
               onChange={e => {
                 this.handleQuestion(e);
               }}
             ></textarea>
-            <h5 className="modal-headings">
-              What is your nickname? (mandatory)
-            </h5>
+            <div className="row justify-content-center">
+              <h6>
+                For privacy reasons, do not use your full name or email address
+              </h6>
+            </div>
+            <div className="row name-email-labels">
+            <label htmlFor="question-name" className="pl-0 modal-headings">
+              Nickname: <span className="mandatory">(mandatory)</span>
+            </label>
+            <label
+            htmlFor="question-email"
+            className="pl-3 modal-headings">
+              Email: <span className="mandatory">(mandatory)</span></label>
+            </div>
+            <div className="row name-email-area">
             <input
               type="text"
+              className="col-md-5"
+              name="question-name"
               maxLength="60"
               placeholder="Example: jackson11!"
               value={this.state.nickName}
@@ -127,21 +142,21 @@ class ModalQuestion extends React.Component {
                 this.handlenickName(e);
               }}
             ></input>
-            <h6>
-              For privacy reasons, do not use your full name or email address
-            </h6>
-            <h5 className="modal-headings">What is your email? (mandatory)</h5>
             <input
               type="text"
+              className="col-md-7"
+              name="question-email"
               value={this.state.email}
               maxLength="60"
               onChange={e => {
                 this.handleEmail(e);
               }}
             ></input>
+            </div>
             <h6>For authentication reasons, you will not be emailed</h6>
             <button
               type="button"
+              className="btn btn-primary"
               onClick={() => {
                 this.checkData(this.state);
               }}
