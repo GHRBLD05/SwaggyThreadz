@@ -35,15 +35,13 @@ class ModalAnswer extends React.Component {
   }
 
   handlePhotos(event) {
-    let newPhotos = Array.from(event.target.files);
+    const newPhotos = Array.from(event.target.files);
     this.setState({
-      photos: newPhotos
-    })
-
+      photos: newPhotos,
+    });
   }
 
   checkData(data) {
-    console.log('Modal props', this.props);
     // POST request to the api when button is clicked
     if (!this.state.answer.length) {
       alert('You provide an answer to submit');
@@ -60,29 +58,29 @@ class ModalAnswer extends React.Component {
   submitModal(data) {
     if (this.filledOut === true) {
       // Make the POST request
-      let param = this.props.questionId;
+      const param = this.props.questionId;
 
       const options = {
-        "body": this.state.answer,
-        "name": this.state.nickName,
-        "email": this.state.email,
-        "photos": this.state.photos
-      }
+        body: this.state.answer,
+        name: this.state.nickName,
+        email: this.state.email,
+        photos: this.state.photos,
+      };
 
       fetch(`http://52.26.193.201:3000/qa/${param}/answers`, {
         method: 'post',
         headers: {
-          "Content-type": "application/json"
+          'Content-type': 'application/json'
         },
-        body: JSON.stringify(options)
+        body: JSON.stringify(options),
       })
-      .then(response => response.text())
-      .then(function (data) {
-        console.log('post data from promise:', data);
-      })
-      .catch(function (error) {
-        console.log('Failed', error);
-     });
+        .then(response => response.text())
+        .then(function(data) {
+          console.log('post data from promise:', data);
+        })
+        .catch(function(error) {
+          console.log('Failed', error);
+        });
 
       this.props.close();
     }
@@ -112,8 +110,9 @@ class ModalAnswer extends React.Component {
             </svg>
           </button>
           <div className="modal-body">
-          <label htmlFor="question-form" className="modal-headings">
-              What is your answer? <span className="mandatory">(mandatory)</span>
+            <label htmlFor="question-form" className="modal-headings">
+              What is your answer?{' '}
+              <span className="mandatory">(mandatory)</span>
             </label>
             <textarea
               className="question-form border border-primary"
@@ -130,46 +129,49 @@ class ModalAnswer extends React.Component {
               </h6>
             </div>
             <div className="row name-email-labels">
-            <label htmlFor="question-name" className="pl-0 modal-headings">
-              Nickname: <span className="mandatory">(mandatory)</span>
-            </label>
-            <label htmlFor="question-email" className="pl-1 modal-headings">Email: <span className="mandatory">(mandatory)</span></label>
+              <label htmlFor="question-name" className="pl-0 modal-headings">
+                Nickname: <span className="mandatory">(mandatory)</span>
+              </label>
+              <label htmlFor="question-email" className="pl-1 modal-headings">
+                Email: <span className="mandatory">(mandatory)</span>
+              </label>
             </div>
             <div className="row name-email-area">
-            <input
-              type="text"
-              className="col-md-5"
-              name="question-name"
-              maxLength="60"
-              placeholder="Example: jackson11!"
-              value={this.state.nickName}
-              onChange={e => {
-                this.handlenickName(e);
-              }}
-            ></input>
-            <input
-              type="text"
-              className="col-md-7"
-              name="question-email"
-              value={this.state.email}
-              maxLength="60"
-              onChange={e => {
-                this.handleEmail(e);
-              }}
-            ></input>
+              <input
+                type="text"
+                className="col-md-5"
+                name="question-name"
+                maxLength="60"
+                placeholder="Example: jackson11!"
+                value={this.state.nickName}
+                onChange={e => {
+                  this.handlenickName(e);
+                }}
+              ></input>
+              <input
+                type="text"
+                className="col-md-7"
+                name="question-email"
+                value={this.state.email}
+                maxLength="60"
+                onChange={e => {
+                  this.handleEmail(e);
+                }}
+              ></input>
             </div>
             <div className="row pt-4">
-            <input
-            type="file"
-            className="file-upload"
-            multiple
-            accept="image/png, image/jpeg"
-            onChange={(e) => {
-              this.handlePhotos(e);
-            }}></input>
+              <input
+                type="file"
+                className="file-upload"
+                multiple
+                accept="image/png, image/jpeg"
+                onChange={e => {
+                  this.handlePhotos(e);
+                }}
+              ></input>
             </div>
             <button
-            className="submit-modal btn btn-primary"
+              className="submit-modal btn btn-primary"
               type="button"
               onClick={() => {
                 this.checkData(this.state);

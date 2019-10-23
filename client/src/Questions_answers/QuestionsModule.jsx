@@ -13,7 +13,6 @@ class QuestionsModule extends React.Component {
     this.closeQuestionModal = this.closeQuestionModal.bind(this);
     this.showMoreQuestions = this.showMoreQuestions.bind(this);
     this.questionsShown = this.state.questionsLimit;
-    console.log('this should be the current product', props);
     //this.props.currentProduct.questions.unshift(null);
   }
 
@@ -47,7 +46,6 @@ class QuestionsModule extends React.Component {
     this.setState({
       questionsLimit: newLimit,
     });
-    console.log(this.state.questionsLimit);
   }
 
   render() {
@@ -61,9 +59,11 @@ class QuestionsModule extends React.Component {
       color: 'rgba(0, 0, 0, 0.65)',
       fontweight: 'bold',
       color: 'rgba(0, 0, 0, .65)',
-      fontweight: 'bold'
-    }
-    const anyQuestions = !this.props.currentProduct.questions.length ? {display: 'none'} : buttonStyling;
+      fontweight: 'bold',
+    };
+    const anyQuestions = !this.props.currentProduct.questions.length
+      ? { display: 'none' }
+      : buttonStyling;
     return (
       <div id="module-questions" className="root-qa">
         <Search
