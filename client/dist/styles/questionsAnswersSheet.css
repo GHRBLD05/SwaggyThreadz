@@ -123,8 +123,7 @@ h6 {
 }
 
 .modal-headings {
-  text-align: center;
-  margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .answerPtag {
@@ -200,6 +199,10 @@ h6 {
 
 .file-upload {
   background: none;
+}
+
+label {
+  font-size: 15px;
 }
 
 
