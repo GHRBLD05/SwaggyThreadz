@@ -7,7 +7,7 @@ class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      answers: [],
+      answers: Object.values(this.props.answers),
       answersLimit: 2,
       showButton: false,
       collapseButton: false,
@@ -37,11 +37,6 @@ class Question extends React.Component {
             showButton: true,
           });
         }
-        console.log(
-          'This is the list of answers: ',
-          this.state,
-          this.state.showButton
-        );
       }
     );
   }
@@ -108,6 +103,8 @@ class Question extends React.Component {
     const noAnswers = !this.state.answers.length ? { display: 'none' } : {};
     const lastAnswer = (this.state.collapseButton) ? {} : { display: 'none'};
 
+
+
     return (
       <div>
         <div className="row">
@@ -145,7 +142,7 @@ class Question extends React.Component {
             <p style={noAnswers}>A: </p>
           </div>
           <div className="answer-box">
-            {this.state.answers
+            {this.props.answers
               .slice(0, this.state.answersLimit)
               .map((answer, i) => (
 
