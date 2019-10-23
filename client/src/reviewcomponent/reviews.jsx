@@ -1,8 +1,8 @@
 import React from 'react';
-import $ from "jquery";
-import Review from "./review.jsx";
-import Filter from "./filter.jsx";
-import Controls from "./controls.jsx";
+import $ from 'jquery';
+import Review from './review.jsx';
+import Filter from './filter.jsx';
+import Controls from './controls.jsx';
 
 export default class Reviews extends React.Component {
   constructor() {
@@ -31,9 +31,9 @@ export default class Reviews extends React.Component {
   }
 
   getReviews(sortOptions) {
-    let obj = this;
+    const obj = this;
     $.ajax({
-      url: `${obj.url  }?sort=${sortOptions}`,
+      url: `${obj.url}?sort=${sortOptions}`,
       type: 'GET',
       dataType: 'json',
       success(res) {
@@ -41,7 +41,7 @@ export default class Reviews extends React.Component {
       },
     });
   }
-        
+
   render() {
     if (this.state.reviews.product === undefined) {
       return (
@@ -50,8 +50,8 @@ export default class Reviews extends React.Component {
           {<Controls />}
         </div>
       );
-    } if (this.state.viewState === this.views[0]) {
-      console.log("STATE:", this.state.viewState);
+    }
+    if (this.state.viewState === this.views[0]) {
       return (
         <div id="reviews" className="col-md-8 row-">
           {<Filter />}
@@ -61,8 +61,8 @@ export default class Reviews extends React.Component {
           {<Controls />}
         </div>
       );
-    } else if (this.state.viewState === this.views[1]) {
-      console.log("STATE:", this.state.viewState);
+    }
+    if (this.state.viewState === this.views[1]) {
       return (
         <div id="reviews" className="col-md-8 row-">
           {<Filter />}

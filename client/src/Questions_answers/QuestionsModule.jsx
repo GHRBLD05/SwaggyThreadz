@@ -63,11 +63,9 @@ class QuestionsModule extends React.Component {
     this.setState({
       questionsLimit: newLimit,
     });
-    console.log(this.state.questionsLimit);
   }
 
   render() {
-
     return (
       <div id="module-questions" className="root-qa">
         <Search

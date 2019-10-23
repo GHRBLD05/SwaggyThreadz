@@ -206,12 +206,14 @@
   height: 400px;
 }
 
-#relatedCarousel .carousel-control-next {
+#relatedCarousel .carousel-control-next,
+#outfitCarousel .carousel-control-next {
   margin-right: -30px;
   width: 50px;
 }
 
-#relatedCarousel .carousel-control-prev {
+#relatedCarousel .carousel-control-prev,
+#outfitCarousel .carousel-control-prev {
   margin-left: -30px;
   width: 50px;
 }
