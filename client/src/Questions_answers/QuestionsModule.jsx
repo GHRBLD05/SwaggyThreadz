@@ -8,14 +8,30 @@ class QuestionsModule extends React.Component {
     this.state = {
       showQuestionModal: false,
       questionsLimit: 2,
+      showButton: true,
     };
     this.showQuestionModal = this.showQuestionModal.bind(this);
     this.closeQuestionModal = this.closeQuestionModal.bind(this);
     this.showMoreQuestions = this.showMoreQuestions.bind(this);
     this.questionsShown = this.state.questionsLimit;
-    console.log('this should be the current product', props);
-    //this.props.currentProduct.questions.unshift(null);
   }
+
+ componentWillReceiveProps(newProps) {
+   if (this.props.currentProduct.questions.length <= 2) {
+      this.setState({
+        showButton: false,
+      })
+   } else {
+     this.setState({
+       showButton: true,
+     })
+   }
+   if (newProps !== this.props) {
+     this.setState({
+       questionsLimit: 2,
+     })
+   }
+ }
 
   showQuestionModal(e) {
     this.setState({
@@ -51,19 +67,7 @@ class QuestionsModule extends React.Component {
   }
 
   render() {
-    const buttonStyling = {
-      margin: '9px',
-      fontsize: '0.97em',
-      fontsize: '0.75em',
-      padding: '0.75em 0.65em',
-      backgroundcolor: 'white',
-      border: '0.01em solid black',
-      color: 'rgba(0, 0, 0, 0.65)',
-      fontweight: 'bold',
-      color: 'rgba(0, 0, 0, .65)',
-      fontweight: 'bold'
-    }
-    const anyQuestions = !this.props.currentProduct.questions.length ? {display: 'none'} : buttonStyling;
+
     return (
       <div id="module-questions" className="root-qa">
         <Search
@@ -77,16 +81,15 @@ class QuestionsModule extends React.Component {
           productId={this.props.currentProduct}
         />
         <div className="row">
-          <button
+          {this.state.showButton ? null : <button
             className="button more-questions focus"
             type="button"
-            style={anyQuestions}
             onClick={e => {
               this.showMoreQuestions();
             }}
           >
             More Answered Questions
-          </button>
+          </button>}
           <button
             type="button"
             className="button add-question focus"
