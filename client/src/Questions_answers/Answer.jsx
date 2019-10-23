@@ -54,6 +54,7 @@ class Answer extends React.Component {
   render() {
     const isSeller = this.props.userName === 'Seller' ? {} : {fontweight: "bold"};
     const isReported = this.state.isReported ? 'Reported' : 'Report';
+
     return (
       <div>
         <div className="row answer-row">
@@ -64,7 +65,7 @@ class Answer extends React.Component {
         <div className="row">
             {this.props.photos.map((photo, i) => {
               return (
-                <img src={photo.url} key={i} className="photos"></img>
+                <img src={photo} key={i} className="photos"></img>
               )
             })}
           </div>
@@ -72,7 +73,7 @@ class Answer extends React.Component {
           <p className="user-date-helpful">
             by <span style={isSeller}>{this.props.userName}</span>, {this.date.toDateString()} | Helpful?
           </p>
-          <p className="user-date-helpful">
+          <p className="yes-report">
             <button
               type="button"
               className="helpful-button"

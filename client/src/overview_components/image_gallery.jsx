@@ -2,7 +2,6 @@ import React from 'react';
 
 const ImageGallery = props => (
   <div>
-    {console.log('this better fucking work', props)}
     <div
       id="my-carousel"
       className="carousel slide"
@@ -15,16 +14,21 @@ const ImageGallery = props => (
             data-target="#my-carousel"
             data-slide-to={i}
             className={i === 0 ? 'active' : null}
+            key={i}
           ></li>
         ))}
       </ol>
       <div className="carousel-inner">
         {props.currentStyle.photos.map((photo, i) => (
-          <div className={i === 0 ? 'carousel-item active' : 'carousel-item'}>
+          <div
+            className={i === 0 ? 'carousel-item active' : 'carousel-item'}
+            key={i}
+          >
             <img
               className="img-fluid mx-auto d-block"
               src={photo.url}
               alt={props.currentStyle.name}
+              key={i}
             />
           </div>
         ))}

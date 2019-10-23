@@ -1,12 +1,10 @@
 import React from 'react';
-import StarRating from '../star_component/StarRating.jsx';
-import EmptyStar from '../star_component/Emptystar.jsx';
+import { Fullstar, Emptystar, Halfstar } from "../star_component/StarName.jsx";
 import $ from 'jquery';
 
 export default class Review extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
             review_id: props.review.review_id,
             rating: props.review.rating,
@@ -43,10 +41,10 @@ export default class Review extends React.Component {
     render() {
         var stars = [];
         for (let i = 0; i < this.state.rating; i++) {
-            stars.push(<EmptyStar key={`star_${i}`} />);
+            stars.push(<Fullstar key={`star_${i}`} />);
         }
         for (let lastIndex = this.state.rating; lastIndex < this.maxrating; lastIndex++) {
-            stars.push(<EmptyStar key={`star_${lastIndex}`} />);
+            stars.push(<Emptystar key={`star_${lastIndex}`} />);
         }
         var photos = [];
         if (this.state.photos.length > 0) {

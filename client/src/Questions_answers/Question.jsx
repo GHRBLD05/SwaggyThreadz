@@ -7,13 +7,13 @@ class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      answers: [],
+      answers: Object.values(this.props.answers),
       answersLimit: 2,
       showButton: false,
       collapseButton: false,
       showAnswerModal: false,
       helpCount: this.props.helpfullness,
-      clickedYes: false
+      clickedYes: false,
     };
     this.helpfullnessButton = this.helpfullnessButton.bind(this);
     this.helpfullnessCount = this.props.helpfullness;
@@ -22,34 +22,28 @@ class Question extends React.Component {
     this.closeAnswerModal = this.closeAnswerModal.bind(this);
   }
 
-  componentDidMount() {
-    this.helpfullnessCount = this.props.helpfullness;
-    const idParam = this.props.id;
-    $.get(`http://52.26.193.201:3000/qa/${idParam}/answers`, data => {}).then(
-      results => {
-        const dataCopy = results.results.slice();
-        const sorted = dataCopy.sort(compare);
-        this.setState({
-          answers: sorted,
-        });
-        if (this.state.answers.length > 2) {
-          this.setState({
-            showButton: true,
-          });
-        }
-        console.log(
-          'This is the list of answers: ',
-          this.state,
-          this.state.showButton
-        );
-      }
-    );
-  }
+  // componentDidMount() {
+  //   this.helpfullnessCount = this.props.helpfullness;
+  //   const idParam = this.props.id;
+  //   $.get(`http://52.26.193.201:3000/qa/${idParam}/answers`, data => {}).then(
+  //     results => {
+  //       const dataCopy = results.results.slice();
+  //       const sorted = dataCopy.sort(compare);
+  //       this.setState({
+  //         answers: sorted,
+  //       });
+  //       if (this.state.answers.length > 2) {
+  //         this.setState({
+  //           showButton: true,
+  //         });
+  //       }
+  //     }
+  //   );
+  // }
 
   helpfullnessButton(e) {
     if (this.state.clickedYes === false) {
-
-      let idParam = this.props.id;
+      const idParam = this.props.id;
       $.ajax({
         url: `http://52.26.193.201:3000/qa/question/${idParam}/helpful`,
         type: 'PUT',
@@ -58,13 +52,12 @@ class Question extends React.Component {
         },
       });
       let oldCount = this.state.helpCount;
-      let newCount = oldCount += 1;
+      const newCount = (oldCount += 1);
       this.setState({
         helpCount: newCount,
-        clickedYes: true
-      })
+        clickedYes: true,
+      });
     }
-
   }
 
   showMoreAnswers(e) {
@@ -73,13 +66,12 @@ class Question extends React.Component {
     this.setState({
       answersLimit: newLimit,
     });
-    console.log('showbutton: ', this.state.showButton, 'answersLimit: ', this.state.answersLimit, 'answersLenght: ', this.state.answers.length);
 
     if (this.state.answers.length - this.state.answersLimit <= 1) {
       this.setState({
         showButton: false,
-        collapseButton: true
-      })
+        collapseButton: true,
+      });
     }
   }
 
@@ -100,13 +92,13 @@ class Question extends React.Component {
       answersLimit: 2,
       showButton: true,
       collapseButton: false,
-    })
+    });
   }
 
   render() {
     const buttonStyle = this.state.showButton ? {} : { display: 'none' };
     const noAnswers = !this.state.answers.length ? { display: 'none' } : {};
-    const lastAnswer = (this.state.collapseButton) ? {} : { display: 'none'};
+    const lastAnswer = this.state.collapseButton ? {} : { display: 'none' };
 
     return (
       <div>
@@ -145,10 +137,9 @@ class Question extends React.Component {
             <p style={noAnswers}>A: </p>
           </div>
           <div className="answer-box">
-            {this.state.answers
+            {this.props.answers
               .slice(0, this.state.answersLimit)
               .map((answer, i) => (
-
                 <Answer
                   userName={answer.answerer_name}
                   body={answer.body}
@@ -170,13 +161,22 @@ class Question extends React.Component {
             type="button"
             className="more-answers-button"
             onClick={e => {
-            this.showMoreAnswers(e);
+              this.showMoreAnswers(e);
             }}
           >
-          Load more answers
+            Load more answers
           </button>
         </div>
-        <button type="button" className="more-answers-button" style={lastAnswer} onClick={(e) => {this.collapseAnswers(e)}}>Collapse Answers</button>
+        <button
+          type="button"
+          className="more-answers-button"
+          style={lastAnswer}
+          onClick={e => {
+            this.collapseAnswers(e);
+          }}
+        >
+          Collapse Answers
+        </button>
         <ModalAnswer
           close={this.closeAnswerModal}
           show={this.state.showAnswerModal}

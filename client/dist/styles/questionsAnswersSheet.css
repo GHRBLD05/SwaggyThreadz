@@ -123,8 +123,7 @@ h6 {
 }
 
 .modal-headings {
-  text-align: center;
-  margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .answerPtag {
@@ -176,8 +175,8 @@ h6 {
   font-size: 0.97em;
 }
 
-.question-list {
-
+.yes-report {
+  opacity: 0.5;
 }
 
 .root-qa {
@@ -202,4 +201,12 @@ h6 {
   background: none;
 }
 
+label {
+  font-size: 15px;
+}
+
+.mandatory {
+  font-weight: normal;
+  opacity: 0.6;
+}
 

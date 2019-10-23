@@ -91,5 +91,4 @@ export default class Reviews extends React.Component {
             )
         }
     }
-
 }
