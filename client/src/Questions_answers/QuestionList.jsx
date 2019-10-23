@@ -6,28 +6,13 @@ class QuestionList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: [],
       questionsLimit: this.props.questionsShown,
       filteredQuestions: [],
     };
     this.filterQuestions = this.filterQuestions.bind(this);
-    console.log('questionslist props: ', props);
   }
 
-  componentDidMount() {
-    // Remember to change id param
-    const param = this.props.currentProduct.id;
 
-    $.get(`http://52.26.193.201:3000/qa/${param}`, data => {
-      console.log(data);
-    }).then(results => {
-      const dataCopy = results.results.slice();
-      const sorted = dataCopy.sort(compare);
-      this.setState({
-        questions: sorted,
-      });
-    });
-  }
 
   componentDidUpdate(prevProps) {
     if (this.props.searchTerm !== prevProps.searchTerm) {
@@ -36,7 +21,7 @@ class QuestionList extends React.Component {
   }
 
   filterQuestions() {
-    const notFiltered = this.state.questions;
+    const notFiltered = this.props.currentProduct.questions;
     const filtered = notFiltered.filter(question =>
       question.question_body.toLowerCase().includes(this.props.searchTerm)
     );
@@ -46,6 +31,9 @@ class QuestionList extends React.Component {
   }
 
   render() {
+    const lessThanTwo = this.props.currentProduct.questions.length <= 2 ? {} : {display: 'none'};
+    console.log('PooBalls:  ', this.props.currentProduct)
+
     if (this.props.searchTerm.length >= 3) {
       return (
         <div className="qa-overflow">
@@ -62,17 +50,21 @@ class QuestionList extends React.Component {
     }
     return (
       <div className="qa-overflow">
-        {this.state.questions
-          .slice(0, this.props.questionsShown)
-          .map((question, i) => (
+        {this.props.currentProduct.questions
+          .slice(1, this.props.questionsShown)
+          .map((question, i) => {
+            console.log(question.question_id, 'helpfullness: ', question.question_helpfulness)
+          return (
+
             <Question
               key={i}
               currQuestion={question.question_body}
               helpfullness={question.question_helpfulness}
               id={question.question_id}
               showAnswerModal={this.props.showAnswerModal}
+              answers={Object.values(question.answers)}
             />
-          ))}
+          )})}
       </div>
     );
   }

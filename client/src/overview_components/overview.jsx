@@ -11,7 +11,7 @@ const Overview = ({
   currentSize,
   stylesArray,
 }) => (
-  <div>
+  <div id="module-overview">
     {console.log(
       'CP',
       currentProduct,

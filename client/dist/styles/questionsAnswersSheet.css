@@ -112,6 +112,7 @@ h5 {
 }
 
 h6 {
+  margin: 5%;
   font-size: 10px;
 }
 
@@ -150,6 +151,7 @@ h6 {
   overflow: auto;
   overflow-y: scroll;
   overflow-x: hidden;
+  max-height: 400px;
 }
 
 .answer-box {
@@ -174,12 +176,12 @@ h6 {
   font-size: 0.97em;
 }
 
-.question-list {
-  max-height: 10vh;
+.yes-report {
+  opacity: 0.5;
 }
 
 .root-qa {
-  max-height: 70%;
+  max-height: relative;
 }
 
 .photos {
@@ -187,3 +189,17 @@ h6 {
   max-width: 6em;
   margin: 3%;
 }
+
+.search-component {
+  max-height: 100%;
+}
+
+.submit-modal {
+  margin-top: 5%;
+}
+
+.file-upload {
+  background: none;
+}
+
+

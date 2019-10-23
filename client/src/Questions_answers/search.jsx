@@ -17,9 +17,9 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div>
-        <h4 className="col-4">Questions and Answers</h4>
-        <div className="col-md-12 search-bar">
+      <div className="search-component">
+        <h4 className="col-sm-12">Questions and Answers</h4>
+        <div className="col-sm-12 search-bar">
           <input
             className="form-control"
             type="text"
