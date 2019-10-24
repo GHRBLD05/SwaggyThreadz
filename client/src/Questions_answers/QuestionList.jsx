@@ -32,9 +32,7 @@ class QuestionList extends React.Component {
 
   render() {
     const lessThanTwo = this.props.currentProduct.questions.length <= 2 ? {} : {display: 'none'};
-
     if (this.props.searchTerm.length >= 3) {
-      console.log('hitting if for search term')
       return (
         <div className="qa-overflow">
           {this.state.filteredQuestions.map((question, i) => (
@@ -50,21 +48,19 @@ class QuestionList extends React.Component {
         </div>
       );
     } else if (this.props.currentProduct.questions[0].question_body === '') {
-      console.log('hitting else if')
       return null;
     } else {
-      console.log('hitting map else statement')
       return (
         <div className="qa-overflow">
           {this.props.currentProduct.questions
             .slice(0, this.props.questionsShown)
             .map((question, i) => {
-              console.log('Current Question error', question)
             return (
 
               <Question
                 key={i}
                 currQuestion={question.question_body}
+                productName={this.props.currentProduct.name}
                 helpfullness={question.question_helpfulness}
                 id={question.question_id}
                 showAnswerModal={this.props.showAnswerModal}

@@ -22,25 +22,6 @@ class Question extends React.Component {
     this.closeAnswerModal = this.closeAnswerModal.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.helpfullnessCount = this.props.helpfullness;
-  //   const idParam = this.props.id;
-  //   $.get(`http://52.26.193.201:3000/qa/${idParam}/answers`, data => {}).then(
-  //     results => {
-  //       const dataCopy = results.results.slice();
-  //       const sorted = dataCopy.sort(compare);
-  //       this.setState({
-  //         answers: sorted,
-  //       });
-  //       if (this.state.answers.length > 2) {
-  //         this.setState({
-  //           showButton: true,
-  //         });
-  //       }
-  //     }
-  //   );
-  // }
-
   helpfullnessButton(e) {
     if (this.state.clickedYes === false) {
       const idParam = this.props.id;
@@ -181,6 +162,8 @@ class Question extends React.Component {
           close={this.closeAnswerModal}
           show={this.state.showAnswerModal}
           questionId={this.props.id}
+          currQuestion={this.props.currQuestion}
+          productName={this.props.productName}
         />
       </div>
     );
