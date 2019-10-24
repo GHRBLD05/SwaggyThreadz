@@ -1,0 +1,11 @@
+.bar1 {
+  border: solid black 2px;
+  background-color: black;
+  height: 10px;
+  width: 100px;
+  margin: 2px;
+}
+
+.text {
+  color: yellow;
+}
