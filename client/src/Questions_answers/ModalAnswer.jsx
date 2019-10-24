@@ -35,7 +35,8 @@ class ModalAnswer extends React.Component {
   }
 
   handlePhotos(event) {
-    const newPhotos = Array.from(event.target.files);
+    const newPhotos = this.state.photos;
+    newPhotos.push(event.target.value);
     this.setState({
       photos: newPhotos,
     });
@@ -44,11 +45,11 @@ class ModalAnswer extends React.Component {
   checkData(data) {
     // POST request to the api when button is clicked
     if (!this.state.answer.length) {
-      alert('You provide an answer to submit');
+      alert('You must enter an answer to submit');
     } else if (!this.state.nickName.length) {
-      alert('You must provide a nickname to submit');
-    } else if (!this.state.email.length) {
-      alert('You must provide a viable email to submit');
+      alert('You must enter a nickname to submit');
+    } else if (!this.state.email.length || !this.state.email.includes('@')) {
+      alert('You must enter a viable email to submit');
     } else {
       this.filledOut = true;
       this.submitModal(this.state);
@@ -118,7 +119,7 @@ class ModalAnswer extends React.Component {
               maxLength="1000"
               value={this.state.question}
               onChange={e => {
-                this.handleQuestion(e);
+                this.handleAnswer(e);
               }}
             ></textarea>
             <div className="row justify-content-center">
@@ -158,11 +159,15 @@ class ModalAnswer extends React.Component {
               ></input>
             </div>
             <div className="row pt-4">
+              <label htmlFor="image-upload" className="modal-headings">
+                Image url: <span className="mandatory">(optional)</span>
+              </label>
+              </div>
+              <div className="row">
               <input
-                type="file"
-                className="file-upload"
+                type="text"
+                className="image-upload"
                 multiple
-                accept="image/png, image/jpeg"
                 onChange={e => {
                   this.handlePhotos(e);
                 }}

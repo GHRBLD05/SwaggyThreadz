@@ -37,11 +37,11 @@ class ModalQuestion extends React.Component {
   checkData(data) {
     // POST request to the api when button is clicked
     if (!this.state.question.length) {
-      alert('You must ask a question to submit');
+      alert('You must enter a question to submit');
     } else if (!this.state.nickName.length) {
-      alert('You must provide a nickname to submit');
-    } else if (!this.state.email.length) {
-      alert('You must provide a viable email to submit');
+      alert('You must enter a nickname to submit');
+    } else if (!this.state.email.length || !this.state.email.includes('@')) {
+      alert('You must enter a viable email to submit');
     } else {
       this.filledOut = true;
       this.submitModal(this.state);
