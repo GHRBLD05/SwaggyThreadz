@@ -162,6 +162,8 @@ class Question extends React.Component {
           close={this.closeAnswerModal}
           show={this.state.showAnswerModal}
           questionId={this.props.id}
+          currQuestion={this.props.currQuestion}
+          productName={this.props.productName}
         />
       </div>
     );

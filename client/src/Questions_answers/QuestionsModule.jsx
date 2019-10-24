@@ -7,7 +7,7 @@ class QuestionsModule extends React.Component {
     super(props);
     this.state = {
       showQuestionModal: false,
-      questionsLimit: 2,
+      questionsLimit: 4,
       showButton: true,
     };
     this.showQuestionModal = this.showQuestionModal.bind(this);
@@ -28,7 +28,7 @@ class QuestionsModule extends React.Component {
    }
    if (newProps !== this.props) {
      this.setState({
-       questionsLimit: 2,
+       questionsLimit: 4,
      })
    }
 
@@ -64,7 +64,7 @@ class QuestionsModule extends React.Component {
     this.setState({
       questionsLimit: newLimit,
     });
-    if (this.state.questionsLimit > this.props.currentProduct.questions.length) {
+    if (this.state.questionsLimit >= this.props.currentProduct.questions.length) {
       this.setState({
         showButton: true,
       });
