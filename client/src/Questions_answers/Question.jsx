@@ -87,7 +87,7 @@ class Question extends React.Component {
           <div className="col-md-9">
             <p className="question">Q: {this.props.currQuestion}</p>
           </div>
-          <div className="col-md-3 helpfulQuestion">
+          <div className="col-md-3 mt-2 helpfulQuestion">
             <p>
               Helpful?
               <button
