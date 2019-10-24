@@ -60,6 +60,7 @@ class QuestionList extends React.Component {
               <Question
                 key={i}
                 currQuestion={question.question_body}
+                productName={this.props.currentProduct.name}
                 helpfullness={question.question_helpfulness}
                 id={question.question_id}
                 showAnswerModal={this.props.showAnswerModal}

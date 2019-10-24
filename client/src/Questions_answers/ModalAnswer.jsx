@@ -84,8 +84,6 @@ class ModalAnswer extends React.Component {
 
       this.props.close();
     }
-
-    // Remeber to put this event handler in the button
   }
 
   render() {
@@ -111,8 +109,8 @@ class ModalAnswer extends React.Component {
           </button>
           <div className="modal-body">
             <label htmlFor="question-form" className="modal-headings">
-              What is your answer?{' '}
-              <span className="mandatory">(mandatory)</span>
+              Submit your answer <br></br><span className="product-name">{this.props.productName}: "{this.props.currQuestion}"</span>
+              <span className="mandatory"> (required*)</span>
             </label>
             <textarea
               className="question-form border border-primary"
@@ -130,10 +128,10 @@ class ModalAnswer extends React.Component {
             </div>
             <div className="row name-email-labels">
               <label htmlFor="question-name" className="pl-0 modal-headings">
-                Nickname: <span className="mandatory">(mandatory)</span>
+                Nickname: <span className="mandatory">(required*)</span>
               </label>
-              <label htmlFor="question-email" className="pl-1 modal-headings">
-                Email: <span className="mandatory">(mandatory)</span>
+              <label htmlFor="question-email" className="ml-4 modal-headings">
+                Email: <span className="mandatory">(required*)</span>
               </label>
             </div>
             <div className="row name-email-area">
