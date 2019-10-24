@@ -6,6 +6,7 @@ import OutfitContainer from './containers/outfitContainer.js';
 import QuestionsContainer from './containers/QuestionsContainer.jsx';
 import ReviewsAndRatings from './reviewcomponent/reviewsandratings.jsx';
 import Outfit from './relatedAndOutfit/outfit.jsx';
+import Bars from './star_component/Bars.jsx';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -43,6 +44,7 @@ export default class App extends React.Component {
         <OutfitContainer />
         <QuestionsContainer />
         <ReviewsAndRatings />
+        <Bars />
       </div>
     );
   }
