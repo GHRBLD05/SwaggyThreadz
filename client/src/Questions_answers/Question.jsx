@@ -118,7 +118,7 @@ class Question extends React.Component {
             <p style={noAnswers}>A: </p>
           </div>
           <div className="answer-box">
-            {this.props.answers
+            {this.props.answers.sort(compare)
               .slice(0, this.state.answersLimit)
               .map((answer, i) => (
                 <Answer
