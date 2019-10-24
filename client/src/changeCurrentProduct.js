@@ -32,7 +32,7 @@ const getRelatedIDs = id =>
       relatedIDsFromRequest => {
         const relatedIDs = [];
         for (const relatedID of relatedIDsFromRequest) {
-          if (!relatedIDs.includes(relatedID)) {
+          if (!relatedIDs.includes(relatedID) && relatedID !== id) {
             relatedIDs.push(relatedID);
           }
         }
