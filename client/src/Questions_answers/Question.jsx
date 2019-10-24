@@ -78,7 +78,7 @@ class Question extends React.Component {
 
   render() {
     const buttonStyle = this.state.showButton ? {} : { display: 'none' };
-    const noAnswers = !this.state.answers.length ? { display: 'none' } : {};
+    const noAnswers = !this.props.answers.length ? { display: 'none' } : {};
     const lastAnswer = this.state.collapseButton ? {} : { display: 'none' };
 
     return (
