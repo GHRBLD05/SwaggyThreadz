@@ -6,15 +6,18 @@ export default class Outfit extends React.Component {
   constructor(props) {
     super(props);
     // localStorage.removeItem('outfits');
+    // localStorage.removeItem('outfitIDs');
     this.state = {
       outfits: JSON.parse(localStorage.getItem('outfits')),
       outfitIDs: JSON.parse(localStorage.getItem('outfitIDs'))
     };
+    console.log('initial outfits val: ', this.state.outfits);
+    console.log('initial outfit ids val: ', this.state.outfitIDs);
     if (this.state.outfits === null) {
       this.state.outfits = [];
       this.state.outfitIDs = [];
       localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
-      localStorage.setItem('outfitNames', JSON.stringify(this.state.outfitIDs));
+      localStorage.setItem('outfitIDs', JSON.stringify(this.state.outfitIDs));
     }
   }
 
@@ -26,7 +29,40 @@ export default class Outfit extends React.Component {
       outfits.push(product);
       outfitIDs.push(product.id);
     }
+    localStorage.setItem('outfitIDs', JSON.stringify(outfitIDs));
     localStorage.setItem('outfits', JSON.stringify(outfits));
+    this.setState({
+      outfits,
+      outfitIDs,
+    });
+  }
+
+  removeFromOutfit(e, product) {
+    e.preventDefault();
+    console.log('product to be removed from outfit: ', product);
+    const outfitIDs = this.state.outfitIDs.slice();
+    const outfits = this.state.outfits.slice();
+    console.log('outfitIDs before removal: ', outfitIDs);
+    console.log('outfits before removal: ', this.state.outfits);
+    let idRemoved = false;
+    let outfitRemoved = false;
+    for (let i = 0; i < outfitIDs.length; i++) {
+      if (outfitIDs[i] === product.id) {
+        outfitIDs.splice(i, 1);
+        idRemoved = true;
+      }
+      if (outfits[i].id === product.id) {
+        outfits.splice(i, 1);
+        outfitRemoved = true;
+      }
+      if (idRemoved && outfitRemoved) {
+        break;
+      }
+    }
+    console.log('outfitIDs after removal: ', outfitIDs);
+    console.log('outfits after removal:', outfits);
+    localStorage.setItem('outfits', JSON.stringify(outfits));
+    localStorage.setItem('outfitIDs', JSON.stringify(outfitIDs));
     this.setState({
       outfits,
       outfitIDs,
@@ -60,7 +96,11 @@ export default class Outfit extends React.Component {
                       : 'carousel-item col-md-3'
                   }
                 >
-                  <OutfitCard product={outfit} key={i} />
+                  <OutfitCard
+                    product={outfit}
+                    removeFromOutfit={this.removeFromOutfit.bind(this)}
+                    key={i}
+                  />
                 </div>
               ))}
               <div
