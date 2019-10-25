@@ -129,6 +129,8 @@ const getCurrentProduct = id =>
     $.get(`${apiUrl}${id}`, product => {
       resolve(product);
     });
+      productChangedEvent.productId = id;
+      document.getElementById('app').dispatchEvent(productChangedEvent);
   });
 
 const addRatingToCurrent = product =>
@@ -165,15 +167,16 @@ const addQuestionsToCurrent = product =>
     });
   });
 
+
 const changeCurrentProduct = (productName, callback) => {
-  updateProductList()
-    .then(productList => getIdFromName(productName, productList))
-    .then(productID =>
-      Promise.all([
-        getStyles(productID),
-        getRelatedIDs(productID),
-        getCurrentProduct(productID),
-      ])
+    updateProductList()
+        .then(productList => getIdFromName(productName, productList))
+        .then(productID =>
+            Promise.all([
+                getStyles(productID),
+                getRelatedIDs(productID),
+                getCurrentProduct(productID),
+            ])
     )
     .then(([[styles, style], relatedIDs, currentProduct]) =>
       Promise.all([
@@ -203,4 +206,7 @@ const changeCurrentProduct = (productName, callback) => {
       callback(currentProduct, styles, style, relatedProducts);
     });
 };
+
+const productChangedEvent = new CustomEvent('productChanged', { productId: -1 });
+
 export default changeCurrentProduct;
