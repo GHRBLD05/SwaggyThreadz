@@ -7,9 +7,6 @@ import $ from 'jquery';
 export default class Reviews extends React.Component {
     constructor(props) {
         super(props);
-        console.log(";lkj;lk");
-        console.log(props);
-        this.url = `http://52.26.193.201:3000/reviews/${this.props.productinfo.product}/list`; //TODO: Add params to load different items
         this.views = ["REDUCED", "FULL"];
         this.state = {
             viewCount: 2,
@@ -25,7 +22,7 @@ export default class Reviews extends React.Component {
         document.getElementById('reviews').addEventListener('sortingChanged', e => this.getReviews(e.detail.sortOptions));
         document.getElementById('reviews').addEventListener('loadMoreReviews', e => {
             this.setState({ viewCount: this.state.viewCount += 2 });
-            if (this.state.viewCount >= this.state.reviews.results.length) {
+            if (this.state.viewCount >= this.props.productinfo.results.length) {
                 this.setState({ viewState: this.views[1] });
                 document.getElementById('controls').dispatchEvent(this.allReviewsLoaded, null);
             }
@@ -34,8 +31,7 @@ export default class Reviews extends React.Component {
 
     render() {
         console.log("REVIEWS:");
-        console.log(this.url);
-        if (this.props.productinfo === null) /* INIT */ {
+        if (this.props.productinfo === null || this.props.productinfo === undefined) /* INIT */ {
             console.log('Reviews: INIT');
             return (
                 <div id="reviews" className="col-md-8 row-">
@@ -76,15 +72,16 @@ export default class Reviews extends React.Component {
     }
 
     getReviews(sortOptions) {
-        let obj = this;
-        $.ajax({
-            url: obj.url + `?sort=${sortOptions}`,
-            type: "GET",
-            dataType: "json",
-            success: function (res) {
-                obj.setState({ reviews: res });
-            }
-        });
-
+        if (this.props.productinfo !== null) {
+            let obj = this;
+            $.ajax({
+                url: `http://52.26.193.201:3000/reviews/${this.props.productinfo.product}/list?sort=${sortOptions}`,
+                type: "GET",
+                dataType: "json",
+                success: function (res) {
+                    obj.setState({ reviews: res });
+                }
+            });
+        }
     }
 }
