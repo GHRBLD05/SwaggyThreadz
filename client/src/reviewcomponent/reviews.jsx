@@ -30,9 +30,7 @@ export default class Reviews extends React.Component {
     }
 
     render() {
-        console.log("REVIEWS:");
         if (this.props.productinfo === null || this.props.productinfo === undefined) /* INIT */ {
-            console.log('Reviews: INIT');
             return (
                 <div id="reviews" className="col-md-8 row-">
                     {<Filter />}
@@ -41,7 +39,6 @@ export default class Reviews extends React.Component {
             )
         }
         else if (this.state.viewState === this.views[0]) /* REDUCED */ {
-            console.log('Reviews: REDUCED');
             var reviews = [];
             for (let i = 0; i < this.state.viewCount && i < this.props.productinfo.results.length; i++) {
                 reviews.push(<Review key={this.props.productinfo.results[i].review_id} review={this.props.productinfo.results[i]} />);
@@ -58,7 +55,6 @@ export default class Reviews extends React.Component {
             )
         }
         else if (this.state.viewState === this.views[1]) /* FULL */ {
-            console.log('Reviews: FULL');
             return (
                 <div id="reviews" className="col-md-8 row-">
                     {<Filter />}
