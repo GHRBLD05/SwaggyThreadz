@@ -37,11 +37,11 @@ class ModalQuestion extends React.Component {
   checkData(data) {
     // POST request to the api when button is clicked
     if (!this.state.question.length) {
-      alert('You must ask a question to submit');
+      alert('You must enter a question to submit');
     } else if (!this.state.nickName.length) {
-      alert('You must provide a nickname to submit');
-    } else if (!this.state.email.length) {
-      alert('You must provide a viable email to submit');
+      alert('You must enter a nickname to submit');
+    } else if (!this.state.email.length || !this.state.email.includes('@')) {
+      alert('You must enter a viable email to submit');
     } else {
       this.filledOut = true;
       this.submitModal(this.state);
@@ -102,8 +102,8 @@ class ModalQuestion extends React.Component {
           </button>
           <div className="modal-body">
             <label htmlFor="question-form" className="modal-headings">
-              What is your question?{' '}
-              <span className="mandatory">(mandatory)</span>
+              Ask your question about the <span className="product-name">{this.props.productId.name}</span>
+              <span className="mandatory"> (required*)</span>
             </label>
             <textarea
               className="question-form border border-primary"
@@ -121,10 +121,10 @@ class ModalQuestion extends React.Component {
             </div>
             <div className="row name-email-labels">
               <label htmlFor="question-name" className="pl-0 modal-headings">
-                Nickname: <span className="mandatory">(mandatory)</span>
+                Nickname: <span className="mandatory">(required*)</span>
               </label>
-              <label htmlFor="question-email" className="pl-3 modal-headings">
-                Email: <span className="mandatory">(mandatory)</span>
+              <label htmlFor="question-email" className="ml-4 modal-headings">
+                Email: <span className="mandatory">(required*)</span>
               </label>
             </div>
             <div className="row name-email-area">

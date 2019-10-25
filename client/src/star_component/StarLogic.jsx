@@ -15,9 +15,9 @@ export default class StarLogic extends React.Component {
       if (i < starRating) {
         stars.push(<Fullstar />);
       } else if (Remainder > 0) {
-        stars.push(<Halfstar />);
+        stars.push(<Halfstar key={i} />);
       } else {
-        stars.push(<Emptystar />);
+        stars.push(<Emptystar key={i} />);
       }
     }
     console.log('testing', starRating);

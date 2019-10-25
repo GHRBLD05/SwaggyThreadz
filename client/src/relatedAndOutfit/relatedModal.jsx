@@ -57,21 +57,45 @@ const RelatedModal = props => {
           </div>
           <div className="modal-body">
             <div className="container">
-              {featureObjects.map((featureObj, i) => (
-                <div className="row" key={i}>
-                  <div className="col-4">
-                    <p>{featureObj.currentProductValue}</p>
+              {featureObjects.map((featureObj, i) => {
+                let currentSymbol;
+                let relatedSymbol;
+                if (
+                  featureObj.currentProductValue === 'null' ||
+                  featureObj.currentProductValue === 'false'
+                ) {
+                  currentSymbol = 'fa fa-times';
+                } else if (featureObj.currentProductValue === 'true') {
+                  currentSymbol = 'fa fa-check';
+                }
+                if (
+                  featureObj.relatedProductValue === 'null' ||
+                  featureObj.relatedProductValue === 'false'
+                ) {
+                  relatedSymbol = 'fa fa-times';
+                } else if (featureObj.relatedProductValue === 'true') {
+                  relatedSymbol = 'fa fa-check';
+                }
+                return (
+                  <div className="row" key={i}>
+                    <div className="col-4">
+                      <p className={currentSymbol || null}>
+                        {currentSymbol ? null : featureObj.currentProductValue}
+                      </p>
+                    </div>
+                    <div className="col-4">
+                      <p>
+                        <b>{featureObj.feature}</b>
+                      </p>
+                    </div>
+                    <div className="col-4">
+                      <p className={relatedSymbol || null}>
+                        {relatedSymbol ? null : featureObj.relatedProductValue}
+                      </p>
+                    </div>
                   </div>
-                  <div className="col-4">
-                    <p>
-                      <b>{featureObj.feature}</b>
-                    </p>
-                  </div>
-                  <div className="col-4">
-                    <p>{featureObj.relatedProductValue}</p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
           <div className="modal-footer">

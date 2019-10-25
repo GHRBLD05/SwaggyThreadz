@@ -22,25 +22,6 @@ class Question extends React.Component {
     this.closeAnswerModal = this.closeAnswerModal.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.helpfullnessCount = this.props.helpfullness;
-  //   const idParam = this.props.id;
-  //   $.get(`http://52.26.193.201:3000/qa/${idParam}/answers`, data => {}).then(
-  //     results => {
-  //       const dataCopy = results.results.slice();
-  //       const sorted = dataCopy.sort(compare);
-  //       this.setState({
-  //         answers: sorted,
-  //       });
-  //       if (this.state.answers.length > 2) {
-  //         this.setState({
-  //           showButton: true,
-  //         });
-  //       }
-  //     }
-  //   );
-  // }
-
   helpfullnessButton(e) {
     if (this.state.clickedYes === false) {
       const idParam = this.props.id;
@@ -97,7 +78,7 @@ class Question extends React.Component {
 
   render() {
     const buttonStyle = this.state.showButton ? {} : { display: 'none' };
-    const noAnswers = !this.state.answers.length ? { display: 'none' } : {};
+    const noAnswers = !this.props.answers.length ? { display: 'none' } : {};
     const lastAnswer = this.state.collapseButton ? {} : { display: 'none' };
 
     return (
@@ -106,7 +87,7 @@ class Question extends React.Component {
           <div className="col-md-9">
             <p className="question">Q: {this.props.currQuestion}</p>
           </div>
-          <div className="col-md-3 helpfulQuestion">
+          <div className="col-md-3 mt-2 helpfulQuestion">
             <p>
               Helpful?
               <button
@@ -137,7 +118,7 @@ class Question extends React.Component {
             <p style={noAnswers}>A: </p>
           </div>
           <div className="answer-box">
-            {this.props.answers
+            {this.props.answers.sort(compare)
               .slice(0, this.state.answersLimit)
               .map((answer, i) => (
                 <Answer
@@ -146,7 +127,7 @@ class Question extends React.Component {
                   date={answer.date}
                   helpfullness={answer.helpfulness}
                   photos={answer.photos}
-                  answerId={answer.answer_id}
+                  answerId={answer.id}
                   key={i}
                   helpfullnessButton={this.helpfullnessButton}
                 />
@@ -181,6 +162,8 @@ class Question extends React.Component {
           close={this.closeAnswerModal}
           show={this.state.showAnswerModal}
           questionId={this.props.id}
+          currQuestion={this.props.currQuestion}
+          productName={this.props.productName}
         />
       </div>
     );
