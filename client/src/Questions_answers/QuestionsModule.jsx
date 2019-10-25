@@ -66,9 +66,13 @@ class QuestionsModule extends React.Component {
     });
     if (this.state.questionsLimit >= this.props.currentProduct.questions.length) {
       this.setState({
-        showButton: true,
+        showButton: false,
       });
-    }
+    } else {
+      this.setState({
+        showButton: true,
+      })
+     }
 
   }
 
