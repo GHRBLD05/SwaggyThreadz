@@ -19,6 +19,15 @@ export default class Outfit extends React.Component {
     }
   }
 
+  componentDidUpdate() {
+    $('#outfitCarousel .carousel-control-prev').css('visibility', 'hidden');
+    if (this.state.outfits.length <= 4) {
+      $('#outfitCarousel .carousel-control-next').css('visibility', 'hidden');
+    } else {
+      $('#outfitCarousel .carousel-control-next').css('visibility', 'visible');
+    }
+  }
+
   addToOutfit(e, product) {
     e.preventDefault();
     const outfitIDs = this.state.outfitIDs.slice();
