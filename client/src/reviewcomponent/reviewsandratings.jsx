@@ -4,9 +4,9 @@ import Ratings from "./ratings.jsx";
 import $ from 'jquery';
 
 export default class ReviewsAndRatings extends React.Component {
+
     constructor(props) {
         super(props);
-
         this.state = {
             productinfo: null
         }
