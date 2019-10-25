@@ -411,3 +411,7 @@
 .outfitCard {
   text-align: center;
 }
+
+.compare-features {
+  max-height: 300px;
+}
