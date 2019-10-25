@@ -7,19 +7,29 @@ export default class Outfit extends React.Component {
     super(props);
     // localStorage.removeItem('outfits');
     this.state = {
-      outfits: JSON.parse(localStorage.getItem('outfits'))
+      outfits: JSON.parse(localStorage.getItem('outfits')),
+      outfitIDs: JSON.parse(localStorage.getItem('outfitIDs'))
     };
-    this.state.outfits = [];
-    localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
+    if (this.state.outfits === null) {
+      this.state.outfits = [];
+      this.state.outfitIDs = [];
+      localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
+      localStorage.setItem('outfitNames', JSON.stringify(this.state.outfitIDs));
+    }
   }
 
   addToOutfit(e, product) {
     e.preventDefault();
+    const outfitIDs = this.state.outfitIDs.slice();
     const outfits = this.state.outfits.slice();
-    outfits.push(product);
+    if (!this.state.outfitIDs.includes(product.id)) {
+      outfits.push(product);
+      outfitIDs.push(product.id);
+    }
     localStorage.setItem('outfits', JSON.stringify(outfits));
     this.setState({
       outfits,
+      outfitIDs,
     });
   }
 

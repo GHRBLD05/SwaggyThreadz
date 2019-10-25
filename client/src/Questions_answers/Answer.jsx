@@ -52,7 +52,7 @@ class Answer extends React.Component {
 
 
   render() {
-    const isSeller = this.props.userName === 'Seller' ? {} : {fontweight: "bold"};
+    const isSeller = this.props.userName === 'Seller' ? {fontWeight: "bold", opacity: '1'} : {};
     const isReported = this.state.isReported ? 'Reported' : 'Report';
 
     return (

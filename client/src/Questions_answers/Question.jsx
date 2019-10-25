@@ -78,7 +78,7 @@ class Question extends React.Component {
 
   render() {
     const buttonStyle = this.state.showButton ? {} : { display: 'none' };
-    const noAnswers = !this.state.answers.length ? { display: 'none' } : {};
+    const noAnswers = !this.props.answers.length ? { display: 'none' } : {};
     const lastAnswer = this.state.collapseButton ? {} : { display: 'none' };
 
     return (
@@ -87,7 +87,7 @@ class Question extends React.Component {
           <div className="col-md-9">
             <p className="question">Q: {this.props.currQuestion}</p>
           </div>
-          <div className="col-md-3 helpfulQuestion">
+          <div className="col-md-3 mt-2 helpfulQuestion">
             <p>
               Helpful?
               <button
@@ -118,7 +118,7 @@ class Question extends React.Component {
             <p style={noAnswers}>A: </p>
           </div>
           <div className="answer-box">
-            {this.props.answers
+            {this.props.answers.sort(compare)
               .slice(0, this.state.answersLimit)
               .map((answer, i) => (
                 <Answer
@@ -127,7 +127,7 @@ class Question extends React.Component {
                   date={answer.date}
                   helpfullness={answer.helpfulness}
                   photos={answer.photos}
-                  answerId={answer.answer_id}
+                  answerId={answer.id}
                   key={i}
                   helpfullnessButton={this.helpfullnessButton}
                 />
