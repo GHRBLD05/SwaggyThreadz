@@ -218,7 +218,8 @@
   width: 50px;
 }
 
-#relatedCarousel {
+#relatedCarousel,
+#outfitCarousel {
   height: 300px;
 }
 
