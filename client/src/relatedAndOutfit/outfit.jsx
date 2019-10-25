@@ -11,8 +11,6 @@ export default class Outfit extends React.Component {
       outfits: JSON.parse(localStorage.getItem('outfits')),
       outfitIDs: JSON.parse(localStorage.getItem('outfitIDs'))
     };
-    console.log('initial outfits val: ', this.state.outfits);
-    console.log('initial outfit ids val: ', this.state.outfitIDs);
     if (this.state.outfits === null) {
       this.state.outfits = [];
       this.state.outfitIDs = [];
@@ -42,8 +40,6 @@ export default class Outfit extends React.Component {
     console.log('product to be removed from outfit: ', product);
     const outfitIDs = this.state.outfitIDs.slice();
     const outfits = this.state.outfits.slice();
-    console.log('outfitIDs before removal: ', outfitIDs);
-    console.log('outfits before removal: ', this.state.outfits);
     let idRemoved = false;
     let outfitRemoved = false;
     for (let i = 0; i < outfitIDs.length; i++) {
@@ -59,8 +55,6 @@ export default class Outfit extends React.Component {
         break;
       }
     }
-    console.log('outfitIDs after removal: ', outfitIDs);
-    console.log('outfits after removal:', outfits);
     localStorage.setItem('outfits', JSON.stringify(outfits));
     localStorage.setItem('outfitIDs', JSON.stringify(outfitIDs));
     this.setState({
