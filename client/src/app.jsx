@@ -44,7 +44,6 @@ export default class App extends React.Component {
         <OutfitContainer />
         <QuestionsContainer />
         <ReviewsAndRatings />
-        <Bars />
       </div>
     );
   }
