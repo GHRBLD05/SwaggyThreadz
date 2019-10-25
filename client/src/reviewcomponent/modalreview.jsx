@@ -5,42 +5,45 @@ export default class ModalReview extends React.Component {
 
     componentDidMount() {
         let form = document.getElementById("reviewmodal");
-		form.addEventListener("submit", e => {
+        form.addEventListener("submit", e => {
+            console.log('here');
             e.preventDefault();
+            document.getElementById("controls").dispatchEvent(new CustomEvent("reviewSubmitted", null));
             this.submitReview(form.elements);
         })
     }
+
     handlePhotos(e) {
         console.log(e.target.files);
     }
 
     submitReview(vals) {
-        let options = {
+        var options = {
             rating: vals.rating.value,
             summary: vals.summary.value,
             body: vals.body.value,
-            recommend: true,
+            recommend: vals.recommend.value === 'on' ? true : false,
             name: vals.name.value,
             email: vals.email.value,
-            photos: [],
+            photos: "",
             characteristics: {}
-        }
+        };
+        console.log(JSON.stringify(options));
 
-        console.log(options);
-        fetch(`http://52.26.193.201:3000/reviews/2`, {
+        fetch(`http://52.26.193.201:3000/reviews/${this.props.productid}`, {
             method: 'post',
             headers: {
-                "Content-type": "application/json"
+                'Content-type': 'application/json'
             },
-            body: JSON.stringify(options)
+            body: JSON.stringify(options),
         })
-        .then(response => response.text())
-        .then(function (data) {
-            console.log('post data from promise:', data);
+        .then(response => {
+            console.log(response);
         })
         .catch(function (error) {
             console.log('Failed', error);
         });
+
     }
 
     render() {

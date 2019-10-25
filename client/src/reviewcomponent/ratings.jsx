@@ -10,7 +10,6 @@ export default class Ratings extends React.Component {
       avg: 0,
     };
     this.getProductData(props.productId);
-    console.log('jaeteting', props);
   }
 
   getProductData(id) {
@@ -18,17 +17,14 @@ export default class Ratings extends React.Component {
     new Promise((resolve, reject) => {
       $.get(`http://52.26.193.201:3000/reviews/${id}/meta`, data => {
         if (data === undefined) {
-          console.log(data);
           resolve(null);
         } else {
-          console.log(data);
           let avg = 0;
           const keys = Object.keys(data.ratings);
           for (let i = 0; i < keys.length; i++) {
             avg += data.ratings[keys[i]];
           }
           avg /= keys.length;
-          console.log(avg);
           this.setState({
             avg,
           });

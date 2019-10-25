@@ -23,7 +23,7 @@ export default class App extends React.Component {
 
     render() {
         return (
-          <div className="container maincontainer">
+          <div className="container">
             <OverviewContainer />
             <RelatedProductsContainer />
             <OutfitContainer />

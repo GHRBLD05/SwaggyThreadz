@@ -19,7 +19,6 @@ class ImageGallery extends React.Component {
     } = this.props;
     return (
       <div>
-        {console.log('this better fucking work', this.props)}
         <div
           id="my-carousel"
           className="carousel slide"

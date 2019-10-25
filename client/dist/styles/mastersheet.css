@@ -2,11 +2,6 @@
   display: grid;
 }
 
-.maincontainer {
-  border-style: solid;
-  border-color: red;
-}
-
 .topbar {
   display: flex;
   justify-content: space-between;
