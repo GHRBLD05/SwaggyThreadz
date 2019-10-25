@@ -6,7 +6,7 @@ export default class ReviewsAndRatings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentId: 2,
+      currentId: 3,
     };
   }
 

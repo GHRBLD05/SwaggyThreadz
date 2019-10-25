@@ -1,5 +1,5 @@
-import React from "react";
-import { Fullstar, Emptystar, Halfstar } from "./StarName.jsx";
+import React from 'react';
+import { Fullstar, Emptystar, Halfstar } from './StarName.jsx';
 
 export default class StarLogic extends React.Component {
   constructor(props) {
@@ -7,12 +7,12 @@ export default class StarLogic extends React.Component {
   }
 
   render() {
-    var stars = [];
-    var starRating = 4.1;
-    var maxRating = 5;
-    var Remainder = 1 - (maxRating - starRating);
-    for (var i = 0; i < maxRating; i++) {
-      if (i < starRating - 1) {
+    const stars = [];
+    const starRating = this.props.starCount;
+    const maxRating = 5;
+    const Remainder = 1 - (maxRating - starRating);
+    for (let i = 0; i < maxRating; i++) {
+      if (i < starRating) {
         stars.push(<Fullstar />);
       } else if (Remainder > 0) {
         stars.push(<Halfstar />);
@@ -20,6 +20,7 @@ export default class StarLogic extends React.Component {
         stars.push(<Emptystar />);
       }
     }
-    return <div>{stars}</div>;
+    console.log('testing', starRating);
+    return <div className="mt-3 ml-2">{stars}</div>;
   }
 }
