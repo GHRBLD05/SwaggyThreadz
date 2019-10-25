@@ -39,6 +39,7 @@ export default class Review extends React.Component {
     }
 
     render() {
+        console.log("REVIEW:");
         var stars = [];
         for (let i = 0; i < this.state.rating; i++) {
             stars.push(<Fullstar key={`star_${i}`} />);
@@ -49,7 +50,7 @@ export default class Review extends React.Component {
         var photos = [];
         if (this.state.photos.length > 0) {
             for (var i = 0; i < this.state.photos.length; i++) {
-                photos.push(<img class="reviewphoto" src={this.state.photos[i].url} />);
+                photos.push(<img className="reviewphoto" src={this.state.photos[i].url} />);
             }
         }
         var recommended = null;

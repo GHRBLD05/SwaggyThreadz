@@ -7,18 +7,13 @@ import $ from 'jquery';
 export default class Reviews extends React.Component {
     constructor(props) {
         super(props);
-
-        this.url = `http://52.26.193.201:3000/reviews/${props.productinfo.productid}/list`; //TODO: Add params to load different items
+        console.log(";lkj;lk");
+        console.log(props);
+        this.url = `http://52.26.193.201:3000/reviews/${this.props.productinfo.product}/list`; //TODO: Add params to load different items
         this.views = ["REDUCED", "FULL"];
         this.state = {
             viewCount: 2,
-            viewState: this.views[0],
-            reviews: {
-                product: undefined,
-                page: undefined,
-                count: undefined,
-                results: undefined
-            }
+            viewState: this.views[0]
         }
 
         this.allReviewsLoaded = new CustomEvent('allReviewsLoaded', { detail: { reviewsState: this.views[1] } });
@@ -37,22 +32,11 @@ export default class Reviews extends React.Component {
         });
     }
 
-
-    getReviews(sortOptions) {
-        let obj = this;
-        $.ajax({
-            url: obj.url + `?sort=${sortOptions}`,
-            type: "GET",
-            dataType: "json",
-            success: function (res) {
-                obj.setState({ reviews: res });
-            }
-        });
-        
-    }
-
     render() {
-        if (this.state.reviews.product === undefined || this.state.reviews.results.length === 0) /* INIT */ {
+        console.log("REVIEWS:");
+        console.log(this.url);
+        if (this.props.productinfo === null) /* INIT */ {
+            console.log('Reviews: INIT');
             return (
                 <div id="reviews" className="col-md-8 row-">
                     {<Filter />}
@@ -61,11 +45,10 @@ export default class Reviews extends React.Component {
             )
         }
         else if (this.state.viewState === this.views[0]) /* REDUCED */ {
-
+            console.log('Reviews: REDUCED');
             var reviews = [];
-            let i = 0
-            for (; i < this.state.viewCount && i < this.state.reviews.count; i++) {
-                reviews.push(<Review key={this.state.reviews.results[i].review_id} review={this.state.reviews.results[i]} />);
+            for (let i = 0; i < this.state.viewCount && i < this.props.productinfo.results.length; i++) {
+                reviews.push(<Review key={this.props.productinfo.results[i].review_id} review={this.props.productinfo.results[i]} />);
             }
 
             return (
@@ -79,16 +62,29 @@ export default class Reviews extends React.Component {
             )
         }
         else if (this.state.viewState === this.views[1]) /* FULL */ {
-
+            console.log('Reviews: FULL');
             return (
                 <div id="reviews" className="col-md-8 row-">
                     {<Filter />}
                     <div id="reviewlist">
-                        {this.state.reviews.results.map((review) => <Review key={review.review_id} review={review} />)}
+                        {this.props.productinfo.results.map((review) => <Review key={review.review_id} review={review} />)}
                     </div>
                     {<Controls reveiwsState={this.state.viewState} />}
                 </div>
             )
         }
+    }
+
+    getReviews(sortOptions) {
+        let obj = this;
+        $.ajax({
+            url: obj.url + `?sort=${sortOptions}`,
+            type: "GET",
+            dataType: "json",
+            success: function (res) {
+                obj.setState({ reviews: res });
+            }
+        });
+
     }
 }
