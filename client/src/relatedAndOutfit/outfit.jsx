@@ -19,6 +19,15 @@ export default class Outfit extends React.Component {
     }
   }
 
+  componentDidUpdate() {
+    $('#outfitCarousel .carousel-control-prev').css('visibility', 'hidden');
+    if (this.state.outfits.length <= 4) {
+      $('#outfitCarousel .carousel-control-next').css('visibility', 'hidden');
+    } else {
+      $('#outfitCarousel .carousel-control-next').css('visibility', 'visible');
+    }
+  }
+
   addToOutfit(e, product) {
     e.preventDefault();
     const outfitIDs = this.state.outfitIDs.slice();
@@ -80,16 +89,15 @@ export default class Outfit extends React.Component {
             data-type="multi"
             data-wrap="false"
           >
-            <div className="carousel-inner row w-100 mx-auto ro" role="listbox">
+            <div className="carousel-inner row w-100 mx-auto oc" role="listbox">
+              <div className="carousel-item col-md-3 active">
+                <AddToOutfitCard
+                  product={this.props.currentProduct}
+                  addToOutfit={this.addToOutfit.bind(this)}
+                />
+              </div>
               {this.state.outfits.map((outfit, i) => (
-                <div
-                  key={i}
-                  className={
-                    i === 0
-                      ? 'carousel-item col-md-3 active'
-                      : 'carousel-item col-md-3'
-                  }
-                >
+                <div key={i} className="carousel-item col-md-3">
                   <OutfitCard
                     product={outfit}
                     removeFromOutfit={this.removeFromOutfit.bind(this)}
@@ -97,18 +105,6 @@ export default class Outfit extends React.Component {
                   />
                 </div>
               ))}
-              <div
-                className={
-                  this.state.outfits.length === 0
-                    ? 'carousel-item col-md-3 active'
-                    : 'carousel-item col-md-3'
-                }
-              >
-                <AddToOutfitCard
-                  product={this.props.currentProduct}
-                  addToOutfit={this.addToOutfit.bind(this)}
-                />
-              </div>
             </div>
             <a
               className="carousel-control-prev text-faded"
