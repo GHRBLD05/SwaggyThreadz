@@ -24,7 +24,6 @@ export default class Controls extends React.Component {
     }
 
     render() {
-        console.log("this", this.props)
         var modal = null;
         if (this.state.showModal) {
             modal = ReactDOM.createPortal(<ModalReview productid={this.props.productid}/>, document.getElementById('modal'));

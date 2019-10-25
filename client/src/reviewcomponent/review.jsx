@@ -42,7 +42,6 @@ export default class Review extends React.Component {
     }
 
     render() {
-        console.log("REVIEW:");
         var review = this.props.review;
         var stars = [];
         for (let i = 0; i < review.rating; i++) {

@@ -47,7 +47,6 @@ export default class ModalReview extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <div className="modal-cover">
                 <div className="modal-area">

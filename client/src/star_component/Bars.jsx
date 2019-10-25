@@ -13,7 +13,6 @@ export default class Bars extends React.Component {
   componentDidMount() {
     const id = this.props.productId;
     $.get(`http://52.26.193.201:3000/reviews/${id}/meta`, results => {
-      console.log("This should be the ratings: ", results);
     })
       .then(results => {
         this.setState({
@@ -38,7 +37,6 @@ export default class Bars extends React.Component {
   }
 
   render() {
-    console.log("barshow");
     // const style = {height: '2px', width: '6px', backgroundcolor: 'black'} {
     return (
       <React.Fragment>

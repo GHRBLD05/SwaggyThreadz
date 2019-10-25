@@ -20,7 +20,6 @@ export default class StarLogic extends React.Component {
         stars.push(<Emptystar key={i} />);
       }
     }
-    console.log('testing', starRating);
     return <div className="mt-3 ml-2">{stars}</div>;
   }
 }

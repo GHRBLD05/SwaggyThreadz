@@ -72,9 +72,6 @@ export default class Reviews extends React.Component {
     }
 
     getReviews(sortOptions) {
-        console.log("getre");
-        console.log(this.props);
-        console.log(sortOptions);
         if (this.props.productinfo !== null) {
             var obj = this;
             $.ajax({
