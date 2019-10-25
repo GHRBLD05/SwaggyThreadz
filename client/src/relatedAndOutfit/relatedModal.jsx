@@ -55,7 +55,7 @@ const RelatedModal = props => {
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div className="modal-body">
+          <div className="modal-body overflow-auto compare-features">
             <div className="container">
               {featureObjects.map((featureObj, i) => {
                 let currentSymbol;
