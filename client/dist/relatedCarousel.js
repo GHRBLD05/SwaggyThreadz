@@ -1,7 +1,7 @@
 $(document).ready(() => {
   $('#relatedCarousel').on('slide.bs.carousel', function(e) {
     const itemsPerSlide = 4;
-    const totalItems = $('#ro .carousel-item').length;
+    const totalItems = $('#relatedCarousel .carousel-item').length;
     const $e = $(e.relatedTarget);
     const idx = $e.index();
     if (idx >= totalItems - itemsPerSlide) {
