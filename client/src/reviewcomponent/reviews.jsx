@@ -36,7 +36,7 @@ export default class Reviews extends React.Component {
             return (
                 <div id="reviews" className="col-md-8 row-">
                     {<Filter />}
-                    {<Controls reviewsState={this.state.viewState} />}
+                    {<Controls productid={null} reviewsState={this.state.viewState} />}
                 </div>
             )
         }
@@ -53,7 +53,7 @@ export default class Reviews extends React.Component {
                     <div id="reviewlist">
                         {reviews}
                     </div>
-                    {<Controls reviewsState={this.state.viewState} />}
+                    {<Controls productid={this.props.productinfo.product}  reviewsState={this.state.viewState} />}
                 </div>
             )
         }
@@ -65,15 +65,18 @@ export default class Reviews extends React.Component {
                     <div id="reviewlist">
                         {this.props.productinfo.results.map((review) => <Review key={review.review_id} review={review} />)}
                     </div>
-                    {<Controls reveiwsState={this.state.viewState} />}
+                    {<Controls productid={this.props.productinfo.product}  reveiwsState={this.state.viewState} />}
                 </div>
             )
         }
     }
 
     getReviews(sortOptions) {
+        console.log("getre");
+        console.log(this.props);
+        console.log(sortOptions);
         if (this.props.productinfo !== null) {
-            let obj = this;
+            var obj = this;
             $.ajax({
                 url: `http://52.26.193.201:3000/reviews/${this.props.productinfo.product}/list?sort=${sortOptions}`,
                 type: "GET",

@@ -16,6 +16,7 @@ export default class Controls extends React.Component {
 
     componentDidMount() {
         document.getElementById('controls').addEventListener('allReviewsLoaded', e => this.setState({ controlsState: e.detail.reviewsState }));
+        document.getElementById('controls').addEventListener('reviewSubmitted', e => this.setState({ showModal: false }));
     }
 
     onLoadMoreReviews(e) {
@@ -23,9 +24,10 @@ export default class Controls extends React.Component {
     }
 
     render() {
+        console.log("this", this.props)
         var modal = null;
         if (this.state.showModal) {
-            modal = ReactDOM.createPortal(<ModalReview />, document.getElementById('modal'));
+            modal = ReactDOM.createPortal(<ModalReview productid={this.props.productid}/>, document.getElementById('modal'));
         }
 
         if (this.state.controlsState === "REDUCED") {
