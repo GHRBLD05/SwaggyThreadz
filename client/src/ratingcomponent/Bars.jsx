@@ -1,5 +1,4 @@
 import React from "react";
-import $ from "jquery";
 
 export default class Bars extends React.Component {
  
@@ -20,9 +19,10 @@ export default class Bars extends React.Component {
         }
 
       return(
-          <div>
-              <div>Some percent of people recommend this product</div>
+          <div id="characteristics" className="row">
+              <div className="col-sm-12" >Some percent of people recommend this product</div>
               {bars}
-        </div>)
+          </div>
+      )
   }
 }

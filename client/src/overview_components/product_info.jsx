@@ -1,5 +1,5 @@
 import React from 'react';
-import { Fullstar, Emptystar, Halfstar } from '../star_component/StarName.jsx';
+import { Fullstar, Emptystar, Halfstar } from '../star_component/stars.jsx';
 
 const ProductInfo = props => (
   <div className="productInfo">

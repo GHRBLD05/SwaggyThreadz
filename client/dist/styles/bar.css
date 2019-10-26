@@ -22,11 +22,6 @@
   color: yellow;
 }
 
-.bignumber {
-  font-size: 50px;
-  font-weight: bold;
-}
-
 .marker {
     width: 300px;
     height: 300px;
@@ -86,8 +81,8 @@
 .ffslider {
     -webkit-appearance: none; /* Override default CSS styles */
     appearance: none;
-    width: 100%; /* Full-width */
-    height: 25px; /* Specified height */
+    width: 90%; /* Full-width */
+    height: .5em; /* Specified height */
     background: #d3d3d3; /* Grey background */
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
@@ -99,15 +94,15 @@
     .ffslider::-webkit-slider-thumb {
         -webkit-appearance: none; /* Override default look */
         appearance: none;
-        width: 25px; /* Set a specific slider handle width */
-        height: 25px; /* Slider handle height */
+        width: 2.5em; /* Set a specific slider handle width */
+        height: .5em; /* Slider handle height */
         background-color: black; /* Green background */
         cursor: pointer; /* Cursor on hover */
     }
 
     .ffslider::-moz-range-thumb {
-        width: 25px; /* Set a specific slider handle width */
-        height: 25px; /* Slider handle height */
+        width: .5em; /* Set a specific slider handle width */
+        height: .5em; /* Slider handle height */
         background-color: black; /* Green background */
         cursor: pointer; /* Cursor on hover */
     }

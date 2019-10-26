@@ -1,5 +1,5 @@
 import React from 'react';
-import StarLogic from '../star_component/StarLogic.jsx';
+import StarLogic from '../star_component/starlogic.jsx';
 import Bars from './bars.jsx';
 import ProductBreakdown from './productbreakdown.jsx';
 
@@ -27,13 +27,12 @@ export default class Ratings extends React.Component {
 
         return (
           <div id="ratings" className="col-md-4">
-            <h1>Ratings</h1>
-            <div className="row">
-              <div className="bignumber">{avg}</div>
+            <div id="avgrating" className="row">
+              <div className="focus bignumber">{avg}</div>
               <StarLogic starCount={avg} />
             </div>
-                <Bars barinfo={graph} />
-                <ProductBreakdown characteristics={this.props.ratingInfo === null ? null : this.props.ratingInfo.characteristics}/>
+            <Bars barinfo={graph} />
+            <ProductBreakdown characteristics={this.props.ratingInfo === null ? null : this.props.ratingInfo.characteristics}/>
           </div>
         );
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Fullstar, Emptystar, Halfstar } from './StarName.jsx';
+import { Fullstar, Emptystar, Halfstar } from './stars.jsx';
 
 export default class StarLogic extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ export default class StarLogic extends React.Component {
         }
 
         return (
-            <div>
+            <div id="avgstars" className="focus">
                 {stars}
             </div>
         );

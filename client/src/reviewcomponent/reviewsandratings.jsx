@@ -47,7 +47,7 @@ export default class ReviewsAndRatings extends React.Component {
             this.fetchRatings(this.props.productid);
         }
         return (
-            <div id="rnr" className="row">
+            <div id="module-rnr" className="row">
                 <div id="rnrTitle" className="col-md-12">Ratings and Reviews</div>
                 <Ratings ratingInfo={this.state.ratingInfo}/>
                 <Reviews productinfo={this.state.reviewInfo} />

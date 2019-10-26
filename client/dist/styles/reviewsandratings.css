@@ -1,10 +1,18 @@
 #module-rnr {
     color: rgba(0, 0, 0, .65);
     background-color: white;
+    display: flex;
 }
 
-#ratings {
+#rnrTitle {
+    justify-content: left;
+    font-size: 1.25em;
+    padding-top: 1em;
+    padding-left: 0;
+}
 
+#rnrFilter {
+    padding-top: .75em;
 }
 
 #reviews {
@@ -51,11 +59,6 @@
 
 }
 
-#rnrTitle {
-    font-size: 1.25em;
-    padding: 1em 0em;
-}
-
 #reviewmodal {
     display: flex;
     flex-direction: column;
@@ -100,4 +103,22 @@
 .reviewlinks {
     text-decoration: underline;
     cursor: pointer;
+}
+
+.bignumber {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+#characteristics {
+    justify-content: flex-start;
+}
+
+#avgrating {
+    justify-content: flex-start;
+}
+
+#avgstars {
+    padding-left: .25em;
+    padding-top: 1.25em;
 }
