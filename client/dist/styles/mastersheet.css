@@ -2,11 +2,6 @@
   display: grid;
 }
 
-.maincontainer {
-  border-style: solid;
-  border-color: red;
-}
-
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -21,10 +16,15 @@
 }
 
 .button {
-  font-size: 0.75em;
-  padding: 0.75em 0.65em;
-  background-color: white;
-  border: 0.01em solid black;
-  color: rgba(0, 0, 0, 0.65);
-  font-weight: bold;
+    font-size: 0.75em;
+    padding: 0.75em 0.65em;
+    background-color: white;
+    border: 0.01em solid black;
+    color: rgba(0, 0, 0, 0.65);
+    font-weight: bold;
+}
+
+.focus {
+    color: rgba(0, 0, 0, .65);
+    font-weight: bold;
 }

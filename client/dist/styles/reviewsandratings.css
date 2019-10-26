@@ -4,7 +4,7 @@
 }
 
 #ratings {
-    background-color: plum;
+
 }
 
 #reviews {
@@ -29,11 +29,6 @@
     padding: 1.25em 0em;
 }
 
-.focus {
-    color: rgba(0, 0, 0, .65);
-    font-weight: bold;
-}
-
 .filter .dropdown {
     margin-left: .1em;
     border: none;
@@ -46,10 +41,25 @@
     padding-bottom: .75em;
     border-bottom: .01em solid black;
 }
+#reviewphotos {
+    display: flex;
+    justify-content: flex-start;
+}
+.reviewphoto {
+    max-height:3em;
+    max-width: 3em;
+
+}
 
 #rnrTitle {
     font-size: 1.25em;
     padding: 1em 0em;
+}
+
+#reviewmodal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .leftjustify {

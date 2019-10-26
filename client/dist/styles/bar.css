@@ -1,0 +1,64 @@
+.bar1 {
+  border: solid black 2px;
+  background-color: black;
+  height: 10px;
+  width: 10em;
+  margin: 2px;
+}
+
+.bar2 {
+  border: solid black 2px;
+  background-color: black;
+  height: 10px;
+  width: 70px;
+  margin: 2px;
+}
+
+.bar3 {
+  border: solid black 2px;
+  background-color: black;
+  height: 10px;
+  width: 100px;
+  margin: 2px;
+}
+
+.bar4 {
+  border: solid black 2px;
+  background-color: black;
+  height: 10px;
+  width: 150px;
+  margin: 2px;
+}
+
+.bar5 {
+  border: solid black 2px;
+  background-color: black;
+  height: 10px;
+  width: 40px;
+  margin: 2px;
+}
+
+.bar6 {
+  border: solid black 2px;
+  background-color: black;
+  height: 10px;
+  width: 100px;
+  margin: 2px;
+}
+
+.bar7 {
+  border: solid black 2px;
+  background-color: black;
+  height: 10px;
+  width: 100px;
+  margin: 2px;
+}
+
+.text {
+  color: yellow;
+}
+
+.bignumber {
+  font-size: 50px;
+  font-weight: bold;
+}

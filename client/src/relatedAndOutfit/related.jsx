@@ -27,7 +27,7 @@ class Related extends React.Component {
             data-type="multi"
             data-wrap="false"
           >
-            <div className="carousel-inner row w-100 mx-auto ro" role="listbox">
+            <div className="carousel-inner row w-100 mx-auto rc" role="listbox">
               {relatedProducts.map((product, i) => (
                 <div
                   id={i}

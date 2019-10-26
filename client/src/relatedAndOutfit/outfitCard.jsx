@@ -12,7 +12,8 @@ export default class OutfitCard extends React.Component {
           />
           <button
             type="button"
-            className="relatedModalButton fa fa-star fa-lg"
+            className="relatedModalButton fa fa-times-circle fa-lg"
+            onClick={e => this.props.removeFromOutfit(e, this.props.product)}
           ></button>
           <div className="relatedCardProductInfo">
             <p className="relatedProductCategory">
