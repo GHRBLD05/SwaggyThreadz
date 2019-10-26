@@ -11,12 +11,14 @@ export default class Outfit extends React.Component {
       outfits: JSON.parse(localStorage.getItem('outfits')),
       outfitIDs: JSON.parse(localStorage.getItem('outfitIDs'))
     };
+    console.log('outfits: ', this.state.outfits);
     if (this.state.outfits === null) {
       this.state.outfits = [];
       this.state.outfitIDs = [];
       localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
       localStorage.setItem('outfitIDs', JSON.stringify(this.state.outfitIDs));
     }
+    console.log('outfits2.0: ', this.state.outfits);
   }
 
   componentDidUpdate() {

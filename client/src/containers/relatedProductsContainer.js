@@ -5,10 +5,12 @@ import handleProductChange from '../actions/productChange.js';
 const mapStateToProps = state => ({
   currentProduct: state.currentProduct,
   relatedProducts: state.relatedProducts,
+  productList: state.productList,
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleProductClick: productName => dispatch(handleProductChange(productName)),
+  handleProductClick: (productName, productList) =>
+    dispatch(handleProductChange(productName, productList)),
 });
 
 const RelatedProductsContainer = connect(
