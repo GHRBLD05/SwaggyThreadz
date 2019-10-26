@@ -56,7 +56,7 @@ export default class Reviews extends React.Component {
         }
         else if (this.state.viewState === this.views[1]) /* FULL */ {
             return (
-                <div id="reviews" className="col-md-8 row-">
+                <div id="reviews" className="col-md-8 row">
                     {<Filter />}
                     <div id="reviewlist">
                         {this.props.productinfo.results.map((review) => <Review key={review.review_id} review={review} />)}

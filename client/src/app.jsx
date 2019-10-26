@@ -1,12 +1,10 @@
-import React from 'react';
 import $ from 'jquery';
+import React from 'react';
 import OverviewContainer from './containers/overviewContainer.js';
 import RelatedProductsContainer from './containers/relatedProductsContainer.js';
 import OutfitContainer from './containers/outfitContainer.js';
 import QuestionsContainer from './containers/QuestionsContainer.jsx';
 import ReviewsAndRatings from './reviewcomponent/reviewsandratings.jsx';
-import Outfit from './relatedAndOutfit/outfit.jsx';
-import Bars from './star_component/Bars.jsx';
 
 export default class App extends React.Component {
     constructor(props) {
