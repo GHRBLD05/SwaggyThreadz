@@ -397,7 +397,6 @@
   position: relative;
   width: 100%;
   height: 300px;
-  border: red solid 2px;
 }
 
 .relatedCard:hover {
