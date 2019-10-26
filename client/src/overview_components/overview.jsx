@@ -12,6 +12,7 @@ class Overview extends Component {
       currentStyle,
       currentSize,
       stylesArray,
+      productList,
     } = this.props;
     return (
       <div id="module-overview">
@@ -22,6 +23,7 @@ class Overview extends Component {
               currentStyle={currentStyle}
               stylesArray={stylesArray}
               currentSize={currentSize}
+              productList={productList}
             />
           </div>
         </div>
