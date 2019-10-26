@@ -2,13 +2,30 @@ import React, { Component } from 'react';
 
 export default class AddToCart extends Component {
   render() {
+    const sizes = Object.keys(this.props.currentStyle.skus);
+    const qty = Object.values(this.props.currentStyle.skus);
+
     return (
-      <div>
-        <input className="button" type="button" value="Add To Cart" />
-        <p>
-          this is where the select tag will go, w3 schools has a little func to
-          get 1-100 qty without having to declare a value explicitly.
-        </p>
+      <div className="row">
+        <div className="col-md-8">
+          <select className="button focus">
+            {sizes.map((size, i) => (
+              <option>{size}</option>
+            ))}
+          </select>
+        </div>
+        <div className="col-md-4">
+          <select>
+            {qty.map((size, i) => (
+              <option className="button focus">{size}</option>
+            ))}
+          </select>
+        </div>
+        <div className="row">
+          <div>
+            <input className="button focus" type="button" value="Add To Cart" />
+          </div>
+        </div>
       </div>
     );
   }
