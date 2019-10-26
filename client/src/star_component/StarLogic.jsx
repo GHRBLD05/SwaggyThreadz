@@ -24,7 +24,7 @@ export default class StarLogic extends React.Component {
         }
 
         return (
-            <div id="avgstars" className="focus">
+            <div className="focus">
                 {stars}
             </div>
         );

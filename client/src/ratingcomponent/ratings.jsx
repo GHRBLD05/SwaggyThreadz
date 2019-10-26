@@ -28,8 +28,10 @@ export default class Ratings extends React.Component {
         return (
           <div id="ratings" className="col-md-4">
             <div id="avgrating">
-              <div className="focus bignumber">{avg}</div>
-              <StarLogic starCount={avg} />
+               <div className="focus bignumber">{avg}</div>
+               <div id="avgstars" >
+                   <StarLogic starCount={avg} />
+               </div>
             </div>
             <Bars barinfo={graph} />
             <ProductBreakdown characteristics={this.props.ratingInfo === null ? null : this.props.ratingInfo.characteristics}/>
