@@ -356,14 +356,14 @@
   /* transition: .3s ease; */
 }
 
-.addOutfitButton {
+/* .addOutfitButton {
   top: 42%;
   left: 42%;
   position: absolute;
   background: none;
   border: none;
   display: inline-block;
-}
+} */
 
 .relatedModalButton:hover {
   color: yellow;
@@ -406,10 +406,7 @@
 
 .outfitCard {
   background-color: grey;
-}
-
-.outfitCard {
-  text-align: center;
+  display: inline-block;
 }
 
 .compare-features {
