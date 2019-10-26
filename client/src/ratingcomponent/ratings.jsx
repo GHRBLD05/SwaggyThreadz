@@ -27,7 +27,7 @@ export default class Ratings extends React.Component {
 
         return (
           <div id="ratings" className="col-md-4">
-            <div id="avgrating" className="row">
+            <div id="avgrating">
               <div className="focus bignumber">{avg}</div>
               <StarLogic starCount={avg} />
             </div>

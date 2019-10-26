@@ -81,7 +81,7 @@
 .ffslider {
     -webkit-appearance: none; /* Override default CSS styles */
     appearance: none;
-    width: 90%; /* Full-width */
+    width: 100%; /* Full-width */
     height: .5em; /* Specified height */
     background: #d3d3d3; /* Grey background */
     outline: none; /* Remove outline */

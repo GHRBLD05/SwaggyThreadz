@@ -2,6 +2,7 @@
     color: rgba(0, 0, 0, .65);
     background-color: white;
     display: flex;
+    justify-content: space-between;
 }
 
 #rnrTitle {
@@ -9,6 +10,10 @@
     font-size: 1.25em;
     padding-top: 1em;
     padding-left: 0;
+}
+
+#ratings {
+    padding: 0;
 }
 
 #rnrFilter {
@@ -110,12 +115,17 @@
     font-weight: bold;
 }
 
+.ratingcontainer {
+    display: inline-flex;
+    justify-content: flex-start;
+}
+
 #characteristics {
     justify-content: flex-start;
 }
 
 #avgrating {
-    justify-content: flex-start;
+    display: flex;
 }
 
 #avgstars {
