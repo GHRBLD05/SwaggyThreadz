@@ -3,23 +3,30 @@ import { Fullstar, Emptystar, Halfstar } from './StarName.jsx';
 
 export default class StarLogic extends React.Component {
   constructor(props) {
-    super(props);
+      super(props);
+      this.maxRating = 5;
   }
 
-  render() {
-    const stars = [];
-    const starRating = this.props.starCount;
-    const maxRating = 5;
-    const Remainder = 1 - (maxRating - starRating);
-    for (let i = 0; i < maxRating; i++) {
-      if (i < starRating) {
-        stars.push(<Fullstar />);
-      } else if (Remainder > 0) {
-        stars.push(<Halfstar key={i} />);
-      } else {
-        stars.push(<Emptystar key={i} />);
-      }
-    }
-    return <div className="mt-3 ml-2">{stars}</div>;
+    render() {
+        const stars = [];
+        const starRating = this.props.starCount;
+        const remainder = starRating - Math.floor(starRating);
+        var halfSet = false;
+        for (let i = 0; i < this.maxRating; i++) {
+            if (i < starRating) {
+                stars.push(<Fullstar key={i} />);
+            } else if (remainder > 0 && !halfSet) {
+                stars.push(<Halfstar key={i} />);
+                halfSet = true;
+            } else {
+                stars.push(<Emptystar key={i} />);
+            }
+        }
+
+        return (
+            <div>
+                {stars}
+            </div>
+        );
   }
 }

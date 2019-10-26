@@ -1,58 +1,22 @@
-.bar1 {
+.barcontainer {
+    display: inline-flex;
+}
+
+.bar {
   border: solid black 2px;
   background-color: black;
   height: 10px;
   width: 10em;
-  margin: 2px;
 }
 
-.bar2 {
-  border: solid black 2px;
-  background-color: black;
-  height: 10px;
-  width: 70px;
-  margin: 2px;
+
+.antibar {
+    border: solid black 2px;
+    background-color: dimgrey;
+    height: 10px;
+    width: 10em;
 }
 
-.bar3 {
-  border: solid black 2px;
-  background-color: black;
-  height: 10px;
-  width: 100px;
-  margin: 2px;
-}
-
-.bar4 {
-  border: solid black 2px;
-  background-color: black;
-  height: 10px;
-  width: 150px;
-  margin: 2px;
-}
-
-.bar5 {
-  border: solid black 2px;
-  background-color: black;
-  height: 10px;
-  width: 40px;
-  margin: 2px;
-}
-
-.bar6 {
-  border: solid black 2px;
-  background-color: black;
-  height: 10px;
-  width: 100px;
-  margin: 2px;
-}
-
-.bar7 {
-  border: solid black 2px;
-  background-color: black;
-  height: 10px;
-  width: 100px;
-  margin: 2px;
-}
 
 .text {
   color: yellow;
@@ -62,3 +26,88 @@
   font-size: 50px;
   font-weight: bold;
 }
+
+.marker {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    overflow-x: auto;
+}
+
+.markerbackground {
+    width: 300px;
+    flex-shrink: 0;
+    height: 100%;
+}
+
+.cccontainer {
+    width: 100%;
+}
+
+.ccslider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+    .ccslider:hover {
+        opacity: 1;
+    }
+
+    .ccslider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 25px;
+        height: 25px;
+        background-image: url("https://www.wikihow.com/images/thumb/b/b2/2627945-18-1.jpg/aid2627945-v4-728px-2627945-18-1.jpg");
+    }
+.slider-pic {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: opacity .15s ease-in-out;
+    transition: opacity .15s ease-in-out;
+}
+
+
+.ffslidecontainer {
+    width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.ffslider {
+    -webkit-appearance: none; /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+    /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+    .ffslider::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        width: 25px; /* Set a specific slider handle width */
+        height: 25px; /* Slider handle height */
+        background-color: black; /* Green background */
+        cursor: pointer; /* Cursor on hover */
+    }
+
+    .ffslider::-moz-range-thumb {
+        width: 25px; /* Set a specific slider handle width */
+        height: 25px; /* Slider handle height */
+        background-color: black; /* Green background */
+        cursor: pointer; /* Cursor on hover */
+    }
