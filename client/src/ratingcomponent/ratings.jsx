@@ -33,7 +33,7 @@ export default class Ratings extends React.Component {
               <StarLogic starCount={avg} />
             </div>
                 <Bars barinfo={graph} />
-                <ProductBreakdown />
+                <ProductBreakdown characteristics={this.props.ratingInfo === null ? null : this.props.ratingInfo.characteristics}/>
           </div>
         );
   }
