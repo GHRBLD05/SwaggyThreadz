@@ -12,7 +12,12 @@ class Related extends React.Component {
   }
 
   render() {
-    const { currentProduct, relatedProducts, handleProductClick } = this.props;
+    const {
+      currentProduct,
+      relatedProducts,
+      productList,
+      handleProductClick,
+    } = this.props;
     return (
       <div className="productCardWrapper">
         <div className="col-md-12 text-left">
@@ -42,6 +47,7 @@ class Related extends React.Component {
                     key={product.id}
                     currentProduct={currentProduct}
                     product={product}
+                    productList={productList}
                     handleProductClick={handleProductClick}
                   />
                 </div>

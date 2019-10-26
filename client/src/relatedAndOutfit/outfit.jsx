@@ -17,7 +17,6 @@ export default class Outfit extends React.Component {
       localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
       localStorage.setItem('outfitIDs', JSON.stringify(this.state.outfitIDs));
     }
-    console.log('OUTFIT POO', this.state.outfits)
   }
 
   componentDidUpdate() {

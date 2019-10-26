@@ -14,6 +14,7 @@ class Overview extends Component {
       currentStyle,
       currentSize,
       stylesArray,
+      productList,
       handleSearch,
       handleProductClick,
     } = this.props;
@@ -26,6 +27,7 @@ class Overview extends Component {
               currentStyle={currentStyle}
               stylesArray={stylesArray}
               currentSize={currentSize}
+              productList={productList}
               handleSearch={handleSearch}
             />
           </div>

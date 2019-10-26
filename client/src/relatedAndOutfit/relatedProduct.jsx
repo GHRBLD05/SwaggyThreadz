@@ -5,10 +5,10 @@ const RelatedProduct = props => (
   <div>
     <div
       onClick={e => {
-        props.handleProductClick(props.product.name);
+        props.handleProductClick(props.product.name, props.productList);
       }}
       onKeyPress={e => {
-        props.handleProductClick(props.product.name);
+        props.handleProductClick(props.product.name, props.productList);
       }}
       tabIndex={0}
       role="button"
