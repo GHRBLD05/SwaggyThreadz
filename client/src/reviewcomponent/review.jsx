@@ -1,5 +1,5 @@
 import React from 'react';
-import { Fullstar, Emptystar, Halfstar } from "../star_component/StarName.jsx";
+import { Fullstar, Emptystar, Halfstar } from "../star_component/stars.jsx";
 import $ from 'jquery';
 
 export default class Review extends React.Component {

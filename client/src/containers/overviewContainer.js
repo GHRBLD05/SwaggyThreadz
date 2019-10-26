@@ -8,17 +8,21 @@ const mapStateToProps = state => ({
   stylesArray: state.stylesArray,
   currentSize: state.currentSize,
   productList: state.productList,
+
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleSearch: q => {
-    dispatch(handleProductSearch(q));
+  handleSearch: name => {
+    dispatch(handleProductChange(name));
+  },
+  handleProductClick: style => {
+    dispatch(handleProductChange(style));
   },
 });
 
 const OverviewContainer = connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Overview);
 
 export default OverviewContainer;

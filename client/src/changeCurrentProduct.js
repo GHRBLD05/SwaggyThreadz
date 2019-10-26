@@ -5,7 +5,7 @@ const apiUrl = 'http://52.26.193.201:3000/products/';
 
 const getIdFromName = (productName, productList) => {
   for (const product of productList) {
-    if (product.name === productName) {
+    if (product.name === productName.toLowerCase()) {
       return product.id;
     }
   }

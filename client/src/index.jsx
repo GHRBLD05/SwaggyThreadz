@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import App from './app.jsx';
 import store from './store.js';
 import initializeProduct from './actions/initializeProduct';
-// import $ from 'jquery';
 
 ReactDOM.render(
   <Provider store={store}>
