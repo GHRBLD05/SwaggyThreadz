@@ -3,7 +3,6 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers/rootReducer.js';
 
 const initialState = {
-  productList: [],
   currentProduct: {
     id: 0,
     name: '',

@@ -4,11 +4,9 @@ import changeStyle from './currentStyle.js';
 import changeStylesArray from './stylesArray.js';
 import changeRelatedProducts from './relatedProducts.js';
 
-const handleProductChange = (productName, productList) => dispatch => {
-  console.log('handling product change');
+const handleProductChange = productName => dispatch => {
   changeCurrentProduct(
     productName,
-    productList,
     (product, styles, currentStyle, relatedProducts) => {
       dispatch(changeProduct(product));
       dispatch(changeStyle(currentStyle));

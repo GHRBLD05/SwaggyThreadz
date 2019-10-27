@@ -4,7 +4,6 @@ import currentProductReducer from './currentProductReducer.js';
 import stylesArrayReducer from './stylesArrayReducer.js';
 import currentSizeReducer from './currentSizeReducer.js';
 import relatedProductsReducer from './relatedProductsReducer.js';
-import productListReducer from './productListReducer.js';
 
 const rootReducer = combineReducers({
   currentProduct: currentProductReducer,
@@ -12,7 +11,6 @@ const rootReducer = combineReducers({
   relatedProducts: relatedProductsReducer,
   stylesArray: stylesArrayReducer,
   currentSize: currentSizeReducer,
-  productList: productListReducer,
 });
 
 export default rootReducer;

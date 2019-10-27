@@ -3,6 +3,20 @@ import 'regenerator-runtime/runtime';
 
 const apiUrl = 'http://52.26.193.201:3000/products/';
 
+const updateProductList = () =>
+  new Promise((resolve, reject) => {
+    const productList = [];
+    $.get('http://52.26.193.201:3000/products/list?count=10050', list => {
+      list.forEach(element => {
+        productList.push({
+          id: element.id,
+          name: element.name.toLowerCase(),
+        });
+      });
+      resolve(productList);
+    });
+  });
+
 const getIdFromName = (productName, productList) => {
   for (const product of productList) {
     if (product.name === productName.toLowerCase()) {
@@ -115,8 +129,8 @@ const getCurrentProduct = id =>
     $.get(`${apiUrl}${id}`, product => {
       resolve(product);
     });
-    productChangedEvent.productId = id;
-    document.getElementById('app').dispatchEvent(productChangedEvent);
+      productChangedEvent.productId = id;
+      document.getElementById('app').dispatchEvent(productChangedEvent);
   });
 
 const addRatingToCurrent = product =>
@@ -153,13 +167,17 @@ const addQuestionsToCurrent = product =>
     });
   });
 
-const changeCurrentProduct = (productName, productList, callback) => {
-  const productID = getIdFromName(productName, productList);
-  Promise.all([
-    getStyles(productID),
-    getRelatedIDs(productID),
-    getCurrentProduct(productID),
-  ])
+
+const changeCurrentProduct = (productName, callback) => {
+    updateProductList()
+        .then(productList => getIdFromName(productName, productList))
+        .then(productID =>
+            Promise.all([
+                getStyles(productID),
+                getRelatedIDs(productID),
+                getCurrentProduct(productID),
+            ])
+    )
     .then(([[styles, style], relatedIDs, currentProduct]) =>
       Promise.all([
         styles,
@@ -185,16 +203,10 @@ const changeCurrentProduct = (productName, productList, callback) => {
       ])
     )
     .then(([styles, style, currentProduct, relatedProducts]) => {
-      console.log('styles: ', styles);
-      console.log('style: ', style);
-      console.log('currentProduct: ', currentProduct);
-      console.log('relatedProducts: ', relatedProducts);
       callback(currentProduct, styles, style, relatedProducts);
     });
 };
 
-const productChangedEvent = new CustomEvent('productChanged', {
-  productId: -1,
-});
+const productChangedEvent = new CustomEvent('productChanged', { productId: -1 });
 
 export default changeCurrentProduct;

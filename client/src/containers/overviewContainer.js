@@ -6,9 +6,6 @@ const mapStateToProps = state => ({
   currentProduct: state.currentProduct,
   currentStyle: state.currentStyle,
   stylesArray: state.stylesArray,
-  currentSize: state.currentSize,
-  productList: state.productList,
-
 });
 
 const mapDispatchToProps = dispatch => ({
