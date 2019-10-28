@@ -1,21 +1,6 @@
 import React, { Component } from 'react';
 
 class ImageModal extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     url: this.props.image,
-  //   };
-  // }
-
-  // componentWillReceiveProps(newProps) {
-  //   if (newProps !== this.props) {
-  //     this.setState({
-  //       url: newProps.image,
-  //     });
-  //   }
-  // }
-
   render() {
     return (
       <div className="modal" id="my-modal">

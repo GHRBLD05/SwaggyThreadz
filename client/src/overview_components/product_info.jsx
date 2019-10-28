@@ -15,7 +15,7 @@ class ProductInfo extends React.Component {
     //   } else {
     //     origPrice.push(<p>{`$${this.props.currentProduct.default_price}`}</p>)
     //   }
-
+    // this is something i didn't have time to implement but want to come back to
     return (
       <div className="productInfo">
         <p>{this.props.currentProduct.category}</p>

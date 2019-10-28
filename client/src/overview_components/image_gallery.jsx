@@ -12,6 +12,14 @@ class ImageGallery extends React.Component {
     };
   }
 
+  componentWillReceiveProps(newProps, state) {
+    if (newProps !== this.props) {
+      this.setState({
+        photosArray: newProps.currentStyle.photos,
+      });
+    }
+  }
+
   componentDidUpdate() {
     console.log('componentDidUpdate');
     $('#my-carousel .carousel-control-prev').css('visibility', 'hidden');
@@ -22,38 +30,15 @@ class ImageGallery extends React.Component {
     }
   }
 
-  componentWillReceiveProps(newProps, state) {
-    if (newProps !== this.props) {
-      this.setState({
-        photosArray: newProps.currentStyle.photos,
-      });
-    }
-  }
-
   currentIndexInc() {
     this.setState({ currentIndex: this.state.currentIndex + 1 });
-    console.log(this.state.currentIndex);
+    // console.log(this.state.currentIndex);
   }
 
   currentIndexDec() {
     this.setState({ currentIndex: this.state.currentIndex - 1 });
-    console.log(this.state.currentIndex);
+    // console.log(this.state.currentIndex);
   }
-  // modalLimitInc() {
-  //   let oldUpperLimit = this.state.upperLimit;
-  //   let oldLowerLimit = this.state.lowerLimit;
-  //   const newLowerLimit = (oldLowerLimit += 1);
-  //   const newUpperLimit = (oldUpperLimit += 1);
-  //   this.setState({ upperLimit: newUpperLimit, lowerLimit: newLowerLimit });
-  // }
-
-  // modalLimitDec() {
-  //   let oldUpperLimit = this.state.upperLimit;
-  //   let oldLowerLimit = this.state.lowerLimit;
-  //   const newLowerLimit = (oldLowerLimit -= 1);
-  //   const newUpperLimit = (oldUpperLimit -= 1);
-  //   this.setState({ upperLimit: newUpperLimit, lowerLimit: newLowerLimit });
-  // }
 
   render() {
     const {
