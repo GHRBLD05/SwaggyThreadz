@@ -8,8 +8,8 @@ class ImageGallery extends React.Component {
       photosArray: this.props.currentStyle.photos,
       upperLimit: 1,
       lowerLimit: 0,
+      currentIndex: 0,
     };
-    this.currentIndex = 0;
   }
 
   componentDidUpdate() {
@@ -30,21 +30,30 @@ class ImageGallery extends React.Component {
     }
   }
 
-  modalLimitInc() {
-    let oldUpperLimit = this.state.upperLimit;
-    let oldLowerLimit = this.state.lowerLimit;
-    const newLowerLimit = (oldLowerLimit += 1);
-    const newUpperLimit = (oldUpperLimit += 1);
-    this.setState({ upperLimit: newUpperLimit, lowerLimit: newLowerLimit });
+  currentIndexInc() {
+    this.setState({ currentIndex: this.state.currentIndex + 1 });
+    console.log(this.state.currentIndex);
   }
 
-  modalLimitDec() {
-    let oldUpperLimit = this.state.upperLimit;
-    let oldLowerLimit = this.state.lowerLimit;
-    const newLowerLimit = (oldLowerLimit -= 1);
-    const newUpperLimit = (oldUpperLimit -= 1);
-    this.setState({ upperLimit: newUpperLimit, lowerLimit: newLowerLimit });
+  currentIndexDec() {
+    this.setState({ currentIndex: this.state.currentIndex - 1 });
+    console.log(this.state.currentIndex);
   }
+  // modalLimitInc() {
+  //   let oldUpperLimit = this.state.upperLimit;
+  //   let oldLowerLimit = this.state.lowerLimit;
+  //   const newLowerLimit = (oldLowerLimit += 1);
+  //   const newUpperLimit = (oldUpperLimit += 1);
+  //   this.setState({ upperLimit: newUpperLimit, lowerLimit: newLowerLimit });
+  // }
+
+  // modalLimitDec() {
+  //   let oldUpperLimit = this.state.upperLimit;
+  //   let oldLowerLimit = this.state.lowerLimit;
+  //   const newLowerLimit = (oldLowerLimit -= 1);
+  //   const newUpperLimit = (oldUpperLimit -= 1);
+  //   this.setState({ upperLimit: newUpperLimit, lowerLimit: newLowerLimit });
+  // }
 
   render() {
     const {
@@ -104,9 +113,9 @@ class ImageGallery extends React.Component {
               href="#my-carousel"
               role="button"
               data-slide="prev"
-              // onClick={() => {
-              //   this.modalLimitDec();
-              // }}
+              onClick={() => {
+                this.currentIndexDec();
+              }}
             >
               <span
                 className="carousel-control-prev-icon"
@@ -119,9 +128,9 @@ class ImageGallery extends React.Component {
               href="#my-carousel"
               role="button"
               data-slide="next"
-              // onClick={() => {
-              //   this.modalLimitInc();
-              // }}
+              onClick={() => {
+                this.currentIndexInc();
+              }}
             >
               <span
                 className="carousel-control-next-icon"
@@ -132,11 +141,10 @@ class ImageGallery extends React.Component {
           </div>
         </div>
         <div className="modalContainer">
-          {console.log('image: ', this.props.currentStyle.photos[0].url)}
           <ImageModal
             name={this.props.currentStyle.name}
-            images={this.props.currentStyle.photos[this.currentIndex].url}
-            index={this.currentIndex}
+            image={this.props.currentStyle.photos[this.state.currentIndex].url}
+            index={this.state.currentIndex}
           />
         </div>
       </div>

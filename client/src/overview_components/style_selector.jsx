@@ -30,9 +30,9 @@ class StyleSelector extends Component {
             alt={currentStyle.name}
             key={idx}
             type="button"
-            onClick={e => {
-              this.props.handleProductClick(e);
-            }}
+            // onClick={e => {
+            //   this.props.handleProductClick(e);
+            // }}
           />
         ))}
       </div>
@@ -41,6 +41,3 @@ class StyleSelector extends Component {
 }
 
 export default StyleSelector;
-{
-  /* <img src="" /> */
-}

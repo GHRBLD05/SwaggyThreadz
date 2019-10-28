@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class AddToCart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedSize: ""
+      selectedSize: '',
     };
   }
 
@@ -14,7 +14,7 @@ export default class AddToCart extends Component {
   }
 
   render() {
-    console.log("mydata");
+    console.log('mydata');
     console.log(this.state.selectedSize);
     console.log(this.props.currentStyle.skus);
     console.log(this.props.currentStyle.skus[this.state.selectedSize]);
@@ -26,30 +26,39 @@ export default class AddToCart extends Component {
       <div className="row">
         <div className="col-md-8">
           <select
-            className="button focus"
+            className="select-css"
             onChange={e => this.setState({ selectedSize: e.target.value })}
           >
+            <option disabled selected value>
+              Size
+            </option>
             {sizes.map((size, i) => (
               <option>{size}</option>
             ))}
           </select>
         </div>
         <div className="col-md-4">
-          <select>
+          <select className="select-css">
+            <option disabled selected value>
+              Quantity
+            </option>
             {Array.from(
               Array(
                 this.props.currentStyle.skus[this.state.selectedSize]
               ).keys()
             ).map(i => (
-              <option className="button focus" type="number" min="1">
-                {i + 1}
-              </option>
+              <option>{i + 1}</option>
             ))}
           </select>
         </div>
         <div className="row">
-          <div>
-            <input className="button focus" type="button" value="Add To Cart" />
+          <div className="col-md-12">
+            <input
+              id="addToCart"
+              className="button focus"
+              type="button"
+              value="Add To Cart"
+            />
           </div>
         </div>
       </div>
