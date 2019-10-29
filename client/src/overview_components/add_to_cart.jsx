@@ -13,15 +13,12 @@ export default class AddToCart extends Component {
     console.log(this.state.selectedSize);
   }
 
-  render() {
-    console.log('mydata');
-    console.log(this.state.selectedSize);
-    console.log(this.props.currentStyle.skus);
-    console.log(this.props.currentStyle.skus[this.state.selectedSize]);
-    const sizes = Object.keys(this.props.currentStyle.skus);
-    console.log(this.props.currentStyle.skus);
 
+  render() {
+
+    const sizes = Object.keys(this.props.currentStyle.skus);
     const qty = Object.values(this.props.currentStyle.skus);
+
     return (
       <div className="row">
         <div className="col-md-8">
@@ -32,12 +29,14 @@ export default class AddToCart extends Component {
             <option disabled selected value>
               Size
             </option>
+
             {sizes.map((size, i) => (
               <option>{size}</option>
             ))}
           </select>
         </div>
         <div className="col-md-4">
+
           <select className="select-css">
             <option disabled selected value>
               Quantity
