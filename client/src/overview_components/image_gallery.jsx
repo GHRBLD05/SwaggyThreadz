@@ -6,14 +6,11 @@ class ImageGallery extends React.Component {
     super(props);
     this.state = {
       photosArray: this.props.currentStyle.photos,
-      upperLimit: 1,
-      lowerLimit: 0,
       currentIndex: 0,
     };
   }
 
   componentDidUpdate() {
-    console.log('componentDidUpdate');
     $('#my-carousel .carousel-control-prev').css('visibility', 'hidden');
     if (this.props.currentStyle.photos.length <= 1) {
       $('#my-carousel .carousel-control-next').css('visibility', 'hidden');
@@ -39,21 +36,6 @@ class ImageGallery extends React.Component {
     this.setState({ currentIndex: this.state.currentIndex - 1 });
     console.log(this.state.currentIndex);
   }
-  // modalLimitInc() {
-  //   let oldUpperLimit = this.state.upperLimit;
-  //   let oldLowerLimit = this.state.lowerLimit;
-  //   const newLowerLimit = (oldLowerLimit += 1);
-  //   const newUpperLimit = (oldUpperLimit += 1);
-  //   this.setState({ upperLimit: newUpperLimit, lowerLimit: newLowerLimit });
-  // }
-
-  // modalLimitDec() {
-  //   let oldUpperLimit = this.state.upperLimit;
-  //   let oldLowerLimit = this.state.lowerLimit;
-  //   const newLowerLimit = (oldLowerLimit -= 1);
-  //   const newUpperLimit = (oldUpperLimit -= 1);
-  //   this.setState({ upperLimit: newUpperLimit, lowerLimit: newLowerLimit });
-  // }
 
   render() {
     const {
@@ -62,7 +44,6 @@ class ImageGallery extends React.Component {
       stylesArray,
       currentSize,
     } = this.props;
-    console.log('photos array ', this.props.currentStyle.photos);
 
     return (
       <div>
@@ -113,9 +94,6 @@ class ImageGallery extends React.Component {
               href="#my-carousel"
               role="button"
               data-slide="prev"
-              onClick={() => {
-                this.currentIndexDec();
-              }}
             >
               <span
                 className="carousel-control-prev-icon"
@@ -128,9 +106,6 @@ class ImageGallery extends React.Component {
               href="#my-carousel"
               role="button"
               data-slide="next"
-              onClick={() => {
-                this.currentIndexInc();
-              }}
             >
               <span
                 className="carousel-control-next-icon"
