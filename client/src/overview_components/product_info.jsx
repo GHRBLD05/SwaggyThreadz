@@ -2,7 +2,7 @@ import React from 'react';
 
 class ProductInfo extends React.Component {
   render() {
-    console.log('current product', this.props.currentProduct);
+    // console.log('current product', this.props.currentProduct);
 
     // const stylesArray = this.props.stylesArray
     // const defaultPrice = this.props.currentProduct.default_price

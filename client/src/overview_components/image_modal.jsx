@@ -4,14 +4,22 @@ class ImageModal extends Component {
   // constructor(props) {
   //   super(props);
   //   this.state = {
-  //     index: 0,
+  //     url: this.props.image,
   //   };
+  // }
+
+  // componentWillReceiveProps(newProps) {
+  //   if (newProps !== this.props) {
+  //     this.setState({
+  //       url: newProps.image,
+  //     });
+  //   }
   // }
 
   render() {
     return (
       <div className="modal" id="my-modal">
-        <div className="modal-dialog modal-dialog-center modal-large">
+        <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
               <button
@@ -28,10 +36,10 @@ class ImageModal extends Component {
               <img
                 className="modalImg"
                 id={`modalImg${this.props.index}`}
-                src={this.props.images}
+                src={this.props.image}
                 alt={this.props.name}
                 key={this.props.index}
-                style={{ width: '1250px', height: 'auto' }}
+                style={{ width: '1250px', height: 'auto', border: '0px 150px' }}
               />
             </div>
           </div>

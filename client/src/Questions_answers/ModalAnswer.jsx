@@ -110,7 +110,10 @@ class ModalAnswer extends React.Component {
           </button>
           <div className="modal-body">
             <label htmlFor="question-form" className="modal-headings">
-              Submit your answer <br></br><span className="product-name">{this.props.productName}: "{this.props.currQuestion}"</span>
+              Submit your answer <br></br>
+              <span className="product-name">
+                {this.props.productName}: "{this.props.currQuestion}"
+              </span>
               <span className="mandatory"> (required*)</span>
             </label>
             <textarea
@@ -162,8 +165,8 @@ class ModalAnswer extends React.Component {
               <label htmlFor="image-upload" className="modal-headings">
                 Image url: <span className="mandatory">(optional)</span>
               </label>
-              </div>
-              <div className="row">
+            </div>
+            <div className="row">
               <input
                 type="text"
                 className="image-upload"
