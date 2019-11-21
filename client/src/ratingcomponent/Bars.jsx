@@ -3,7 +3,6 @@ import React from "react";
 export default class Bars extends React.Component {
  
     render() {
-        console.log(this.props);
         var index = 0;
         var bars = [];
         for (var i = 5; i > 0; i--) {

@@ -29,12 +29,10 @@ class ImageGallery extends React.Component {
 
   currentIndexInc() {
     this.setState({ currentIndex: this.state.currentIndex + 1 });
-    console.log(this.state.currentIndex);
   }
 
   currentIndexDec() {
     this.setState({ currentIndex: this.state.currentIndex - 1 });
-    console.log(this.state.currentIndex);
   }
 
   render() {

@@ -22,7 +22,6 @@ class StyleSelector extends Component {
     const { currentStyle } = this.props;
     return (
       <div>
-        {console.log('state', this.state)}
         {currentStyle.photos.map((pic, idx) => (
           <img
             className="styleSelectors"

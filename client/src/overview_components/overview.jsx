@@ -7,7 +7,6 @@ import StyleSelector from './style_selector.jsx';
 
 class Overview extends Component {
   render() {
-    console.log('dem props', this.props);
 
     const {
       currentProduct,

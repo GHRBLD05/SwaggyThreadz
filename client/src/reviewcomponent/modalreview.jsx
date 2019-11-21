@@ -5,7 +5,6 @@ export default class ModalReview extends React.Component {
     componentDidMount() {
         let form = document.getElementById("reviewmodal");
         form.addEventListener("submit", e => {
-            console.log('here');
             e.preventDefault();
             document.getElementById("controls").dispatchEvent(new CustomEvent("reviewSubmitted", null));
             this.submitReview(form.elements);
@@ -27,7 +26,6 @@ export default class ModalReview extends React.Component {
             photos: "",
             characteristics: {}
         };
-        console.log(JSON.stringify(options));
 
         fetch(`http://52.26.193.201:3000/reviews/${this.props.productid}`, {
             method: 'post',

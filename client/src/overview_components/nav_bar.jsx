@@ -21,7 +21,6 @@ export default class NavBar extends Component {
   }
 
   render() {
-    console.log('zee props', this.props);
 
     return (
       <nav className="navbar navbar-dark bg-dark">

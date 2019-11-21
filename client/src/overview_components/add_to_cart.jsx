@@ -10,7 +10,6 @@ export default class AddToCart extends Component {
 
   handleSizeClick(e) {
     this.setState({ selectedSize: e.target.value });
-    console.log(this.state.selectedSize);
   }
 
 
