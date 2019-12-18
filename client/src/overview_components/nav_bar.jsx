@@ -21,10 +21,9 @@ export default class NavBar extends Component {
   }
 
   render() {
-
     return (
       <nav className="navbar navbar-dark bg-dark">
-        <h3 className="navbar-brand">Retail FEC</h3>
+        <h3 className="navbar-brand">Swaggy Threadz</h3>
         <form
           className="form-inline"
           value={this.state.value}
