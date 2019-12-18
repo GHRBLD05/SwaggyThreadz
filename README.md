@@ -47,6 +47,13 @@ This is an implementation of a product webpage for an ecommerce website. It cont
 NavBar and Product Details
 
 ![NavBar and Overview](./screenshots/overview.jpg)
+![Related Products and Outfit](./screenshots/relatedAndOutfit.jpg)
+![Related Products Comparison Modal](./screenshots/relatedModal.jpg)
+![Questions and Answers](./screenshots/QandA.jpg)
+![Add a Question Modal](./screenshots/questionModal.jpg)
+![Add an Answer Modal](./screenshots/answerModal.jpg)
+![Ratings and Reviews](./screenshots/ratingsAndReviews.jpg)
+![Add a Review Modal](./screenshots/reviewModal.jpg)
 
 ## Requirements
 
