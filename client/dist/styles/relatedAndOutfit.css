@@ -352,18 +352,7 @@
   right: 4px;
   background: none;
   border: none;
-  /* opacity: 0; */
-  /* transition: .3s ease; */
 }
-
-/* .addOutfitButton {
-  top: 42%;
-  left: 42%;
-  position: absolute;
-  background: none;
-  border: none;
-  display: inline-block;
-} */
 
 .relatedModalButton:hover {
   color: yellow;

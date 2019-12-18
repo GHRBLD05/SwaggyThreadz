@@ -20,7 +20,7 @@ class ImageModal extends Component {
     return (
       <div className="modal" id="my-modal">
         <div className="modal-dialog">
-          <div className="modal-content">
+          <div className="modal-content my-modal-content">
             <div className="modal-header">
               <button
                 className="close"
